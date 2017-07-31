@@ -1,0 +1,46 @@
+@color-font-1: rgba(0, 0, 0, 0.8);
+@color-font-2: rgba(0, 0, 0, 0.6);
+@color-font-3: rgba(0, 0, 0, 0.4);
+@color-font-4: rgba(0, 0, 0, 0.2);
+
+@default-font: "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+@normal-line-height: 1.5;
+
+.font-size(@size,@line-height:@normal-line-height) {
+  font-size: @size;
+  line-height: @line-height;
+}
+
+.font-body-1() {
+  .font-size(14px);
+  color: @color-font-2;
+}
+
+.font-body-2() {
+  .font-size(14px);
+  color: @color-font-3;
+}
+
+.font-caption() {
+  .font-size(12px);
+  color: @color-font-3;
+}
+
+.font-disable() {
+  .font-size(12px);
+  color: @color-font-4;
+}
+
+.font-title() {
+  .font-size(16px);
+  color: @color-font-1;
+}
+
+.font-display() {
+  .font-size(24px);
+  color: @color-font-1;
+}
+
+.font-h3() {
+  .font-body-1();
+}

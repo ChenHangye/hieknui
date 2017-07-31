@@ -1,0 +1,31 @@
+{
+  "name": "hieknui",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "author": {
+    "name": "jiangrun002",
+    "email": "451183365@qq.com"
+  },
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.0.3",
+    "gulp-concat": "^2.6.0",
+    "gulp-less": "^3.1.0",
+    "gulp-licenser": "^1.0.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-replace": "^0.6.1",
+    "gulp-typescript": "^3.2.1",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7",
+    "jsonfile": "^3.0.1",
+    "typescript": "^2.4.2"
+  },
+  "scripts": {},
+  "dependencies": {}
+}

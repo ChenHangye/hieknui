@@ -1,0 +1,88 @@
+@import "color";
+@import "font";
+@import "icon";
+
+@border-radius-normal: 2px;
+
+.box-shadow-normal(@x:1px,@y:1px,@d:2px,@color: rgba(0, 0, 0, .2)) {
+  box-shadow: @arguments;
+}
+
+.border-radius-normal(@lt:@border-radius-normal,@rt:@border-radius-normal,@rb:@border-radius-normal,@lb:@border-radius-normal) {
+  border-radius: @arguments;
+}
+
+.line-hidden() {
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.normal-transition(@property:all,@duration:.5s,@timing:cubic-bezier(.25, .8, .25, 1),@delay:0s) {
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+
+.scroll(@bg: @color-bg-1,@thumb: @color-ac-03,@btn: @color-light) {
+  scrollbar-3dlight-color: @bg;
+  scrollbar-highlight-color: @bg;
+  scrollbar-face-color: @thumb;
+  scrollbar-arrow-color: @btn;
+  scrollbar-shadow-color: @thumb;
+  scrollbar-dark-shadow-color: @thumb;
+  scrollbar-base-color: @bg;
+  scrollbar-track-color: @bg;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-button {
+    background-color: transparent;
+    display: none;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-track-piece {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  &::-webkit-resizer {
+    background: transparent;
+  }
+  &:hover {
+    &::-webkit-scrollbar {
+    }
+    &::-webkit-scrollbar-button {
+      background-color: @btn;
+    }
+    &::-webkit-scrollbar-track {
+      background: @bg;
+    }
+    &::-webkit-scrollbar-track-piece {
+      background: @bg;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: @thumb;
+    }
+    &::-webkit-scrollbar-corner {
+      background: @bg;
+    }
+    &::-webkit-resizer {
+      background: @bg;
+    }
+  }
+}
+
+/* define end */

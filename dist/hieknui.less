@@ -1,0 +1,247 @@
+
+
+.btn {
+  min-width: 64px;
+  min-height: 32px;
+  box-shadow: none;
+  outline: none;
+  .font-caption();
+  &.btn-primary {
+    color: @color-font-1;
+    background: @color-primary;
+    border-color: @color-primary;
+  }
+}
+@primary: 'green';
+
+@var-00: 'color-@{primary}-00';
+@var-01: 'color-@{primary}-01';
+@var-02: 'color-@{primary}-02';
+@var-03: 'color-@{primary}-03';
+@var-04: 'color-@{primary}-04';
+@var-05: 'color-@{primary}-05';
+@var-06: 'color-@{primary}-06';
+@color-primary-00: @@var-00;
+@color-primary-01: @@var-01;
+@color-primary-02: @@var-02;
+@color-primary-03: @@var-03;
+@color-primary-04: @@var-04;
+@color-primary-05: @@var-05;
+@color-primary-06: @@var-06;
+@color-primary:@color-primary-01;
+
+@color-blue-00: #337fd6;
+@color-blue-01: #398dee;
+@color-blue-02: #74aff3;
+@color-blue-03: #87bbf5;
+@color-blue-04: #e0eafa;
+@color-blue-05: #eceff1;
+@color-blue-06: #f7f9f9;
+@color-blue: @color-blue-01;
+
+@color-red-00: #c44742;
+@color-red-01: #da4f4a;
+@color-red-02: #e58380;
+@color-red-03: #e99592;
+@color-red-04: #f9e5e4;
+@color-red-05: #fff4f3;
+@color-red-06: #fdfcfc;
+@color-red: @color-red-01;
+
+@color-green-00: #00a17c;
+@color-green-01: #00b38a;
+@color-green-02: #4ccaad;
+@color-green-03: #66d1b9;
+@color-green-04: #d9f4ee;
+@color-green-05: #effbf7;
+@color-green-06: #fcfdfc;
+@color-green: @color-green-01;
+
+@color-purple-00: #70295c;
+@color-purple-01: #7d2e67;
+@color-purple-02: #a46c94;
+@color-purple-03: #b182a4;
+@color-purple-04: #f4dfee;
+@color-purple-05: #fdf0f9;
+@color-purple-06: #fffbfe;
+@color-purple: @color-purple-01;
+
+@color-black-00: #333333;
+@color-black-01: #666666;
+@color-black-02: #999999;
+@color-black-03: #dddddd;
+@color-black-04: #eeeeee;
+@color-black-05: #f6f6f6;
+@color-black-06: #fcfcfc;
+@color-black: @color-black-01;
+
+@color-yellow-00: #fdb400;
+@color-yellow-01: #ffc107;
+@color-yellow-02: #ffd54f;
+@color-yellow-03: #ffe082;
+@color-yellow-04: #ffecb3;
+@color-yellow-05: #fff8e1;
+@color-yellow-06: #fffefa;
+@color-yellow: @color-yellow-01;
+
+
+
+
+@border-radius-normal: 2px;
+
+.box-shadow-normal(@x:1px,@y:1px,@d:2px,@color: rgba(0, 0, 0, .2)) {
+  box-shadow: @arguments;
+}
+
+.border-radius-normal(@lt:@border-radius-normal,@rt:@border-radius-normal,@rb:@border-radius-normal,@lb:@border-radius-normal) {
+  border-radius: @arguments;
+}
+
+.line-hidden() {
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.normal-transition(@property:all,@duration:.5s,@timing:cubic-bezier(.25, .8, .25, 1),@delay:0s) {
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+
+.scroll(@bg: @color-bg-1,@thumb: @color-ac-03,@btn: @color-light) {
+  scrollbar-3dlight-color: @bg;
+  scrollbar-highlight-color: @bg;
+  scrollbar-face-color: @thumb;
+  scrollbar-arrow-color: @btn;
+  scrollbar-shadow-color: @thumb;
+  scrollbar-dark-shadow-color: @thumb;
+  scrollbar-base-color: @bg;
+  scrollbar-track-color: @bg;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-button {
+    background-color: transparent;
+    display: none;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-track-piece {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  &::-webkit-resizer {
+    background: transparent;
+  }
+  &:hover {
+    &::-webkit-scrollbar {
+    }
+    &::-webkit-scrollbar-button {
+      background-color: @btn;
+    }
+    &::-webkit-scrollbar-track {
+      background: @bg;
+    }
+    &::-webkit-scrollbar-track-piece {
+      background: @bg;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: @thumb;
+    }
+    &::-webkit-scrollbar-corner {
+      background: @bg;
+    }
+    &::-webkit-resizer {
+      background: @bg;
+    }
+  }
+}
+
+/* define end */
+@color-font-1: rgba(0, 0, 0, 0.8);
+@color-font-2: rgba(0, 0, 0, 0.6);
+@color-font-3: rgba(0, 0, 0, 0.4);
+@color-font-4: rgba(0, 0, 0, 0.2);
+
+@default-font: "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+@normal-line-height: 1.5;
+
+.font-size(@size,@line-height:@normal-line-height) {
+  font-size: @size;
+  line-height: @line-height;
+}
+
+.font-body-1() {
+  .font-size(14px);
+  color: @color-font-2;
+}
+
+.font-body-2() {
+  .font-size(14px);
+  color: @color-font-3;
+}
+
+.font-caption() {
+  .font-size(12px);
+  color: @color-font-3;
+}
+
+.font-disable() {
+  .font-size(12px);
+  color: @color-font-4;
+}
+
+.font-title() {
+  .font-size(16px);
+  color: @color-font-1;
+}
+
+.font-display() {
+  .font-size(24px);
+  color: @color-font-1;
+}
+
+.font-h3() {
+  .font-body-1();
+}
+.icon-size(@size: 24px) {
+  width: @size;
+  height: @size;
+}
+
+.icon-12 {
+  .icon-size(12px);
+}
+
+.icon-16 {
+  .icon-size(16px);
+}
+
+.icon-20 {
+  .icon-size(20px);
+}
+
+.icon-24 {
+  .icon-size(24px);
+}
+
+.icon-32 {
+  .icon-size(32px);
+}
+
+.icon-36 {
+  .icon-size(36px);
+}
