@@ -1,4 +1,4 @@
-.btn {
+.hiekn-btn {
   display: inline-block;
   font-weight: normal;
   text-align: center;
@@ -22,43 +22,53 @@
   font-size: 14px;
   padding: 0 16px;
 }
-.btn.btn-xs {
+.hiekn-btn.btn-xs {
   min-width: 80px;
   min-height: 32px;
   line-height: 32px;
   font-size: 12px;
   padding: 0 8px;
 }
-.btn.btn-sm {
+.hiekn-btn.btn-sm {
   min-width: 64px;
   min-height: 32px;
   line-height: 32px;
   font-size: 14px;
   padding: 0 16px;
 }
-.btn.btn-md {
+.hiekn-btn.btn-md {
   min-width: 80px;
   min-height: 40px;
   line-height: 40px;
   font-size: 14px;
   padding: 0 16px;
 }
-.btn.btn-lg {
+.hiekn-btn.btn-lg {
   min-width: 112px;
   min-height: 48px;
   line-height: 48px;
   font-size: 18px;
   padding: 0 32px;
 }
-.btn.btn-primary {
+.hiekn-btn.btn-primary {
   color: #fff;
   background: #7d2e67;
   border-color: #7d2e67;
 }
-.btn.btn-primary-outline {
+.hiekn-btn.btn-primary-outline {
   color: #7d2e67;
   background: #fff;
   border-color: #7d2e67;
+}
+.hiekn-btn.btn-primary-outline.btn-active,
+.hiekn-btn.btn-primary-outline:active,
+.hiekn-btn.btn-primary-outline.active {
+  color: #fff;
+  background: #7d2e67;
+}
+.hiekn-btn.btn-primary-outline:hover {
+  color: #fff;
+  background: #7d2e67;
 }
 label.hiekn-checkbox {
   cursor: pointer;
@@ -149,6 +159,57 @@ dir {
 .icon-36 {
   width: 36px;
   height: 36px;
+}
+.hiekn-input {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: 0!important;
+  border-radius: 2px 2px 2px 2px;
+  min-height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  padding: 0 8px;
+}
+.hiekn-input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+.hiekn-input:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.2);
+}
+.hiekn-input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.2);
+}
+.hiekn-input.input-xs {
+  min-height: 32px;
+  line-height: 32px;
+  font-size: 12px;
+  padding: 0 8px;
+}
+.hiekn-input.input-sm {
+  min-height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  padding: 0 8px;
+}
+.hiekn-input.input-md {
+  min-height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  padding: 0 8px;
+}
+.hiekn-input.input-lg {
+  min-height: 48px;
+  line-height: 48px;
+  font-size: 18px;
+  padding: 0 8px;
+}
+.hiekn-input.input-primary {
+  color: rgba(0, 0, 0, 0.6);
+}
+.hiekn-input.input-primary:active,
+.hiekn-input.input-primary.active,
+.hiekn-input.input-primary:hover {
+  border-color: #7d2e67;
 }
 label.hiekn-radio {
   cursor: pointer;

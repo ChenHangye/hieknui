@@ -32,7 +32,7 @@
   padding: 0 32px;
 }
 
-.btn {
+.hiekn-btn {
   display: inline-block;
   font-weight: normal;
   text-align: center;
@@ -83,10 +83,12 @@
     background: #fff;
     border-color: @color-primary;
     &.btn-active, &:active, &.active {
-
+      color: #fff;
+      background: @color-primary;
     }
     &:hover{
-
+      color: #fff;
+      background: @color-primary;
     }
   }
 }
@@ -307,6 +309,20 @@ label.hiekn-checkbox {
   width: @size;
   height: @size;
 }
+
+
+.placeholder(@color: @color-font-4) {
+  &::-moz-placeholder {
+    color: @color;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    color: @color;
+  }
+  &::-webkit-input-placeholder {
+    color: @color;
+  }
+}
 /* define end */
 @color-font-1: rgba(0, 0, 0, 0.8);
 @color-font-2: rgba(0, 0, 0, 0.6);
@@ -395,6 +411,65 @@ ul, menu, dir {
 
 .icon-36 {
   .icon-size(36px);
+}
+
+
+.input-xs() {
+  min-height: 32px;
+  line-height: 32px;
+  font-size: 12px;
+  padding: 0 8px;
+}
+
+.input-sm() {
+  min-height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  padding: 0 8px;
+}
+
+.input-md() {
+  min-height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  padding: 0 8px;
+}
+
+.input-lg() {
+  min-height: 48px;
+  line-height: 48px;
+  font-size: 18px;
+  padding: 0 8px;
+}
+
+.hiekn-input {
+  border: 1px solid @color-font-4;
+  outline: 0!important;
+  .border-radius-normal();
+  .placeholder();
+  .input-md();
+
+  &.input-xs {
+    .input-xs();
+  }
+  &.input-sm {
+    .input-sm();
+  }
+  &.input-md {
+    .input-md();
+  }
+  &.input-lg {
+    .input-lg();
+  }
+  &.input-disabled, &[disabled], &.disabled {
+
+  }
+  &.input-primary {
+    color: @color-font-2;
+    &:active, &.active, &:hover{
+      border-color: @color-primary;
+    }
+  }
 }
 
 
