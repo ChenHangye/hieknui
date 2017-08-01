@@ -1,8 +1,9 @@
 @import "color";
 @import "font";
-@import "icon";
 
 @border-radius-normal: 2px;
+
+@color-light: #fff;
 
 .box-shadow-normal(@x:1px,@y:1px,@d:2px,@color: rgba(0, 0, 0, .2)) {
   box-shadow: @arguments;
@@ -26,7 +27,7 @@
   transition: @arguments;
 }
 
-.scroll(@bg: @color-bg-1,@thumb: @color-ac-03,@btn: @color-light) {
+.scroll(@bg: @color-black-05,@thumb: @color-black-02,@btn: @color-light) {
   scrollbar-3dlight-color: @bg;
   scrollbar-highlight-color: @bg;
   scrollbar-face-color: @thumb;
@@ -85,4 +86,8 @@
   }
 }
 
+.icon-size(@size: 24px) {
+  width: @size;
+  height: @size;
+}
 /* define end */
