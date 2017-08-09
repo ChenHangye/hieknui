@@ -118,6 +118,25 @@
   }
 }
 
+.spin-keyframes(){
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@-webkit-keyframes spin-keyframes {
+  .spin-keyframes;
+}
+
+@keyframes spin-keyframes {
+  .spin-keyframes;
+}
+
 @screen-xs              : 480px;
 @screen-xs-min          : @screen-xs;
 @screen-xs-max          : (@screen-sm-min - 1);
