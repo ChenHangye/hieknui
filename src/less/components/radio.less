@@ -1,0 +1,44 @@
+@import "../define";
+@import "../mixins/radio";
+
+@radio-cls:~"@{css-prefix}radio";
+
+label.@{radio-cls} {
+  .radio();
+  cursor: pointer;
+  width: auto;
+  margin-bottom: 0;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  font-weight: normal;
+  padding-right: 24px;
+  &:hover {
+    color: @color-primary;
+  }
+  input[type=radio] {
+    opacity: 0;
+    margin: 0;
+    cursor: pointer;
+    position: absolute;
+    z-index: 0;
+    & + * {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+    }
+    &[disabled] {
+      & + * {
+        cursor: not-allowed;
+        color: @color-font-4;
+      }
+    }
+  }
+
+  &.radio-md{
+    .radio(14px);
+  }
+  &.radio-lg{
+    .radio(16px);
+  }
+}

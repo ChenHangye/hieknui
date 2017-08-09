@@ -1,50 +1,34 @@
-@import "define";
+@import "../define";
 
-label.hiekn-checkbox {
-  @wh-icon-num: 16;
-  @wh-icon: 16px;
-  @item-height: 18px;
+.checkbox(@size: 14px) {
+  @wh-icon: @size + 4px;
+  @wh-icon-num: unit(@wh-icon);
+  @item-height: @size * @line-height;
   .icon-checkbox(@color:@color-primary) {
     background-image: url('data:image/svg+xml;charset=utf8,<svg fill="@{color}" height="@{wh-icon-num}" viewBox="0 0 24 24" width="@{wh-icon-num}" xmlns="http://www.w3.org/2000/svg"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
   }
   .icon-checkbox-checked(@color:@color-primary) {
     background-image: url('data:image/svg+xml;charset=utf8,<svg fill="@{color}" height="@{wh-icon-num}" viewBox="0 0 24 24" width="@{wh-icon-num}" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>');
   }
-  cursor: pointer;
-  width: auto;
-  margin-bottom: 0;
-  position: relative;
-  display: inline-block;
   line-height: @item-height;
   height: @item-height;
-  overflow: hidden;
-  font-size: 12px;
-  font-weight: normal;
-  &:hover {
-    color: @color-primary;
-  }
-  &[disabled] {
-    cursor: not-allowed;
-  }
-  input {
-    margin: 1px 8px 0 0;
-    &[type=radio], &[type=checkbox] {
-      opacity: 0;
-      margin: 0;
-      cursor: pointer;
-      position: absolute;
-      z-index: 0;
+  font-size: @size;
+  input[type=checkbox] {
+    & + * {
+      padding-left: @wh-icon + 4px;
+      line-height: @item-height;
+      background: @color-light no-repeat 0 (@item-height - @wh-icon) / 2;
+      .icon-checkbox(@color-font-3);
+    }
+    &:checked + * {
+      .icon-checkbox-checked();
+    }
+    &[disabled] {
       & + * {
-        position: relative;
-        z-index: 1;
-        display: inline-block;
-        padding-left: @wh-icon + 4px;
-        line-height: @item-height;
-        background: @color-light no-repeat 0 (@item-height - @wh-icon) / 2;
-        .icon-checkbox(@color-font-3);
+        .icon-checkbox(@color-font-4);
       }
       &:checked + * {
-        .icon-checkbox-checked();
+        .icon-checkbox-checked(@color-font-4);
       }
     }
   }

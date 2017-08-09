@@ -3,28 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!--<link rel="stylesheet" href="../dist/hieknui.css">-->
+    <!--<link rel="stylesheet" href="../dist/huui.css">-->
     <link rel="stylesheet" href="less/custom.theme.css">
 </head>
 <body>
-<button class="hiekn-btn btn-primary">测试</button>
-<button class="hiekn-btn btn-primary-outline">测试</button>
-<label for="id1" class="hiekn-radio">
+<button class="hu-btn btn-primary">测试</button>
+<button class="hu-btn btn-primary-outline">测试</button>
+<label for="id1" class="hu-radio">
     <input type="radio" id="id1" name="radio" checked>
     <span>radio1</span>
 </label>
-<label for="id11" class="hiekn-radio">
+<label for="id11" class="hu-radio radio-lg">
     <input type="radio" id="id11" name="radio">
     <span>radio11</span>
 </label>
-<label for="id2" class="hiekn-checkbox">
+<label for="id111" class="hu-radio">
+    <input type="radio" id="id111" name="radio" checked disabled>
+    <span>radio111</span>
+</label>
+<label for="id1111" class="hu-radio">
+    <input type="radio" id="id1111" name="radio" disabled>
+    <span>radio1111</span>
+</label>
+<label for="id2" class="hu-checkbox">
     <input type="checkbox" id="id2">
     <span>checkbox2</span>
 </label>
-<label for="id22" class="hiekn-checkbox">
+<label for="id22" class="hu-checkbox checkbox-lg">
     <input type="checkbox" id="id22" checked>
     <span>checkbox22</span>
 </label>
-<input type="text" class="hiekn-input input-primary" placeholder="input test">
+<label for="id222" class="hu-checkbox">
+    <input type="checkbox" id="id222" disabled>
+    <span>checkbox222</span>
+</label>
+<label for="id2222" class="hu-checkbox">
+    <input type="checkbox" id="id2222" disabled checked>
+    <span>checkbox2222</span>
+</label>
+<input type="text" class="hu-input input-primary" placeholder="input test">
+
+<div>
+    <ul class="hu-tabs tabs-primary">
+        <li class="active"><a href="#tab-1501570392839-0">定向分析</a></li>
+        <li class=""><a href="#tab-1501570392841-1">图统计</a></li>
+        <li class=""><a href="#tab-1501570392841-2">图解读</a></li>
+    </ul>
+    <div class="hu-tab-content">
+        <div class="tab-pane active" id="tab-1501570392839-0">
+            <div class="hu-row hu-gutter-16">
+                <div class="hu-col-6"><div class="seagreen">1</div></div>
+                <div class="hu-col-6"><div class="seagreen">2</div></div>
+                <div class="hu-col-6"><div class="seagreen">3</div></div>
+                <div class="hu-col-6"><div class="seagreen">4</div></div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab-1501570392841-1">图统计</div>
+        <div class="tab-pane" id="tab-1501570392841-2">图解读</div>
+    </div>
+</div>
 </body>
 </html>

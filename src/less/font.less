@@ -3,10 +3,11 @@
 @color-font-3: rgba(0, 0, 0, 0.4);
 @color-font-4: rgba(0, 0, 0, 0.2);
 
-@default-font: "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
-@normal-line-height: 1.5;
+@font-family: "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+@code-family: Consolas, Menlo, Courier, monospace;
+@line-height: 1.5;
 
-.font-size(@size,@line-height:@normal-line-height) {
+.font-size(@size,@line-height:@line-height) {
   font-size: @size;
   line-height: @line-height;
 }
@@ -21,6 +22,12 @@
   color: @color-font-3;
 }
 
+.font-body-3() {
+  .font-size(14px);
+  font-weight: bold;
+  color: @color-font-1;
+}
+
 .font-caption() {
   .font-size(12px);
   color: @color-font-3;
@@ -33,14 +40,24 @@
 
 .font-title() {
   .font-size(16px);
+  font-weight: bold;
   color: @color-font-1;
 }
 
-.font-display() {
+.font-display-1() {
+  .font-size(18px);
+  font-weight: bold;
+  color: @color-font-1;
+}
+
+.font-display-2() {
   .font-size(24px);
+  font-weight: bold;
   color: @color-font-1;
 }
 
-.font-h3() {
-  .font-body-1();
+.font-display-3() {
+  .font-size(36px);
+  font-weight: bold;
+  color: @color-font-1;
 }

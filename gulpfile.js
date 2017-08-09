@@ -67,7 +67,7 @@ gulp.task('compile-less', ['clean-css'], function () {
 });
 
 gulp.task('concat-css', ['compile-less'], function () {
-    return gulp.src(src + 'less/*.css').pipe(concat(cssDevFile)).pipe(gulp.dest(dst));
+    return gulp.src([src + 'less/**/*.css']).pipe(concat(cssDevFile)).pipe(gulp.dest(dst));
 });
 
 gulp.task('minify-css', ['concat-css'], function () {
@@ -75,7 +75,7 @@ gulp.task('minify-css', ['concat-css'], function () {
 });
 
 gulp.task('concat-less', function () {
-    return gulp.src([src + 'less/*.less']).pipe(concat(lessDevFile)).pipe(replace(/@import .*;/g, '')).pipe(gulp.dest(dst));
+    return gulp.src([src + 'less/**/*.less','!' + src + 'less/theme/*.less']).pipe(concat(lessDevFile)).pipe(replace(/@import .*;/g, '')).pipe(gulp.dest(dst));
 });
 
 gulp.task('gent-theme', function () {

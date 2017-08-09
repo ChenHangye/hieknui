@@ -1,0 +1,60 @@
+@import "../define";
+@import "../mixins/tabs";
+
+@tabs-cls: ~"@{css-prefix}tabs";
+@tab-content-cls: ~"@{css-prefix}tab-content";
+
+.@{tabs-cls} {
+  border-bottom: 2px solid #ddd;
+  .tabs-md();
+  &:before {
+    display: table;
+    content: " ";
+  }
+  &.tabs-xs {
+    .tabs-xs;
+  }
+  &.tabs-sm {
+    .tabs-sm;
+  }
+  &.tabs-md {
+    .tabs-md;
+  }
+  &.tabs-lg {
+    .tabs-lg;
+  }
+  &.tabs-disabled, &[disabled], &.disabled {
+
+  }
+  & > li {
+    padding: 16px 0;
+    float: left;
+    a {
+      color: @color-font-1;
+      padding: 0 24px;
+      display: block;
+      border-left: 1px solid #ddd;
+    }
+    &:first-child a {
+      border: 0;
+    }
+    &.active {
+      padding-bottom: 14px;
+      border-bottom: 2px solid @color-primary;
+      a {
+        color: @color-primary;
+      }
+    }
+  }
+  &.tabs-primary {
+  }
+}
+
+.@{tab-content-cls} {
+  & > .tab-pane {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+}

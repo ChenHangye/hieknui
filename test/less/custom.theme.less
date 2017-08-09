@@ -1,3 +1,19 @@
 @import "../../dist/hieknui";
 //@import "../../dist/dark";
 @primary: 'purple';
+
+.tab-pane{
+  overflow: hidden;
+}
+.hu-row{
+  *:nth-child(odd) .seagreen{
+    background: fade(@color-primary, 50);
+  }
+}
+.seagreen {
+  color: #fff;
+  background: @color-primary;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+}

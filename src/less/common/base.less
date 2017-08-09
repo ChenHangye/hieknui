@@ -1,0 +1,83 @@
+@import "../define";
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+ul, menu, dir {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-start: 0;
+}
+
+
+body {
+  font-family: @font-family;
+  font-size: 14px;
+  line-height: @line-height;
+  color: @color-font-2;
+  background-color: @body-background;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  margin: 0;
+  padding: 0;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+input::-ms-clear, input::-ms-reveal {
+  display: none;
+}
+
+a {
+  color: @color-primary;
+  background: transparent;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  .normal-transition();
+
+  &:hover {
+    color: @color-primary-hover;
+  }
+
+  &:active {
+    color: @color-primary-active;
+  }
+
+  &:active,
+  &:hover {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  &[disabled] {
+    color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: @code-family;
+}

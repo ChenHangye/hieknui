@@ -1,38 +1,9 @@
-@import "define";
+@import "../define";
+@import "../mixins/button";
 
-.btn-xs() {
-  min-width: 80px;
-  min-height: 32px;
-  line-height: 32px;
-  font-size: 12px;
-  padding: 0 8px;
-}
+@btn-cls: ~"@{css-prefix}btn";
 
-.btn-sm() {
-  min-width: 64px;
-  min-height: 32px;
-  line-height: 32px;
-  font-size: 14px;
-  padding: 0 16px;
-}
-
-.btn-md() {
-  min-width: 80px;
-  min-height: 40px;
-  line-height: 40px;
-  font-size: 14px;
-  padding: 0 16px;
-}
-
-.btn-lg() {
-  min-width: 112px;
-  min-height: 48px;
-  line-height: 48px;
-  font-size: 18px;
-  padding: 0 32px;
-}
-
-.hiekn-btn {
+.@{btn-cls} {
   display: inline-block;
   font-weight: normal;
   text-align: center;
@@ -48,21 +19,21 @@
   background-image: none;
   border: 1px solid transparent;
   box-shadow: none;
-  outline: 0!important;
+  outline: 0 !important;
   .border-radius-normal();
-  .btn-md();
+  .btn-md;
 
   &.btn-xs {
-    .btn-xs();
+    .btn-xs;
   }
   &.btn-sm {
-    .btn-sm();
+    .btn-sm;
   }
   &.btn-md {
-    .btn-md();
+    .btn-md;
   }
   &.btn-lg {
-    .btn-lg();
+    .btn-lg;
   }
   &.btn-disabled, &[disabled], &.disabled {
 
@@ -74,7 +45,7 @@
     &.btn-active, &:active, &.active {
 
     }
-    &:hover{
+    &:hover {
 
     }
   }
@@ -86,7 +57,7 @@
       color: #fff;
       background: @color-primary;
     }
-    &:hover{
+    &:hover {
       color: #fff;
       background: @color-primary;
     }

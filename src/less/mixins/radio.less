@@ -1,49 +1,34 @@
-@import "define";
+@import "../define";
 
-label.hiekn-radio {
-  @wh-icon-num: 16;
-  @wh-icon: 16px;
-  @item-height: 18px;
+.radio(@size: 14px) {
+  @wh-icon: @size + 4px;
+  @wh-icon-num: unit(@wh-icon);
+  @item-height: @size * @line-height;
   .icon-radio(@color:@color-primary) {
     background-image: url('data:image/svg+xml;charset=utf8,<svg fill="@{color}" height="@{wh-icon-num}" viewBox="0 0 24 24" width="@{wh-icon-num}" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
   }
   .icon-radio-checked(@color:@color-primary) {
     background-image: url('data:image/svg+xml;charset=utf8,<svg fill="@{color}" height="@{wh-icon-num}" viewBox="0 0 24 24" width="@{wh-icon-num}" xmlns="http://www.w3.org/2000/svg"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
   }
-  cursor: pointer;
-  width: auto;
-  margin-bottom: 0;
-  position: relative;
-  display: inline-block;
   line-height: @item-height;
   height: @item-height;
-  overflow: hidden;
-  font-size: 12px;
-  font-weight: normal;
-  &:hover {
-    color: @color-primary;
-  }
-  &[disabled] {
-    cursor: not-allowed;
-  }
-  input {
-    &[type=radio], &[type=checkbox] {
-      opacity: 0;
-      margin: 0;
-      cursor: pointer;
-      position: absolute;
-      z-index: 0;
+  font-size: @size;
+  input[type=radio] {
+    & + * {
+      padding-left: @wh-icon + 4px;
+      line-height: @item-height;
+      background: @color-light no-repeat 0 (@item-height - @wh-icon) / 2;
+      .icon-radio(@color-font-3);
+    }
+    &:checked + * {
+      .icon-radio-checked();
+    }
+    &[disabled] {
       & + * {
-        position: relative;
-        z-index: 1;
-        display: inline-block;
-        padding-left: @wh-icon + 4px;
-        line-height: @item-height;
-        background: @color-light no-repeat 0 (@item-height - @wh-icon) / 2;
-        .icon-radio(@color-font-3);
+        .icon-radio(@color-font-4);
       }
       &:checked + * {
-        .icon-radio-checked();
+        .icon-radio-checked(@color-font-4);
       }
     }
   }
