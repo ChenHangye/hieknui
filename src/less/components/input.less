@@ -6,7 +6,11 @@
 .@{input-cls} {
   border: 1px solid @color-font-4;
   outline: 0!important;
-  .border-radius-normal;
+  color: @color-font-2;
+  &:active, &.active, &:hover{
+    border-color: @color-primary;
+  }
+  .border-radius;
   .placeholder;
   .input-md;
 
@@ -24,11 +28,5 @@
   }
   &.input-disabled, &[disabled], &.disabled {
 
-  }
-  &.input-primary {
-    color: @color-font-2;
-    &:active, &.active, &:hover{
-      border-color: @color-primary;
-    }
   }
 }

@@ -20,7 +20,7 @@
   border: 1px solid transparent;
   box-shadow: none;
   outline: 0 !important;
-  .border-radius-normal();
+  .border-radius;
   .btn-md;
 
   &.btn-xs {
@@ -35,31 +35,39 @@
   &.btn-lg {
     .btn-lg;
   }
-  &.btn-disabled, &[disabled], &.disabled {
-
-  }
+  @color-light: #fff;
   &.btn-primary {
-    color: #fff;
+    color: @color-light;
     background: @color-primary;
     border-color: @color-primary;
     &.btn-active, &:active, &.active {
-
+      background: @color-primary-active;
+      border-color: @color-primary-active;
     }
     &:hover {
-
+      background: @color-primary-hover;
+      border-color: @color-primary-hover;
     }
   }
   &.btn-primary-outline {
     color: @color-primary;
-    background: #fff;
+    background: @color-light;
     border-color: @color-primary;
     &.btn-active, &:active, &.active {
-      color: #fff;
+      color: @color-light;
       background: @color-primary;
     }
     &:hover {
-      color: #fff;
+      color: @color-light;
       background: @color-primary;
+    }
+  }
+  &.btn-primary, &.btn-primary-outline {
+    &.btn-disabled, &[disabled], &.disabled {
+      background: @color-general-ac04;
+      color: @color-light;
+      border-color: @color-general-ac04;
+      cursor: not-allowed;
     }
   }
 }

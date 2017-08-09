@@ -154,7 +154,7 @@
 
 
 
-@border-radius-normal: 2px;
+@border-radius: 2px;
 
 @color-light: #fff;
 
@@ -164,7 +164,7 @@
   box-shadow: @arguments;
 }
 
-.border-radius-normal(@lt:@border-radius-normal,@rt:@border-radius-normal,@rb:@border-radius-normal,@lb:@border-radius-normal) {
+.border-radius(@lt:@border-radius,@rt:@border-radius,@rb:@border-radius,@lb:@border-radius) {
   border-radius: @arguments;
 }
 
@@ -493,6 +493,7 @@ samp {
     }
   }
 
+  .make-gutter(8px);
   .make-gutter(16px);
   .make-gutter(24px);
 }
@@ -1006,6 +1007,11 @@ template {
   display: none;
 }
 
+//
+
+@icon-cls:~"@{css-prefix}backtop";
+
+
 
 
 @btn-cls: ~"@{css-prefix}btn";
@@ -1027,7 +1033,7 @@ template {
   border: 1px solid transparent;
   box-shadow: none;
   outline: 0 !important;
-  .border-radius-normal();
+  .border-radius;
   .btn-md;
 
   &.btn-xs {
@@ -1042,34 +1048,47 @@ template {
   &.btn-lg {
     .btn-lg;
   }
-  &.btn-disabled, &[disabled], &.disabled {
-
-  }
+  @color-light: #fff;
   &.btn-primary {
-    color: #fff;
+    color: @color-light;
     background: @color-primary;
     border-color: @color-primary;
     &.btn-active, &:active, &.active {
-
+      background: @color-primary-active;
+      border-color: @color-primary-active;
     }
     &:hover {
-
+      background: @color-primary-hover;
+      border-color: @color-primary-hover;
     }
   }
   &.btn-primary-outline {
     color: @color-primary;
-    background: #fff;
+    background: @color-light;
     border-color: @color-primary;
     &.btn-active, &:active, &.active {
-      color: #fff;
+      color: @color-light;
       background: @color-primary;
     }
     &:hover {
-      color: #fff;
+      color: @color-light;
       background: @color-primary;
     }
   }
+  &.btn-primary, &.btn-primary-outline {
+    &.btn-disabled, &[disabled], &.disabled {
+      background: @color-general-ac04;
+      color: @color-light;
+      border-color: @color-general-ac04;
+      cursor: not-allowed;
+    }
+  }
 }
+
+
+
+@icon-cls:~"@{css-prefix}card";
+
 
 
 
@@ -1133,29 +1152,34 @@ label.@{checkbox-cls} {
 
 
 
+@icon-cls:~"@{css-prefix}dropdown";
+
+
+
+
 @icon-cls:~"@{css-prefix}icon";
 
 .@{icon-cls}-12 {
-  .icon-size(12px);
-}
-
-.@{icon-cls}-16 {
   .icon-size(16px);
 }
 
-.@{icon-cls}-20 {
-  .icon-size(20px);
+.@{icon-cls}-14 {
+  .icon-size(22px);
 }
 
-.@{icon-cls}-24 {
+.@{icon-cls}-16 {
   .icon-size(24px);
 }
 
-.@{icon-cls}-32 {
-  .icon-size(32px);
+.@{icon-cls}-18 {
+  .icon-size(28px);
 }
 
-.@{icon-cls}-36 {
+.@{icon-cls}-24 {
+  .icon-size(34px);
+}
+
+.@{icon-cls}-32 {
   .icon-size(36px);
 }
 
@@ -1166,7 +1190,7 @@ label.@{checkbox-cls} {
 .@{input-cls} {
   border: 1px solid @color-font-4;
   outline: 0!important;
-  .border-radius-normal;
+  .border-radius;
   .placeholder;
   .input-md;
 
@@ -1192,6 +1216,11 @@ label.@{checkbox-cls} {
     }
   }
 }
+
+
+
+@icon-cls:~"@{css-prefix}pagination";
+
 
 
 
@@ -1239,6 +1268,16 @@ label.@{radio-cls} {
 
 
 
+@icon-cls:~"@{css-prefix}spin";
+
+
+
+
+@icon-cls:~"@{css-prefix}switch";
+
+
+
+
 @tabs-cls: ~"@{css-prefix}tabs";
 @tab-content-cls: ~"@{css-prefix}tab-content";
 
@@ -1276,9 +1315,13 @@ label.@{radio-cls} {
     &:first-child a {
       border: 0;
     }
+    &:hover a{
+      color: @color-primary;
+    }
     &.active {
       padding-bottom: 14px;
       border-bottom: 2px solid @color-primary;
+      background:  no-repeat center 34px url('data:image/svg+xml;utf8,<svg fill="@{color-primary}" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M5,17.5h14l-7-11L5,17.5z"/><path fill="none" d="M0,0h24v24H0V0z"/></svg>');
       a {
         color: @color-primary;
       }
@@ -1298,10 +1341,15 @@ label.@{radio-cls} {
 }
 
 
+
+@icon-cls:~"@{css-prefix}switch";
+
+
+
 .btn-xs() {
-  min-width: 80px;
-  min-height: 32px;
-  line-height: 32px;
+  min-width: 48px;
+  min-height: 24px;
+  line-height: 24px;
   font-size: 12px;
   padding: 0 8px;
 }
@@ -1370,16 +1418,16 @@ label.@{radio-cls} {
 
 
 
-.line-default(){
-  border: 1px solid #ddd;
+.line-default() {
+  border: 1px solid @color-general-ac04;
 }
 
-.line-dashed(){
-  border: 1px dashed #e9e9e9;
+.line-dashed() {
+  border: 1px dashed @color-general-ac04;
 }
 
-.line-secondary(){
-  border: 1px solid #eee;
+.line-secondary() {
+  border: 1px solid @color-general-ac05;
 }
 
 
@@ -1543,8 +1591,8 @@ label.@{radio-cls} {
 
 .tabs-md() {
   height: 48px;
-  line-height: 16px;
-  font-size: 16px;
+  .font-title;
+  line-height: 1em;
   //padding: 16px 24px;
 }
 
