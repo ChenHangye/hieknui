@@ -1,5 +1,4 @@
 @import "../define";
-@import "../mixins/spin";
 
 @spin-cls: ~"@{css-prefix}spin";
 @spin-container-cls: ~"@{css-prefix}spin-container";
@@ -9,18 +8,18 @@
 .@{spin-container-cls}{
   display: inline-block;
   position: relative;
-  .spin(52px);
+  .size(52px);
   &.spin-xs {
-    .spin(22px);
+    .size(22px);
   }
   &.spin-sm {
-    .spin(28px);
+    .size(28px);
   }
   &.spin-md {
-    .spin(52px);
+    .size(52px);
   }
   &.spin-lg {
-    .spin(84px);
+    .size(84px);
     &:after{
       color: @spin-color;
       content: 'loading';

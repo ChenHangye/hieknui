@@ -15,6 +15,9 @@
   border-radius: @arguments;
 }
 
+@divider-default: 1px solid @color-general-ac04;
+@divider-dashed: 1px dashed @color-general-ac04;
+@divider-secondary: 1px solid @color-general-ac05;
 
 .line-hidden() {
   word-break: keep-all;
@@ -116,6 +119,11 @@
     font-size: 0;
     height: 0;
   }
+}
+
+.size(@size) {
+  width: @size;
+  height: @size;
 }
 
 .spin-keyframes(){
