@@ -1,0 +1,46 @@
+@import "../define";
+
+@pagination-cls: ~"@{css-prefix}pagination";
+@page-text-cls: ~"@{css-prefix}page-text";
+
+.@{pagination-cls} {
+  display: inline-block;
+  & > li {
+    float: left;
+    margin-left: 8px;
+    color: @color-font-2;
+    .size(32px);
+    line-height: 30px;
+    font-size: 12px;
+    .border-radius;
+    border: @divider-default;
+    text-align: center;
+    cursor: pointer;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:hover {
+      color: @color-primary;
+      border-color: @color-primary;
+    }
+    &.active {
+      color: @color-light;
+      background: @color-primary;
+      border-color: @color-primary;
+    }
+    &.@{page-text-cls}{
+      font-family: '宋体';
+      font-weight: bold;
+    }
+  }
+  //&.page-md>li{
+  //  .size(32px);
+  //  line-height: 30px;
+  //  font-size: 12px;
+  //}
+  //&.page-lg>li{
+  //  .size(48px);
+  //  line-height: 46px;
+  //  font-size: 16px;
+  //}
+}
