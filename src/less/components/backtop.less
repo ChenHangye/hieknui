@@ -1,0 +1,25 @@
+@import "../define";
+@import "../mixins/backtop";
+
+@backtop-cls: ~"@{css-prefix}backtop";
+
+.@{backtop-cls} {
+  .size(40px);
+  position: fixed;
+  bottom: 32px;
+  right: 16px;
+  border: @divider-default;
+  background: @color-general-ac05 center center no-repeat;
+  .backtop-bg-icon();
+  cursor: pointer;
+  &:hover {
+    border-color: @color-primary;
+    background-color: @color-primary-05;
+    .backtop-bg-icon(@color-primary);
+  }
+  &.active {
+    border-color: @color-primary-00;
+    background-color: @color-primary-04;
+    .backtop-bg-icon(@color-primary-00);
+  }
+}

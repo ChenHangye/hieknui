@@ -1032,10 +1032,30 @@ template {
   display: none;
 }
 
-//
 
-@icon-cls:~"@{css-prefix}backtop";
 
+@backtop-cls: ~"@{css-prefix}backtop";
+
+.@{backtop-cls} {
+  .size(40px);
+  position: fixed;
+  bottom: 32px;
+  right: 16px;
+  border: @divider-default;
+  background: @color-general-ac05 center center no-repeat;
+  .backtop-bg-icon();
+  cursor: pointer;
+  &:hover {
+    border-color: @color-primary;
+    background-color: @color-primary-05;
+    .backtop-bg-icon(@color-primary);
+  }
+  &.active {
+    border-color: @color-primary-00;
+    background-color: @color-primary-04;
+    .backtop-bg-icon(@color-primary-00);
+  }
+}
 
 
 
@@ -1446,17 +1466,24 @@ label.@{radio-cls} {
   }
   &.tag-action {
     border: @divider-default;
-    i{
+    padding: 3px 8px;
+    i {
       display: inline-block;
       margin: -2px 0 -4px 8px;
       .size(16px);
       cursor: pointer;
-      background: no-repeat center center url('data:image/svg+xml;charset=utf8,<svg fill="@{color-font-3}" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
-      &:hover{
-        background-image: url('data:image/svg+xml;charset=utf8,<svg fill="@{color-error}" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+      background: no-repeat center center;
+      .tag-bg-icon();
+      &:hover {
+        .tag-bg-icon(@color-error);
       }
     }
   }
+}
+
+
+.backtop-bg-icon(@color:@color-font-3) {
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="@{color}" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
 }
 
 
@@ -1701,4 +1728,8 @@ label.@{radio-cls} {
   &:hover {
     background-color: @color-bg-hover;
   }
+}
+
+.tag-bg-icon(@color: @color-font-3){
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="@{color}" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
 }
