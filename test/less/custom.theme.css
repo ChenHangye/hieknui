@@ -3301,18 +3301,6 @@ label.hu-checkbox.checkbox-lg:hover input + * {
   font-family: '宋体';
   font-weight: bold;
 }
-.hu-pagination.page-md > li {
-  width: 32px;
-  height: 32px;
-  line-height: 30px;
-  font-size: 12px;
-}
-.hu-pagination.page-lg > li {
-  width: 48px;
-  height: 48px;
-  line-height: 46px;
-  font-size: 16px;
-}
 label.hu-radio {
   line-height: 21px;
   height: 21px;
@@ -3500,6 +3488,41 @@ label.hu-radio.radio-lg:hover input + * {
 }
 .hu-tab-content > .tab-pane.active {
   display: block;
+}
+.hu-tag {
+  border-radius: 2px 2px 2px 2px;
+  min-width: 40px;
+  min-height: 20px;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 4px 8px;
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.6);
+  background-color: #eeeeee;
+}
+.hu-tag:hover {
+  background-color: #f6f6f6;
+}
+.hu-tag.tag-primary {
+  color: #7d2e67;
+  background-color: #fdf0f9;
+}
+.hu-tag.tag-primary:hover {
+  background-color: #fffbfe;
+}
+.hu-tag.tag-action {
+  border: 1px solid #dddddd;
+}
+.hu-tag.tag-action i {
+  display: inline-block;
+  margin: -2px 0 -4px 8px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  background: no-repeat center center url('data:image/svg+xml;charset=utf8,<svg fill="rgba(0, 0, 0, 0.4)" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.hu-tag.tag-action i:hover {
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="#e0453f" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
 }
 .tab-pane {
   overflow: hidden;
