@@ -1,0 +1,30 @@
+@import "../define";
+//@import "../mixins/card";
+
+@card-cls: ~"@{css-prefix}card";
+@card-head-cls: ~"@{css-prefix}card-head";
+@card-body-cls: ~"@{css-prefix}card-body";
+@card-foot-cls: ~"@{css-prefix}card-foot";
+@color-card-bg: #fff;
+
+.@{card-cls} {
+  border: @divider-default;
+  .border-radius;
+  background: @color-card-bg;
+  .@{card-head-cls}{
+    border-bottom: @divider-default;
+    .font-title;
+  }
+  .@{card-body-cls}{
+    .font-body-1;
+  }
+  .@{card-foot-cls}{
+    border-top: @divider-default;
+  }
+  &.card-shadow{
+    .box-shadow-1
+  }
+  &:hover{
+    .box-shadow-2;
+  }
+}

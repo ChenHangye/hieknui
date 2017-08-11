@@ -3121,6 +3121,32 @@ template {
   border-color: #dddddd;
   cursor: not-allowed;
 }
+.hu-card {
+  border: 1px solid #dddddd;
+  border-radius: 2px 2px 2px 2px;
+  background: #fff;
+}
+.hu-card .hu-card-head {
+  border-bottom: 1px solid #dddddd;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
+}
+.hu-card .hu-card-body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+}
+.hu-card .hu-card-foot {
+  border-top: 1px solid #dddddd;
+}
+.hu-card.card-shadow {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.hu-card:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
 label.hu-checkbox {
   line-height: 21px;
   height: 21px;

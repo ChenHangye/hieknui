@@ -7,8 +7,16 @@
 
 @body-background: #fff;
 
-.box-shadow-normal(@x:1px,@y:1px,@d:2px,@color: rgba(0, 0, 0, .2)) {
+.box-shadow(@x:1px,@y:1px,@d:2px,@color: rgba(0, 0, 0, .2)) {
   box-shadow: @arguments;
+}
+
+.box-shadow-1() {
+  .box-shadow(0, 1px, 1px, rgba(0, 0, 0, .1));
+}
+
+.box-shadow-2() {
+  .box-shadow(0, 1px, 3px, rgba(0, 0, 0, .2));
 }
 
 .border-radius(@lt:@border-radius,@rt:@border-radius,@rb:@border-radius,@lb:@border-radius) {
@@ -92,7 +100,6 @@
   }
 }
 
-
 .placeholder(@color: @color-font-4) {
   &::-moz-placeholder {
     color: @color;
@@ -126,7 +133,7 @@
   height: @size;
 }
 
-.spin-keyframes(){
+.spin-keyframes() {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
@@ -145,28 +152,28 @@
   .spin-keyframes;
 }
 
-@screen-xs              : 480px;
-@screen-xs-min          : @screen-xs;
-@screen-xs-max          : (@screen-sm-min - 1);
+@screen-xs: 480px;
+@screen-xs-min: @screen-xs;
+@screen-xs-max: (@screen-sm-min - 1);
 
 // Small screen / tablet
-@screen-sm              : 768px;
-@screen-sm-min          : @screen-sm;
-@screen-sm-max          : (@screen-md-min - 1);
+@screen-sm: 768px;
+@screen-sm-min: @screen-sm;
+@screen-sm-max: (@screen-md-min - 1);
 
 // Medium screen / desktop
-@screen-md              : 992px;
-@screen-md-min          : @screen-md;
-@screen-md-max          : (@screen-lg-min - 1);
+@screen-md: 992px;
+@screen-md-min: @screen-md;
+@screen-md-max: (@screen-lg-min - 1);
 
 // Large screen / wide desktop
-@screen-lg              : 1200px;
-@screen-lg-min          : @screen-lg;
-@screen-lg-max          : (@screen-xl-min - 1);
+@screen-lg: 1200px;
+@screen-lg-min: @screen-lg;
+@screen-lg-max: (@screen-xl-min - 1);
 
 // Large screen / wide desktop
-@screen-xl              : 1600px;
-@screen-xl-min          : @screen-xl;
+@screen-xl: 1600px;
+@screen-xl-min: @screen-xl;
 
 @css-prefix: 'hu-';
 
