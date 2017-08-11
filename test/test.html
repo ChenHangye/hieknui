@@ -7,7 +7,10 @@
     <script src="../dist/hieknui.js"></script>
     <script>
         $(function () {
-            var tabItem = new tabs('.hu-tabs');
+            var tabItem = new huTabs('.hu-tabs');
+            new huDropdown('.hu-dropdown');
+            new huDropdown('.hu-dropdown');
+            location.hash && $('a[href="' + location.hash + '"]').parent().trigger('click');
         });
     </script>
     <!--<link rel="stylesheet" href="../dist/huui.css">-->
@@ -163,7 +166,7 @@
                     </div>
                 </div>
             </div>
-            <div class="line">
+            <div class="line" style="background: #ccc; padding: 24px">
                 <div class="hu-card card-shadow">
                     <div class="hu-card-head">
                         有标题的卡片

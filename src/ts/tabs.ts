@@ -1,4 +1,4 @@
-class tabs {
+class huTabs {
     namespace: string = '';
     $container: JQuery;
 

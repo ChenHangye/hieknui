@@ -1,0 +1,13 @@
+@import "../define";
+
+@mask-cls: ~"@{css-prefix}mask";
+@index-mask: 999;
+
+.@{mask-cls} {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: @index-mask;
+}
