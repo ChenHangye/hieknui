@@ -29,11 +29,14 @@
   & > li {
     padding: 16px 0;
     float: left;
+    .normal-transition;
+    background:  no-repeat center 34px;
     a {
       color: @color-font-1;
       padding: 0 24px;
       display: block;
-      border-left: 1px solid #ddd;
+      border-left: @divider-default;
+      .normal-transition;
     }
     &:first-child a {
       border: 0;
@@ -44,7 +47,7 @@
     &.active {
       padding-bottom: 14px;
       border-bottom: 2px solid @color-primary;
-      background:  no-repeat center 34px url('data:image/svg+xml;utf8,<svg fill="@{color-primary}" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M5,17.5h14l-7-11L5,17.5z"/><path fill="none" d="M0,0h24v24H0V0z"/></svg>');
+      background-image: url('data:image/svg+xml;utf8,<svg fill="@{color-primary}" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M5,17.5h14l-7-11L5,17.5z"/><path fill="none" d="M0,0h24v24H0V0z"/></svg>');
       a {
         color: @color-primary;
       }

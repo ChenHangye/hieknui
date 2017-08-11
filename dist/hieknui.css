@@ -43,7 +43,7 @@ dir {
   -webkit-padding-start: 0;
 }
 body {
-  font-family: "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Lantinghei SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif !important;
   font-size: 14px;
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.6);
@@ -144,7 +144,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Lantinghei SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif !important;
 }
 .hu-row {
   position: relative;
@@ -2620,7 +2620,7 @@ textarea {
 /* Document
    ========================================================================== */
 html {
-  font-family: "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Lantinghei SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif !important;
   /* 1 */
   line-height: 1.15;
   /* 2 */
@@ -2829,7 +2829,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Lantinghei SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif !important;
   /* 1 */
   font-size: 100%;
   /* 1 */
@@ -3053,6 +3053,10 @@ template {
   box-shadow: none;
   outline: 0 !important;
   border-radius: 2px 2px 2px 2px;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
   min-width: 80px;
   height: 40px;
   line-height: 40px;
@@ -3132,6 +3136,10 @@ template {
   border: 1px solid #dddddd;
   border-radius: 2px 2px 2px 2px;
   background: #fff;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
 }
 .hu-card .hu-card-head {
   border-bottom: 1px solid #dddddd;
@@ -3166,6 +3174,11 @@ label.hu-checkbox {
   overflow: hidden;
   font-weight: normal;
   padding-right: 24px;
+  color: #666666;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
 }
 label.hu-checkbox input[type=checkbox] + * {
   padding-left: 22px;
@@ -3262,6 +3275,10 @@ label.hu-checkbox.checkbox-lg:hover input + * {
   background: #eeeeee no-repeat center right;
   background-image: url('data:image/svg+xml;charset=utf8,<svg fill="rgba(0, 0, 0, 0.8)" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
   padding: 0 16px 0 8px;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
 }
 .hu-dropdown span span {
   height: 32px;
@@ -3349,6 +3366,10 @@ label.hu-checkbox.checkbox-lg:hover input + * {
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
 }
 .hu-dropdown-items li:hover,
 .hu-dropdown-items li.active {
@@ -3381,8 +3402,12 @@ label.hu-checkbox.checkbox-lg:hover input + * {
 }
 .hu-input {
   border: 1px solid rgba(0, 0, 0, 0.2);
-  outline: 0!important;
+  outline: 0 !important;
   color: rgba(0, 0, 0, 0.6);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
   border-radius: 2px 2px 2px 2px;
   height: 40px;
   line-height: 40px;
@@ -3472,6 +3497,11 @@ label.hu-radio {
   overflow: hidden;
   font-weight: normal;
   padding-right: 24px;
+  color: #666666;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
 }
 label.hu-radio input[type=radio] + * {
   padding-left: 22px;
@@ -3610,6 +3640,10 @@ label.hu-radio.radio-lg:hover input + * {
 .hu-switch > input[type="checkbox"] + * {
   display: block;
   background: #cccccc;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
   padding: 0 4px;
   zoom: 1;
 }
@@ -3630,6 +3664,10 @@ label.hu-radio.radio-lg:hover input + * {
   display: inline-block;
   float: left;
   font-size: 12px;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
 }
 .hu-switch > input[type="checkbox"] + * > *:nth-child(1) {
   text-align: left;
@@ -3673,7 +3711,7 @@ label.hu-radio.radio-lg:hover input + * {
 }
 .hu-switch > input[type="checkbox"] + * > * {
   width: 24px;
-  line-height: 22px;
+  line-height: 24px;
 }
 .hu-switch > input[type="checkbox"] + * + * {
   width: 20px;
@@ -3697,7 +3735,7 @@ label.hu-radio.radio-lg:hover input + * {
 }
 .hu-switch.switch-md > input[type="checkbox"] + * > * {
   width: 24px;
-  line-height: 22px;
+  line-height: 24px;
 }
 .hu-switch.switch-md > input[type="checkbox"] + * + * {
   width: 20px;
@@ -3721,7 +3759,7 @@ label.hu-radio.radio-lg:hover input + * {
 }
 .hu-switch.switch-sm > input[type="checkbox"] + * > * {
   width: 24px;
-  line-height: 12px;
+  line-height: 14px;
 }
 .hu-switch.switch-sm > input[type="checkbox"] + * + * {
   width: 12px;
@@ -3759,12 +3797,21 @@ label.hu-radio.radio-lg:hover input + * {
 .hu-tabs > li {
   padding: 16px 0;
   float: left;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  background: no-repeat center 34px;
 }
 .hu-tabs > li a {
   color: rgba(0, 0, 0, 0.8);
   padding: 0 24px;
   display: block;
   border-left: 1px solid #ddd;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
 }
 .hu-tabs > li:first-child a {
   border: 0;
@@ -3775,7 +3822,7 @@ label.hu-radio.radio-lg:hover input + * {
 .hu-tabs > li.active {
   padding-bottom: 14px;
   border-bottom: 2px solid #00b38a;
-  background: no-repeat center 34px url('data:image/svg+xml;utf8,<svg fill="#00b38a" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M5,17.5h14l-7-11L5,17.5z"/><path fill="none" d="M0,0h24v24H0V0z"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg fill="#00b38a" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M5,17.5h14l-7-11L5,17.5z"/><path fill="none" d="M0,0h24v24H0V0z"/></svg>');
 }
 .hu-tabs > li.active a {
   color: #00b38a;
@@ -3797,6 +3844,10 @@ label.hu-radio.radio-lg:hover input + * {
   cursor: default;
   color: rgba(0, 0, 0, 0.6);
   background-color: #eeeeee;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
 }
 .hu-tag:hover {
   background-color: #f6f6f6;
@@ -3820,6 +3871,10 @@ label.hu-radio.radio-lg:hover input + * {
   cursor: pointer;
   background: no-repeat center center;
   background-image: url('data:image/svg+xml;charset=utf8,<svg fill="rgba(0, 0, 0, 0.4)" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
 }
 .hu-tag.tag-action i:hover {
   background-image: url('data:image/svg+xml;charset=utf8,<svg fill="#e0453f" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');

@@ -13,6 +13,7 @@
   display: inline-block;
   cursor: default;
   .tag();
+  .normal-transition;
   &.tag-primary {
     .tag(@color-primary, @color-primary-05, @color-primary-06);
   }
@@ -26,6 +27,7 @@
       cursor: pointer;
       background: no-repeat center center;
       .tag-bg-icon();
+      .normal-transition;
       &:hover {
         .tag-bg-icon(@color-error);
       }

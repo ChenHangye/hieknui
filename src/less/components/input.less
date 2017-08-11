@@ -1,13 +1,15 @@
 @import "../define";
 @import "../mixins/input";
 
-@input-cls:~"@{css-prefix}input";
+@input-cls: ~"@{css-prefix}input";
 
 .@{input-cls} {
   border: 1px solid @color-font-4;
-  outline: 0!important;
+  outline: 0 !important;
   color: @color-font-2;
-  &:active, &.active, &:hover{
+  .normal-transition;
+
+  &:active, &.active, &:hover {
     border-color: @color-primary;
   }
   .border-radius;

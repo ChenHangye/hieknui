@@ -336,7 +336,7 @@
 @color-font-3: rgba(0, 0, 0, 0.4);
 @color-font-4: rgba(0, 0, 0, 0.2);
 
-@font-family: "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+@font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC","Lantinghei SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif!important;
 @code-family: Consolas, Menlo, Courier, monospace;
 @line-height: 1.5;
 
@@ -1096,6 +1096,8 @@ template {
   box-shadow: none;
   outline: 0 !important;
   .border-radius;
+  .normal-transition;
+
   .btn-md;
 
   &.btn-xs {
@@ -1159,6 +1161,7 @@ template {
   border: @divider-default;
   .border-radius;
   background: @color-card-bg;
+  .normal-transition;
   .@{card-head-cls}{
     border-bottom: @divider-default;
     .font-title;
@@ -1191,6 +1194,8 @@ label.@{checkbox-cls} {
   overflow: hidden;
   font-weight: normal;
   padding-right: 24px;
+  color: @color-general-ac02;
+  .normal-transition;
   &:hover {
     color: @color-primary;
   }
@@ -1239,6 +1244,7 @@ label.@{checkbox-cls} {
     .dropdown(@color-font-1);
     .dropdown-sm();
     padding: 0 16px 0 8px;
+    .normal-transition;
     &:hover {
       border-color: @color-primary;
       .dropdown(@color-primary);
@@ -1291,6 +1297,7 @@ label.@{checkbox-cls} {
     padding: 0 8px;
     .line-hidden;
     cursor: pointer;
+    .normal-transition;
     &:hover, &.active {
       background: @color-general-ac05;
       color: @color-primary;
@@ -1327,13 +1334,15 @@ label.@{checkbox-cls} {
 
 
 
-@input-cls:~"@{css-prefix}input";
+@input-cls: ~"@{css-prefix}input";
 
 .@{input-cls} {
   border: 1px solid @color-font-4;
-  outline: 0!important;
+  outline: 0 !important;
   color: @color-font-2;
-  &:active, &.active, &:hover{
+  .normal-transition;
+
+  &:active, &.active, &:hover {
     border-color: @color-primary;
   }
   .border-radius;
@@ -1418,6 +1427,8 @@ label.@{radio-cls} {
   overflow: hidden;
   font-weight: normal;
   padding-right: 24px;
+  color: @color-general-ac02;
+  .normal-transition;
   &:hover {
     color: @color-primary;
   }
@@ -1510,6 +1521,7 @@ label.@{radio-cls} {
     & + * {
       display: block;
       background: @color-general-bc04;
+      .normal-transition;
       padding: 0 4px;
       .clearfix;
       & > * {
@@ -1518,6 +1530,7 @@ label.@{radio-cls} {
         display: inline-block;
         float: left;
         font-size: 12px;
+        .normal-transition;
         &:nth-child(1) {
           text-align: left;
         }
@@ -1594,11 +1607,14 @@ label.@{radio-cls} {
   & > li {
     padding: 16px 0;
     float: left;
+    .normal-transition;
+    background:  no-repeat center 34px;
     a {
       color: @color-font-1;
       padding: 0 24px;
       display: block;
       border-left: 1px solid #ddd;
+      .normal-transition;
     }
     &:first-child a {
       border: 0;
@@ -1609,7 +1625,7 @@ label.@{radio-cls} {
     &.active {
       padding-bottom: 14px;
       border-bottom: 2px solid @color-primary;
-      background:  no-repeat center 34px url('data:image/svg+xml;utf8,<svg fill="@{color-primary}" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M5,17.5h14l-7-11L5,17.5z"/><path fill="none" d="M0,0h24v24H0V0z"/></svg>');
+      background-image: url('data:image/svg+xml;utf8,<svg fill="@{color-primary}" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M5,17.5h14l-7-11L5,17.5z"/><path fill="none" d="M0,0h24v24H0V0z"/></svg>');
       a {
         color: @color-primary;
       }
@@ -1642,6 +1658,7 @@ label.@{radio-cls} {
   display: inline-block;
   cursor: default;
   .tag();
+  .normal-transition;
   &.tag-primary {
     .tag(@color-primary, @color-primary-05, @color-primary-06);
   }
@@ -1655,6 +1672,7 @@ label.@{radio-cls} {
       cursor: pointer;
       background: no-repeat center center;
       .tag-bg-icon();
+      .normal-transition;
       &:hover {
         .tag-bg-icon(@color-error);
       }
@@ -1950,7 +1968,7 @@ label.@{radio-cls} {
       min-width: @width;
       & > * {
         width: @textWidth;
-        line-height: @height - 2px;
+        line-height: @height;
       }
       & + * {
         width: @roundSize;
