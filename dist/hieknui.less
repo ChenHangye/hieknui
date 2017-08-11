@@ -1412,10 +1412,73 @@ label.@{radio-cls} {
   animation: spin-keyframes 2s infinite linear;
 }
 
-//
 
-@icon-cls:~"@{css-prefix}switch";
 
+@switch-cls: ~"@{css-prefix}switch";
+
+@color-switch-pointer: #fff;
+@color-switch-text: #fff;
+
+.@{switch-cls} {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  & > input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    & + * {
+      display: block;
+      background: @color-general-bc04;
+      padding: 0 4px;
+      .clearfix;
+      & > * {
+        opacity: 0;
+        color: @color-switch-text;
+        display: inline-block;
+        float: left;
+        text-align: center;
+        font-size: 12px;
+        &:nth-child(2) {
+          opacity: 1;
+        }
+      }
+      & + * {
+        display: inline-block;
+        border-radius: 50%;
+        background: @color-switch-pointer;
+        position: absolute;
+        .normal-transition;
+        .box-shadow-1;
+      }
+    }
+    &:checked + * {
+      background: @color-primary;
+      & > * {
+        &:nth-child(1) {
+          opacity: 1;
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+      }
+    }
+    &:disabled + * {
+      cursor: not-allowed;
+      background: @color-general-ac04;
+      & + * {
+        cursor: not-allowed;
+        background: @color-general-ac05;
+      }
+    }
+  }
+  .switch-size (48px, 24px, 20px);
+  &.switch-md {
+    .switch-size (48px, 24px, 20px);
+  }
+  &.switch-sm {
+    .switch-size (28px, 14px, 12px);
+  }
+}
 
 
 
@@ -1734,6 +1797,39 @@ label.@{radio-cls} {
   }
   &:hover input + * {
     .icon-radio();
+  }
+}
+
+
+.switch-size (@width:48px,@height:24px,@roundSize:20px) {
+  @gap: (@height - @roundSize) / 2;
+  @textWidth: 24px;
+  height: @height;
+  & > input[type="checkbox"] {
+    & + * {
+      border-radius: @height;
+      height: @height;
+      line-height: @height;
+      min-width: @width;
+      & > * {
+        width: @textWidth;
+        line-height: @height;
+      }
+      & + * {
+        width: @roundSize;
+        height: @roundSize;
+        left: @gap;
+        top: @gap;
+      }
+    }
+    &:checked + * {
+      & + * {
+        left: @width - @gap - @roundSize;
+      }
+      &:not(:empty) + * {
+        left: (@textWidth + 4px) * 2 - @gap - @roundSize;
+      }
+    }
   }
 }
 

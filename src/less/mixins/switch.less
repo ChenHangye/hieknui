@@ -1,0 +1,33 @@
+@import "../define";
+
+.switch-size (@width:48px,@height:24px,@roundSize:20px) {
+  @gap: (@height - @roundSize) / 2;
+  @textWidth: 24px;
+  height: @height;
+  & > input[type="checkbox"] {
+    & + * {
+      border-radius: @height;
+      height: @height;
+      line-height: @height;
+      min-width: @width;
+      & > * {
+        width: @textWidth;
+        line-height: @height;
+      }
+      & + * {
+        width: @roundSize;
+        height: @roundSize;
+        left: @gap;
+        top: @gap;
+      }
+    }
+    &:checked + * {
+      & + * {
+        left: @width - @gap - @roundSize;
+      }
+      &:not(:empty) + * {
+        left: (@textWidth + 4px) * 2 - @gap - @roundSize;
+      }
+    }
+  }
+}
