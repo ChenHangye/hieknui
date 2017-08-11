@@ -1436,10 +1436,13 @@ label.@{radio-cls} {
         color: @color-switch-text;
         display: inline-block;
         float: left;
-        text-align: center;
         font-size: 12px;
+        &:nth-child(1) {
+          text-align: left;
+        }
         &:nth-child(2) {
           opacity: 1;
+          text-align: right;
         }
       }
       & + * {
@@ -1809,11 +1812,10 @@ label.@{radio-cls} {
     & + * {
       border-radius: @height;
       height: @height;
-      line-height: @height;
       min-width: @width;
       & > * {
         width: @textWidth;
-        line-height: @height;
+        line-height: @height - 2px;
       }
       & + * {
         width: @roundSize;

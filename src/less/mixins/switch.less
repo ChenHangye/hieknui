@@ -8,11 +8,10 @@
     & + * {
       border-radius: @height;
       height: @height;
-      line-height: @height;
       min-width: @width;
       & > * {
         width: @textWidth;
-        line-height: @height;
+        line-height: @height - 2px;
       }
       & + * {
         width: @roundSize;
