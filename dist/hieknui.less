@@ -478,6 +478,14 @@ samp {
   font-family: @code-family;
 }
 
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: @font-family;
+}
+
 
 .@{row-prefix-cls} {
   .make-row();
@@ -578,6 +586,7 @@ samp {
   .make-grid(-xl);
 }
 
+
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 
 /**
@@ -591,7 +600,7 @@ samp {
    ========================================================================== */
 
 html {
-  font-family: sans-serif; /* 1 */
+  font-family: @font-family; /* 1 */
   line-height: 1.15; /* 2 */
   -ms-text-size-adjust: 100%; /* 3 */
   -webkit-text-size-adjust: 100%; /* 3 */
@@ -670,7 +679,7 @@ hr {
  */
 
 pre {
-  font-family: monospace, monospace; /* 1 */
+  font-family: @code-family; /* 1 */
   font-size: 1em; /* 2 */
 }
 
@@ -734,7 +743,7 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace; /* 1 */
+  font-family: @code-family; /* 1 */
   font-size: 1em; /* 2 */
 }
 
@@ -834,7 +843,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: sans-serif; /* 1 */
+  font-family: @font-family; /* 1 */
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
   margin: 0; /* 2 */
@@ -1262,6 +1271,22 @@ label.@{checkbox-cls} {
   top: 36px;
   border: @divider-default;
   .box-shadow-2;
+  &.dropdown-xs li{
+    font-size: 12px;
+    line-height: 32px;
+  }
+  &.dropdown-sm li{
+    font-size: 14px;
+    line-height: 32px;
+  }
+  &.dropdown-md li{
+    font-size: 14px;
+    line-height: 40px;
+  }
+  &.dropdown-lg li{
+    font-size: 18px;
+    line-height: 48px;
+  }
   li {
     padding: 0 8px;
     .line-hidden;
@@ -1615,6 +1640,7 @@ label.@{radio-cls} {
   line-height: 12px;
   padding: 4px 8px;
   display: inline-block;
+  cursor: default;
   .tag();
   &.tag-primary {
     .tag(@color-primary, @color-primary-05, @color-primary-06);
@@ -1644,7 +1670,7 @@ label.@{radio-cls} {
 
 .btn-xs() {
   min-width: 48px;
-  min-height: 24px;
+  height: 24px;
   line-height: 24px;
   font-size: 12px;
   padding: 0 8px;
@@ -1652,7 +1678,7 @@ label.@{radio-cls} {
 
 .btn-sm() {
   min-width: 64px;
-  min-height: 32px;
+  height: 32px;
   line-height: 32px;
   font-size: 14px;
   padding: 0 16px;
@@ -1660,7 +1686,7 @@ label.@{radio-cls} {
 
 .btn-md() {
   min-width: 80px;
-  min-height: 40px;
+  height: 40px;
   line-height: 40px;
   font-size: 14px;
   padding: 0 16px;
@@ -1668,7 +1694,7 @@ label.@{radio-cls} {
 
 .btn-lg() {
   min-width: 112px;
-  min-height: 48px;
+  height: 48px;
   line-height: 48px;
   font-size: 18px;
   padding: 0 32px;
@@ -1971,5 +1997,5 @@ label.@{radio-cls} {
 }
 
 .tag-bg-icon(@color: @color-font-3){
-  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="@{color}" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="@{color}" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
 }

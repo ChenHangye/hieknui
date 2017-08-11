@@ -139,6 +139,13 @@ pre,
 samp {
   font-family: Consolas, Menlo, Courier, monospace;
 }
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+}
 .hu-row {
   position: relative;
   margin-left: 0;
@@ -2613,7 +2620,7 @@ samp {
 /* Document
    ========================================================================== */
 html {
-  font-family: sans-serif;
+  font-family: "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
   /* 1 */
   line-height: 1.15;
   /* 2 */
@@ -2684,7 +2691,7 @@ hr {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 pre {
-  font-family: monospace, monospace;
+  font-family: Consolas, Menlo, Courier, monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -2742,7 +2749,7 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
+  font-family: Consolas, Menlo, Courier, monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -2822,7 +2829,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: sans-serif;
+  font-family: "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
   /* 1 */
   font-size: 100%;
   /* 1 */
@@ -3047,35 +3054,35 @@ template {
   outline: 0 !important;
   border-radius: 2px 2px 2px 2px;
   min-width: 80px;
-  min-height: 40px;
+  height: 40px;
   line-height: 40px;
   font-size: 14px;
   padding: 0 16px;
 }
 .hu-btn.btn-xs {
   min-width: 48px;
-  min-height: 24px;
+  height: 24px;
   line-height: 24px;
   font-size: 12px;
   padding: 0 8px;
 }
 .hu-btn.btn-sm {
   min-width: 64px;
-  min-height: 32px;
+  height: 32px;
   line-height: 32px;
   font-size: 14px;
   padding: 0 16px;
 }
 .hu-btn.btn-md {
   min-width: 80px;
-  min-height: 40px;
+  height: 40px;
   line-height: 40px;
   font-size: 14px;
   padding: 0 16px;
 }
 .hu-btn.btn-lg {
   min-width: 112px;
-  min-height: 48px;
+  height: 48px;
   line-height: 48px;
   font-size: 18px;
   padding: 0 32px;
@@ -3318,6 +3325,22 @@ label.hu-checkbox.checkbox-lg:hover input + * {
   top: 36px;
   border: 1px solid #dddddd;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.hu-dropdown-items.dropdown-xs li {
+  font-size: 12px;
+  line-height: 32px;
+}
+.hu-dropdown-items.dropdown-sm li {
+  font-size: 14px;
+  line-height: 32px;
+}
+.hu-dropdown-items.dropdown-md li {
+  font-size: 14px;
+  line-height: 40px;
+}
+.hu-dropdown-items.dropdown-lg li {
+  font-size: 18px;
+  line-height: 48px;
 }
 .hu-dropdown-items li {
   padding: 0 8px;
@@ -3771,6 +3794,7 @@ label.hu-radio.radio-lg:hover input + * {
   line-height: 12px;
   padding: 4px 8px;
   display: inline-block;
+  cursor: default;
   color: rgba(0, 0, 0, 0.6);
   background-color: #eeeeee;
 }
@@ -3795,8 +3819,8 @@ label.hu-radio.radio-lg:hover input + * {
   height: 16px;
   cursor: pointer;
   background: no-repeat center center;
-  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="rgba(0, 0, 0, 0.4)" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="rgba(0, 0, 0, 0.4)" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
 }
 .hu-tag.tag-action i:hover {
-  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="#e0453f" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="#e0453f" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
 }

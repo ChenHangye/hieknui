@@ -1,9 +1,14 @@
 @import "../../dist/hieknui";
 //@import "../../dist/dark";
-@primary: 'purple';
+//@primary: 'purple';
 
 .tab-pane {
   overflow: hidden;
+  padding: 24px;
+  div.line{
+    padding: 24px 0;
+    .clearfix;
+  }
 }
 
 .hu-row {
@@ -22,10 +27,18 @@
 
 .hu-card {
   float: left;
+  .hu-card-head {
+    line-height: 40px;
+    padding: 0 8px;
+  }
   .hu-card-body {
     width: 300px;
     height: 200px;
     text-align: center;
     line-height: 200px;
   }
+}
+
+.tab-pane{
+  min-height: 350px;
 }

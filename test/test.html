@@ -3,88 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../dist/hieknui.js"></script>
+    <script>
+        $(function () {
+            var tabItem = new tabs('.hu-tabs');
+        });
+    </script>
     <!--<link rel="stylesheet" href="../dist/huui.css">-->
     <link rel="stylesheet" href="less/custom.theme.css">
 </head>
 <body>
-<button class="hu-btn btn-primary">测试</button>
-<button class="hu-btn btn-primary-outline">测试</button>
-<button class="hu-btn btn-primary btn-xs" disabled>测试</button>
-<button class="hu-btn btn-primary-outline btn-lg" disabled>测试</button>
-<label for="id1" class="hu-radio">
-    <input type="radio" id="id1" name="radio" checked>
-    <span>radio1</span>
-</label>
-<label for="id11" class="hu-radio radio-lg">
-    <input type="radio" id="id11" name="radio">
-    <span>radio11</span>
-</label>
-<label for="id111" class="hu-radio">
-    <input type="radio" id="id111" name="radio" checked disabled>
-    <span>radio111</span>
-</label>
-<label for="id1111" class="hu-radio">
-    <input type="radio" id="id1111" name="radio" disabled>
-    <span>radio1111</span>
-</label>
-<label for="id2" class="hu-checkbox">
-    <input type="checkbox" id="id2">
-    <span>checkbox2</span>
-</label>
-<label for="id22" class="hu-checkbox checkbox-lg">
-    <input type="checkbox" id="id22" checked>
-    <span>checkbox22</span>
-</label>
-<label for="id222" class="hu-checkbox">
-    <input type="checkbox" id="id222" disabled>
-    <span>checkbox222</span>
-</label>
-<label for="id2222" class="hu-checkbox">
-    <input type="checkbox" id="id2222" disabled checked>
-    <span>checkbox2222</span>
-</label>
-<input type="text" class="hu-input input-primary" placeholder="input test">
-<input type="text" class="hu-input input-primary input-xs" placeholder="input test">
-<input type="text" class="hu-input input-primary input-sm" placeholder="input test">
-<input type="text" class="hu-input input-primary input-md" placeholder="input test">
-<input type="text" class="hu-input input-primary input-lg" placeholder="input test">
-<div class="hu-spin-container">
-    <div class="hu-spin hu-spin-animation"></div>
-</div>
-<div class="hu-spin-container spin-xs">
-    <div class="hu-spin hu-spin-animation"></div>
-</div>
-<div class="hu-spin-container spin-sm">
-    <div class="hu-spin hu-spin-animation"></div>
-</div>
-<div class="hu-spin-container spin-md">
-    <div class="hu-spin hu-spin-animation"></div>
-</div>
-<div class="hu-spin-container spin-lg">
-    <div class="hu-spin hu-spin-animation"></div>
-</div>
 <div>
     <ul class="hu-tabs tabs-primary">
-        <li class="active"><a href="#tab-1501570392839-0">定向分析</a></li>
-        <li class=""><a href="#tab-1501570392841-1">图统计</a></li>
-        <li class=""><a href="#tab-1501570392841-2">图解读</a></li>
+        <li class="active"><a href="#tab-1">按钮</a></li>
+        <li class=""><a href="#tab-2">单选框</a></li>
+        <li class=""><a href="#tab-3">多选框</a></li>
+        <li class=""><a href="#tab-4">文本框</a></li>
+        <li class=""><a href="#tab-5">spin</a></li>
+        <li class=""><a href="#tab-6">卡片</a></li>
+        <li class=""><a href="#tab-7">栅格</a></li>
+        <li class=""><a href="#tab-8">分页</a></li>
+        <li class=""><a href="#tab-9">标签</a></li>
+        <li class=""><a href="#tab-10">switch</a></li>
+        <li class=""><a href="#tab-11">dropdown</a></li>
     </ul>
     <div class="hu-tab-content">
-        <div class="tab-pane active" id="tab-1501570392839-0">
-            <div class="hu-row hu-gutter-16">
-                <div class="hu-col-6">
-                    <div class="seagreen line-default">1</div>
-                </div>
-                <div class="hu-col-6">
-                    <div class="seagreen">2</div>
-                </div>
-                <div class="hu-col-6">
-                    <div class="seagreen">3</div>
-                </div>
-                <div class="hu-col-6">
-                    <div class="seagreen">4</div>
+        <div class="tab-pane active" id="tab-1">
+            <div>
+                类型：
+            </div>
+            <div class="line">
+                <button class="hu-btn btn-primary">btn-primary</button>
+                <button class="hu-btn btn-primary-outline">btn-primary-outline</button>
+                <button class="hu-btn btn-primary" disabled>disabled</button>
+            </div>
+            <div>
+                尺寸：
+            </div>
+            <div class="line">
+                <button class="hu-btn btn-primary btn-xs">btn-xs</button>
+                <button class="hu-btn btn-primary btn-sm">btn-sm</button>
+                <button class="hu-btn btn-primary btn-md">btn-md</button>
+                <button class="hu-btn btn-primary btn-lg">btn-lg</button>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab-2">
+            <div>
+                类型：
+            </div>
+            <div class="line">
+                <label for="id111" class="hu-radio">
+                    <input type="radio" id="id111" name="radio" checked>
+                    <span>radio-checked</span>
+                </label>
+                <label for="id1111" class="hu-radio">
+                    <input type="radio" id="id1111" name="radio" disabled>
+                    <span>radio-disabled</span>
+                </label>
+            </div>
+            <div>
+                尺寸：
+            </div>
+            <div class="line">
+                <label for="id1" class="hu-radio">
+                    <input type="radio" id="id1" name="radio" checked>
+                    <span>radio-md</span>
+                </label>
+                <label for="id11" class="hu-radio radio-lg">
+                    <input type="radio" id="id11" name="radio">
+                    <span>radio-lg</span>
+                </label>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab-3">
+            <div>
+                类型：
+            </div>
+            <div class="line">
+                <label for="id222" class="hu-checkbox">
+                    <input type="checkbox" id="id222" checked>
+                    <span>checkbox-checked</span>
+                </label>
+                <label for="id2222" class="hu-checkbox">
+                    <input type="checkbox" id="id2222" disabled>
+                    <span>checkbox-disabled</span>
+                </label>
+            </div>
+            <div>
+                尺寸：
+            </div>
+            <div class="line">
+                <label for="id2" class="hu-checkbox">
+                    <input type="checkbox" id="id2">
+                    <span>checkbox-md</span>
+                </label>
+                <label for="id22" class="hu-checkbox checkbox-lg">
+                    <input type="checkbox" id="id22" checked>
+                    <span>checkbox-lg</span>
+                </label>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab-4">
+            <div class="line">
+                <input type="text" class="hu-input input-primary" placeholder="input-primary">
+                <input type="text" class="hu-input input-primary input-xs" placeholder="input-xs">
+                <input type="text" class="hu-input input-primary input-sm" placeholder="input-sm">
+                <input type="text" class="hu-input input-primary input-md" placeholder="input-md">
+                <input type="text" class="hu-input input-primary input-lg" placeholder="input-lg">
+            </div>
+        </div>
+        <div class="tab-pane" id="tab-5">
+            <div>
+                spin
+            </div>
+            <div class="line">
+                <div class="hu-spin-container">
+                    <div class="hu-spin hu-spin-animation"></div>
                 </div>
             </div>
+            <div>
+                spin-xs
+            </div>
+            <div class="line">
+                <div class="hu-spin-container spin-xs">
+                    <div class="hu-spin hu-spin-animation"></div>
+                </div>
+            </div>
+            <div>
+                spin-sm
+            </div>
+            <div class="line">
+                <div class="hu-spin-container spin-sm">
+                    <div class="hu-spin hu-spin-animation"></div>
+                </div>
+            </div>
+            <div>
+                spin-md
+            </div>
+            <div class="line">
+                <div class="hu-spin-container spin-md">
+                    <div class="hu-spin hu-spin-animation"></div>
+                </div>
+            </div>
+            <div>
+                spin-lg
+            </div>
+            <div class="line">
+                <div class="hu-spin-container spin-lg">
+                    <div class="hu-spin hu-spin-animation"></div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab-6">
+            <div class="line">
+                <div class="hu-card">
+                    <div class="hu-card-body">
+                        这是基本卡片
+                    </div>
+                </div>
+            </div>
+            <div class="line">
+                <div class="hu-card card-shadow">
+                    <div class="hu-card-head">
+                        有标题的卡片
+                    </div>
+                    <div class="hu-card-body">
+                        card-shadow
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab-7">
+            <div>
+                hu-gutter-16 hu-col-lg-6 hu-md-12
+            </div>
+            <div class="line">
+                <div class="hu-row hu-gutter-16">
+                    <div class="hu-col-lg-6 hu-col-md-12">
+                        <div class="seagreen">hu-col-lg-6 hu-col-md-12</div>
+                    </div>
+                    <div class="hu-col-lg-6 hu-col-md-12">
+                        <div class="seagreen">hu-col-lg-6 hu-col-md-12</div>
+                    </div>
+                    <div class="hu-col-lg-6 hu-col-md-12">
+                        <div class="seagreen">hu-col-lg-6 hu-col-md-12</div>
+                    </div>
+                    <div class="hu-col-lg-6 hu-col-md-12">
+                        <div class="seagreen">hu-col-lg-6 hu-col-md-12</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                hu-gutter-24 hu-col-3
+            </div>
+            <div class="line">
+                <div class="hu-row hu-gutter-24">
+                    <div class="hu-col-3">
+                        <div class="seagreen">hu-col-3</div>
+                    </div>
+                    <div class="hu-col-3">
+                        <div class="seagreen">hu-col-3</div>
+                    </div>
+                    <div class="hu-col-3">
+                        <div class="seagreen">hu-col-3</div>
+                    </div>
+                    <div class="hu-col-3">
+                        <div class="seagreen">hu-col-3</div>
+                    </div>
+                    <div class="hu-col-3">
+                        <div class="seagreen">hu-col-3</div>
+                    </div>
+                    <div class="hu-col-3">
+                        <div class="seagreen">hu-col-3</div>
+                    </div>
+                    <div class="hu-col-3">
+                        <div class="seagreen">hu-col-3</div>
+                    </div>
+                    <div class="hu-col-3">
+                        <div class="seagreen">hu-col-3</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                hu-col-1
+            </div>
+            <div class="line">
+                <div class="hu-row">
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                    <div class="hu-col-1">
+                        <div class="seagreen">hu-col-1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab-8">
             <ul class="hu-pagination">
                 <li class="hu-page-text">&lt;&lt;</li>
                 <li class="hu-page-text">&lt;</li>
@@ -93,15 +314,22 @@
                 <li class="hu-page-text">&gt;</li>
                 <li class="hu-page-text">&gt;&gt;</li>
             </ul>
+        </div>
+        <div class="tab-pane" id="tab-9">
+            <div class="hu-tag">hu-tag</div>
+            <div class="hu-tag tag-primary">tag-primary</div>
+            <div class="hu-tag tag-primary tag-action">tag-action<i></i></div>
+        </div>
+        <div class="tab-pane" id="tab-10">
             <div>
-                <div class="hu-tag">标签1</div>
-                <div class="hu-tag tag-primary">标签2</div>
-                <div class="hu-tag tag-primary tag-action">标签3<i></i></div>
+                类型：
+            </div>
+            <div class="line">
                 <label class="hu-switch" for="switch1">
                     <input type="checkbox" id="switch1" checked>
                     <div>
-                        <span>on</span>
-                        <span>off</span>
+                        <span>ON</span>
+                        <span>OFF</span>
                     </div>
                     <i></i>
                 </label>
@@ -110,6 +338,16 @@
                     <div></div>
                     <i></i>
                 </label>
+                <label class="hu-switch switch-md" for="switch5">
+                    <input type="checkbox" id="switch5" checked>
+                    <div></div>
+                    <i></i>
+                </label>
+            </div>
+            <div>
+                尺寸：
+            </div>
+            <div class="line">
                 <label class="hu-switch switch-sm" for="switch3">
                     <input type="checkbox" id="switch3" checked>
                     <div></div>
@@ -120,59 +358,51 @@
                     <div></div>
                     <i></i>
                 </label>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab-11">
+            <div>
+                尺寸：
+            </div>
+            <div class="line">
                 <div class="hu-dropdown dropdown-xs">
-                    <span>项目一</span>
-                    <i></i>
-                    <ul class="hu-dropdown-items">
-                        <li>项目一</li>
-                        <li>项目二</li>
-                        <li>项目三</li>
+                    <span>dropdown-xs</span>
+                    <ul class="hu-dropdown-items dropdown-xs">
+                        <li class="active">dropdown-xs</li>
+                        <li>dropdown-sm</li>
+                        <li>dropdown-md</li>
+                        <li>dropdown-lg</li>
                     </ul>
                 </div>
                 <div class="hu-dropdown dropdown-sm">
-                    <span>项目二</span>
-                    <i></i>
-                    <ul class="hu-dropdown-items">
-                        <li>项目一</li>
-                        <li class="active">项目二</li>
-                        <li>项目三</li>
+                    <span>dropdown-sm</span>
+                    <ul class="hu-dropdown-items dropdown-sm">
+                        <li>dropdown-xs</li>
+                        <li class="active">dropdown-sm</li>
+                        <li>dropdown-md</li>
+                        <li>dropdown-lg</li>
                     </ul>
                 </div>
                 <div class="hu-dropdown dropdown-md">
-                    <span>项目一</span>
-                    <i></i>
-                    <ul class="hu-dropdown-items">
-                        <li>项目一</li>
-                        <li>项目二</li>
-                        <li>项目三</li>
+                    <span>dropdown-md</span>
+                    <ul class="hu-dropdown-items dropdown-md">
+                        <li>dropdown-xs</li>
+                        <li>dropdown-sm</li>
+                        <li class="active">dropdown-md</li>
+                        <li>dropdown-lg</li>
                     </ul>
                 </div>
                 <div class="hu-dropdown dropdown-lg">
-                    <span>项目一</span>
-                    <i></i>
-                    <ul class="hu-dropdown-items">
-                        <li>项目一</li>
-                        <li>项目二</li>
-                        <li>项目三</li>
+                    <span>dropdown-lg</span>
+                    <ul class="hu-dropdown-items dropdown-lg">
+                        <li>dropdown-xs</li>
+                        <li>dropdown-sm</li>
+                        <li>dropdown-md</li>
+                        <li class="active">dropdown-lg</li>
                     </ul>
                 </div>
             </div>
-            <div class="hu-card">
-                <div class="hu-card-body">
-                    这是基本卡片
-                </div>
-            </div>
-            <div class="hu-card card-shadow">
-                <div class="hu-card-head">
-                    有标题的卡片
-                </div>
-                <div class="hu-card-body">
-                    卡片内容
-                </div>
-            </div>
         </div>
-        <div class="tab-pane" id="tab-1501570392841-1">图统计</div>
-        <div class="tab-pane" id="tab-1501570392841-2">图解读</div>
     </div>
     <div class="hu-backtop"></div>
 </div>

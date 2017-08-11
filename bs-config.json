@@ -1,0 +1,10 @@
+{
+  "port": 8110,
+  "server":{
+    "baseDir": "test",
+    "routes": {
+      "/dist": "dist",
+      "/node_modules": "node_modules"
+    }
+  }
+}
