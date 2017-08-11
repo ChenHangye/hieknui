@@ -1212,10 +1212,66 @@ label.@{checkbox-cls} {
   }
 }
 
-//
 
-@icon-cls:~"@{css-prefix}dropdown";
 
+@dropdown-cls: ~"@{css-prefix}dropdown";
+@dropdown-items-cls: ~"@{css-prefix}dropdown-items";
+@color-dropdown-items: #fff;
+
+.@{dropdown-cls} {
+  position: relative;
+  display: inline-block;
+  span {
+    display: block;
+    border: @divider-default;
+    color: @color-font-1;
+    cursor: pointer;
+    background: @color-general-ac05 no-repeat center right;
+    .dropdown(@color-font-1);
+    .dropdown-sm();
+    padding: 0 16px 0 8px;
+    &:hover {
+      border-color: @color-primary;
+      .dropdown(@color-primary);
+    }
+  }
+
+  .@{dropdown-items-cls} {
+    width: 100%;
+  }
+
+  &.dropdown-xs {
+    .dropdown-xs;
+  }
+  &.dropdown-sm {
+    .dropdown-sm;
+  }
+  &.dropdown-md {
+    .dropdown-md;
+  }
+  &.dropdown-lg {
+    .dropdown-lg;
+  }
+}
+
+.@{dropdown-items-cls} {
+  background: @color-dropdown-items;
+  .font-body-1;
+  line-height: 32px;
+  position: absolute;
+  top: 36px;
+  border: @divider-default;
+  .box-shadow-2;
+  li {
+    padding: 0 8px;
+    .line-hidden;
+    cursor: pointer;
+    &:hover, &.active {
+      background: @color-general-ac05;
+      color: @color-primary;
+    }
+  }
+}
 
 
 @icon-cls:~"@{css-prefix}icon";
@@ -1656,6 +1712,59 @@ label.@{radio-cls} {
   }
 }
 
+
+
+.dropdown(@color) {
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="@{color}" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+
+.dropdown-xs() {
+  span {
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+  }
+  ul {
+    line-height: 32px;
+    top: 36px;
+  }
+}
+
+.dropdown-sm() {
+  span {
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+  }
+  ul {
+    line-height: 32px;
+    top: 36px;
+  }
+}
+
+.dropdown-md() {
+  span {
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+  }
+  ul {
+    line-height: 40px;
+    top: 44px;
+  }
+}
+
+.dropdown-lg() {
+  span {
+    height: 48px;
+    line-height: 48px;
+    font-size: 18px;
+  }
+  ul {
+    line-height: 48px;
+    top: 52px;
+  }
+}
 
 
 .input-xs() {

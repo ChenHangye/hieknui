@@ -3243,6 +3243,95 @@ label.hu-checkbox.checkbox-lg input[type=checkbox][disabled]:checked + * {
 label.hu-checkbox.checkbox-lg:hover input + * {
   background-image: url('data:image/svg+xml;charset=utf8,<svg fill="#00b38a" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
 }
+.hu-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.hu-dropdown span {
+  display: block;
+  border: 1px solid #dddddd;
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  background: #eeeeee no-repeat center right;
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="rgba(0, 0, 0, 0.8)" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  padding: 0 16px 0 8px;
+}
+.hu-dropdown span span {
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+}
+.hu-dropdown span ul {
+  line-height: 32px;
+  top: 36px;
+}
+.hu-dropdown span:hover {
+  border-color: #00b38a;
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="#00b38a" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.hu-dropdown .hu-dropdown-items {
+  width: 100%;
+}
+.hu-dropdown.dropdown-xs span {
+  height: 32px;
+  line-height: 32px;
+  font-size: 12px;
+}
+.hu-dropdown.dropdown-xs ul {
+  line-height: 32px;
+  top: 36px;
+}
+.hu-dropdown.dropdown-sm span {
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+}
+.hu-dropdown.dropdown-sm ul {
+  line-height: 32px;
+  top: 36px;
+}
+.hu-dropdown.dropdown-md span {
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+}
+.hu-dropdown.dropdown-md ul {
+  line-height: 40px;
+  top: 44px;
+}
+.hu-dropdown.dropdown-lg span {
+  height: 48px;
+  line-height: 48px;
+  font-size: 18px;
+}
+.hu-dropdown.dropdown-lg ul {
+  line-height: 48px;
+  top: 52px;
+}
+.hu-dropdown-items {
+  background: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 32px;
+  position: absolute;
+  top: 36px;
+  border: 1px solid #dddddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.hu-dropdown-items li {
+  padding: 0 8px;
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.hu-dropdown-items li:hover,
+.hu-dropdown-items li.active {
+  background: #eeeeee;
+  color: #00b38a;
+}
 .hu-icon-12 {
   width: 16px;
   height: 16px;
