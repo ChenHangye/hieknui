@@ -18,17 +18,17 @@
       padding-left: @wh-icon + 4px;
       line-height: @item-height;
       background: @color-light no-repeat 0 (@item-height - @wh-icon) / 2;
-      .icon-radio(@color-font-3);
+      .icon-radio(@color-font-03);
     }
     &:checked + * {
       .icon-radio-checked();
     }
     &[disabled] {
       & + * {
-        .icon-radio(@color-font-4);
+        .icon-radio(@color-font-02);
       }
       &:checked + * {
-        .icon-radio-checked(@color-font-4);
+        .icon-radio-checked(@color-font-02);
       }
     }
   }

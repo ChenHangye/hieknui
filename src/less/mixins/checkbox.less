@@ -18,17 +18,17 @@
       padding-left: @wh-icon + 4px;
       line-height: @item-height;
       background: @color-light no-repeat 0 (@item-height - @wh-icon) / 2;
-      .icon-checkbox(@color-font-3);
+      .icon-checkbox(@color-font-03);
     }
     &:checked + * {
       .icon-checkbox-checked();
     }
     &[disabled] {
       & + * {
-        .icon-checkbox(@color-font-4);
+        .icon-checkbox(@color-font-02);
       }
       &:checked + * {
-        .icon-checkbox-checked(@color-font-4);
+        .icon-checkbox-checked(@color-font-02);
       }
     }
   }
