@@ -3029,6 +3029,7 @@ template {
   -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
   -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
   transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  border-radius: 2px 2px 2px 2px;
 }
 .hu-backtop:hover {
   border-color: #7d2e67;
