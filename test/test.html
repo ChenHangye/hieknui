@@ -7,7 +7,7 @@
     <script src="../dist/hieknui.js"></script>
     <script>
         $(function () {
-            var tabItem = new huTabs('.hu-tabs');
+            new huTabs('.hu-tabs');
             new huDropdown('.hu-dropdown');
             new huTag('.tag-action');
             new huBackTop('.hu-backtop');
@@ -31,6 +31,7 @@
         <li class=""><a href="#tab-9">标签</a></li>
         <li class=""><a href="#tab-10">switch</a></li>
         <li class=""><a href="#tab-11">dropdown</a></li>
+        <li class=""><a href="#tab-12">回到顶部</a></li>
     </ul>
     <div class="hu-tab-content">
         <div class="tab-pane active" id="tab-1">
@@ -45,7 +46,7 @@
             <div>
                 尺寸：
             </div>
-            <div class="line">
+            <div class="line" style="padding-bottom: 1000px;">
                 <button class="hu-btn btn-primary btn-xs">btn-xs</button>
                 <button class="hu-btn btn-primary btn-sm">btn-sm</button>
                 <button class="hu-btn btn-primary btn-md">btn-md</button>
@@ -160,54 +161,87 @@
             </div>
         </div>
         <div class="tab-pane" id="tab-6">
-            <div class="line">
-                <div class="hu-card">
-                    <div class="hu-card-body">
-                        这是基本卡片
-                    </div>
-                </div>
-            </div>
-            <div class="line" style="background: #ccc; padding: 24px">
-                <div class="hu-card card-shadow">
-                    <div class="hu-card-head">
-                        有标题的卡片
-                    </div>
-                    <div class="hu-card-body">
-                        card-shadow
-                    </div>
-                </div>
+            <div>
+                基本卡片
             </div>
             <div class="line">
-                <div class="hu-card">
-                    <div class="hu-card-body">
-                        这是基本卡片
+                <div class="hu-row hu-gutter-16">
+                    <div class="hu-col-lg-6 hu-col-md-12">
+                        <div class="hu-card">
+                            <div class="hu-card-body">
+                                这是基本卡片
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hu-col-lg-6 hu-col-md-12">
+                        <div class="hu-card">
+                            <div class="hu-card-body">
+                                这是基本卡片
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hu-col-lg-6 hu-col-md-12">
+                        <div class="hu-card">
+                            <div class="hu-card-body">
+                                这是基本卡片
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hu-col-lg-6 hu-col-md-12">
+                        <div class="hu-card">
+                            <div class="hu-card-body">
+                                这是基本卡片
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="line" style="background: #ccc; padding: 24px">
-                <div class="hu-card card-shadow">
-                    <div class="hu-card-head">
-                        有标题的卡片
-                    </div>
-                    <div class="hu-card-body">
-                        card-shadow
-                    </div>
-                </div>
+            <div>
+                有标题的卡片
             </div>
-            <div class="line">
-                <div class="hu-card">
-                    <div class="hu-card-body">
-                        这是基本卡片
-                    </div>
-                </div>
-            </div>
-            <div class="line" style="background: #ccc; padding: 24px">
-                <div class="hu-card card-shadow">
-                    <div class="hu-card-head">
-                        有标题的卡片
-                    </div>
-                    <div class="hu-card-body">
-                        card-shadow
+            <div class="container" style="background: #ccc;padding: 24px;">
+                <div class="line">
+                    <div class="hu-row hu-gutter-24">
+                        <div class="hu-col-lg-6 hu-col-md-12">
+                            <div class="hu-card card-shadow">
+                                <div class="hu-card-head">
+                                    有标题的卡片
+                                </div>
+                                <div class="hu-card-body">
+                                    card-shadow
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hu-col-lg-6 hu-col-md-12">
+                            <div class="hu-card card-shadow">
+                                <div class="hu-card-head">
+                                    有标题的卡片
+                                </div>
+                                <div class="hu-card-body">
+                                    card-shadow
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hu-col-lg-6 hu-col-md-12">
+                            <div class="hu-card card-shadow">
+                                <div class="hu-card-head">
+                                    有标题的卡片
+                                </div>
+                                <div class="hu-card-body">
+                                    card-shadow
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hu-col-lg-6 hu-col-md-12">
+                            <div class="hu-card card-shadow">
+                                <div class="hu-card-head">
+                                    有标题的卡片
+                                </div>
+                                <div class="hu-card-body">
+                                    card-shadow
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -442,8 +476,13 @@
                 </div>
             </div>
         </div>
+        <div class="tab-pane" id="tab-12">
+            <div style="padding-bottom: 10000px;">
+                向下滚动预览效果
+            </div>
+            <div class="hu-backtop"></div>
+        </div>
     </div>
-    <div class="hu-backtop"></div>
 </div>
 </body>
 </html>

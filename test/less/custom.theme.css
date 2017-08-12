@@ -3943,6 +3943,9 @@ label.hu-radio.radio-lg:hover input + * {
 .hu-row *:nth-child(odd) .seagreen {
   background: rgba(125, 46, 103, 0.5);
 }
+#tab-6 .hu-card {
+  width: 100%;
+}
 .seagreen {
   color: #fff;
   background: #7d2e67;
