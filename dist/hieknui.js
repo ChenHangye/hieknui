@@ -60,19 +60,18 @@ var huDropdown = (function () {
                 $(v).children('ul').attr(_this.attrName, id);
                 $(v).find('.' + _this.itemsName).on('click', 'li', function (event) {
                     var $item = $(event.currentTarget);
-                    var id = $item.parent().attr(_this.attrName);
-                    var v = $item.attr(_this.valueName);
-                    var value = v === undefined ? $item.text() : v;
-                    $('.' + _this.itemName + '[' + _this.attrName + '="' + id + '"] span').text(value);
+                    $item.addClass('active').siblings('.active').removeClass('active');
                 }).appendTo($('body'));
                 $(v).on('click', '>span', function (event) {
-                    var offset = $(event.currentTarget).offset();
+                    var $item = $(event.currentTarget);
+                    var offset = $item.offset();
                     var left = offset.left;
-                    var top = offset.top + $(event.currentTarget).outerHeight() + 4;
-                    var id = $(event.currentTarget).parent().attr(_this.attrName);
+                    var top = offset.top + $item.outerHeight() + 4;
+                    var id = $item.parent().attr(_this.attrName);
                     $('.' + _this.itemsName + '[' + _this.attrName + '="' + id + '"]').css({
                         top: top,
-                        left: left
+                        left: left,
+                        width: $item.outerWidth()
                     }).toggleClass('on');
                 });
             }
@@ -101,6 +100,59 @@ var huMask = (function () {
         $('body').append(this.item);
     };
     return huMask;
+}());
+
+var huSelect = (function () {
+    function huSelect(selector) {
+        this.attrName = '';
+        this.valueName = '';
+        this.itemName = '';
+        this.itemsName = '';
+        this.namespace = '';
+        this.namespace = config.namespace;
+        this.attrName = this.namespace + 'data-id';
+        this.valueName = this.namespace + 'data-value';
+        this.itemName = this.namespace + 'select';
+        this.itemsName = this.namespace + 'select-items';
+        this.items = $(selector);
+        this.init();
+    }
+    huSelect.prototype.init = function () {
+        var _this = this;
+        this.items.each(function (i, v) {
+            if (!$(v).attr(_this.attrName)) {
+                var id = _this.namespace + huUtils.randomId();
+                $(v).attr(_this.attrName, id);
+                $(v).children('ul').attr(_this.attrName, id);
+                $(v).find('.' + _this.itemsName).on('click', 'li', function (event) {
+                    var $item = $(event.currentTarget);
+                    $item.addClass('active').siblings('.active').removeClass('active');
+                    var id = $item.parent().attr(_this.attrName);
+                    var value = $item.attr(_this.valueName);
+                    var text = $item.text();
+                    $('.' + _this.itemName + '[' + _this.attrName + '="' + id + '"] span').text(text).attr(_this.valueName, value);
+                }).appendTo($('body'));
+                $(v).on('click', '>span', function (event) {
+                    var $item = $(event.currentTarget);
+                    var offset = $item.offset();
+                    var left = offset.left;
+                    var top = offset.top + $item.outerHeight() + 4;
+                    var id = $item.parent().attr(_this.attrName);
+                    $('.' + _this.itemsName + '[' + _this.attrName + '="' + id + '"]').css({
+                        top: top,
+                        left: left,
+                        width: $item.outerWidth()
+                    }).toggleClass('on');
+                });
+            }
+        });
+        $('body').on('click', function (event) {
+            if (!$(event.target).closest('.' + _this.itemName).length) {
+                $('.on.' + _this.itemsName).removeClass('on');
+            }
+        });
+    };
+    return huSelect;
 }());
 
 var huTabs = (function () {

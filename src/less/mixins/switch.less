@@ -2,7 +2,7 @@
 
 .switch-size (@width:48px,@height:24px,@roundSize:20px) {
   @gap: (@height - @roundSize) / 2;
-  @textWidth: 24px;
+  @textWidth: 22px;
   height: @height;
   & > input[type="checkbox"] {
     & + * {
@@ -25,7 +25,7 @@
         left: @width - @gap - @roundSize;
       }
       &:not(:empty) + * {
-        left: (@textWidth + 4px) * 2 - @gap - @roundSize;
+        left: (@textWidth + 6px) * 2 - @gap - @roundSize;
       }
     }
   }

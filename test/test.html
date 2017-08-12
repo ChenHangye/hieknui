@@ -9,6 +9,7 @@
         $(function () {
             new huTabs('.hu-tabs');
             new huDropdown('.hu-dropdown');
+            new huSelect('.hu-select');
             new huTag('.tag-action');
             new huBackTop('.hu-backtop');
             location.hash && $('a[href="' + location.hash + '"]').parent().trigger('click');
@@ -32,6 +33,7 @@
         <li class=""><a href="#tab-10">switch</a></li>
         <li class=""><a href="#tab-11">dropdown</a></li>
         <li class=""><a href="#tab-12">回到顶部</a></li>
+        <li class=""><a href="#tab-13">select</a></li>
     </ul>
     <div class="hu-tab-content">
         <div class="tab-pane active" id="tab-1">
@@ -128,28 +130,31 @@
                 </div>
             </div>
             <div>
-                spin-xs
+                 spin-xs
             </div>
             <div class="line">
                 <div class="hu-spin-container spin-xs">
                     <div class="hu-spin hu-spin-animation"></div>
                 </div>
+                <span style="font-size: 12px;">我是12号字</span>
             </div>
             <div>
-                spin-sm
+                 spin-sm
             </div>
             <div class="line">
                 <div class="hu-spin-container spin-sm">
                     <div class="hu-spin hu-spin-animation"></div>
                 </div>
+                <span style="font-size: 14px;">我是14号字</span>
             </div>
             <div>
-                spin-md
+                 spin-md
             </div>
             <div class="line">
                 <div class="hu-spin-container spin-md">
                     <div class="hu-spin hu-spin-animation"></div>
                 </div>
+                <span style="font-size: 16px;">我是16号字</span>
             </div>
             <div>
                 spin-lg
@@ -199,7 +204,7 @@
             <div>
                 有标题的卡片
             </div>
-            <div class="container" style="background: #ccc;padding: 24px;">
+            <div class="container" style="background: #eee;padding: 24px;">
                 <div class="line">
                     <div class="hu-row hu-gutter-24">
                         <div class="hu-col-lg-6 hu-col-md-12">
@@ -481,6 +486,49 @@
                 向下滚动预览效果
             </div>
             <div class="hu-backtop"></div>
+        </div>
+        <div class="tab-pane" id="tab-13">
+            <div>
+                尺寸：
+            </div>
+            <div class="line">
+                <div class="hu-select select-xs">
+                    <span>select-xs</span>
+                    <ul class="hu-select-items select-xs">
+                        <li class="active" hu-data-value="1">select-xs</li>
+                        <li hu-data-value="2">select-sm</li>
+                        <li hu-data-value="3">select-md</li>
+                        <li hu-data-value="4">select-lg</li>
+                    </ul>
+                </div>
+                <div class="hu-select select-sm">
+                    <span>select-sm</span>
+                    <ul class="hu-select-items select-sm">
+                        <li hu-data-value="1">select-xs</li>
+                        <li class="active" hu-data-value="2">select-sm</li>
+                        <li hu-data-value="3">select-md</li>
+                        <li hu-data-value="4">select-lg</li>
+                    </ul>
+                </div>
+                <div class="hu-select select-md">
+                    <span>select-md</span>
+                    <ul class="hu-select-items select-md">
+                        <li hu-data-value="1">select-xs</li>
+                        <li hu-data-value="2">select-sm</li>
+                        <li class="active" hu-data-value="3">select-md</li>
+                        <li hu-data-value="4">select-lg</li>
+                    </ul>
+                </div>
+                <div class="hu-select select-lg">
+                    <span>select-lg</span>
+                    <ul class="hu-select-items select-lg">
+                        <li hu-data-value="1">select-xs</li>
+                        <li hu-data-value="2">select-sm</li>
+                        <li hu-data-value="3">select-md</li>
+                        <li class="active" hu-data-value="4">select-lg</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>

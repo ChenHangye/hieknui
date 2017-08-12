@@ -1,4 +1,4 @@
-class huDropdown {
+class huSelect {
     attrName = '';
     valueName = '';
     items: JQuery;
@@ -10,8 +10,8 @@ class huDropdown {
         this.namespace = config.namespace;
         this.attrName = this.namespace + 'data-id';
         this.valueName = this.namespace + 'data-value';
-        this.itemName = this.namespace + 'dropdown';
-        this.itemsName = this.namespace + 'dropdown-items';
+        this.itemName = this.namespace + 'select';
+        this.itemsName = this.namespace + 'select-items';
         this.items = $(selector);
         this.init();
     }
@@ -25,6 +25,10 @@ class huDropdown {
                 $(v).find('.' + this.itemsName).on('click', 'li', (event) => {
                     const $item = $(event.currentTarget);
                     $item.addClass('active').siblings('.active').removeClass('active');
+                    const id = $item.parent().attr(this.attrName);
+                    const value = $item.attr(this.valueName);
+                    const text = $item.text();
+                    $('.' + this.itemName + '[' + this.attrName + '="' + id + '"] span').text(text).attr(this.valueName, value);
                 }).appendTo($('body'));
                 $(v).on('click', '>span', (event) => {
                     const $item = $(event.currentTarget);
