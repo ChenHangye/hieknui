@@ -2,7 +2,7 @@
      * @author: 
      *    jiangrun002
      * @version: 
-     *    v0.0.1
+     *    v0.0.3
      * @license:
      *    Copyright 2017, hiknowledge. All rights reserved.
      */
@@ -3017,6 +3017,7 @@ template {
 .hu-backtop {
   width: 40px;
   height: 40px;
+  transform: scale(0);
   position: fixed;
   bottom: 32px;
   right: 16px;
@@ -3024,6 +3025,10 @@ template {
   background: #eeeeee center center no-repeat;
   background-image: url('data:image/svg+xml;charset=utf8,<svg fill="rgba(0, 0, 0, 0.4)" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
   cursor: pointer;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
 }
 .hu-backtop:hover {
   border-color: #7d2e67;
@@ -3034,6 +3039,9 @@ template {
   border-color: #70295c;
   background-color: #f4dfee;
   background-image: url('data:image/svg+xml;charset=utf8,<svg fill="#70295c" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.hu-backtop.on {
+  transform: scale(1);
 }
 .hu-btn {
   display: inline-block;
@@ -3385,24 +3393,24 @@ label.hu-checkbox.checkbox-lg:hover input + * {
   height: 16px;
 }
 .hu-icon-14 {
+  width: 18px;
+  height: 18px;
+}
+.hu-icon-16 {
+  width: 20px;
+  height: 20px;
+}
+.hu-icon-18 {
   width: 22px;
   height: 22px;
 }
-.hu-icon-16 {
-  width: 24px;
-  height: 24px;
-}
-.hu-icon-18 {
-  width: 28px;
-  height: 28px;
-}
 .hu-icon-24 {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
 }
 .hu-icon-32 {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
 }
 .hu-input {
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -3496,6 +3504,28 @@ label.hu-checkbox.checkbox-lg:hover input + * {
 .hu-pagination > li.hu-page-text {
   font-family: '宋体';
   font-weight: bold;
+}
+.hu-pagination > li.hu-page-text.page-next,
+.hu-pagination > li.hu-page-text.page-prev {
+  background: no-repeat center center;
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="rgba(0, 0, 0, 0.6)" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.hu-pagination > li.hu-page-text.page-next:hover,
+.hu-pagination > li.hu-page-text.page-prev:hover {
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="#7d2e67" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.hu-pagination > li.hu-page-text.page-last,
+.hu-pagination > li.hu-page-text.page-first {
+  background: no-repeat center center;
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="rgba(0, 0, 0, 0.6)" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5.6,16.3l4.6-4.6L5.6,7.2L7,5.7l6,6l-6,6L5.6,16.3z"/><path d="M11.6,16.3l4.6-4.6l-4.6-4.6L13,5.7l6,6l-6,6L11.6,16.3z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.hu-pagination > li.hu-page-text.page-last:hover,
+.hu-pagination > li.hu-page-text.page-first:hover {
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="#7d2e67" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5.6,16.3l4.6-4.6L5.6,7.2L7,5.7l6,6l-6,6L5.6,16.3z"/><path d="M11.6,16.3l4.6-4.6l-4.6-4.6L13,5.7l6,6l-6,6L11.6,16.3z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.hu-pagination > li.hu-page-text.page-prev,
+.hu-pagination > li.hu-page-text.page-first {
+  transform: rotate(180deg);
 }
 label.hu-radio {
   line-height: 21px;
@@ -3877,9 +3907,9 @@ label.hu-radio.radio-lg:hover input + * {
 }
 .hu-tag.tag-action i {
   display: inline-block;
-  margin: -2px 0 -4px 8px;
-  width: 16px;
-  height: 16px;
+  margin: 0 0 -1px 4px;
+  width: 12px;
+  height: 12px;
   cursor: pointer;
   background: no-repeat center center;
   background-image: url('data:image/svg+xml;charset=utf8,<svg fill="rgba(0, 0, 0, 0.4)" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');

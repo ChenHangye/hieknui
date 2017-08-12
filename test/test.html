@@ -9,7 +9,8 @@
         $(function () {
             var tabItem = new huTabs('.hu-tabs');
             new huDropdown('.hu-dropdown');
-            new huDropdown('.hu-dropdown');
+            new huTag('.tag-action');
+            new huBackTop('.hu-backtop');
             location.hash && $('a[href="' + location.hash + '"]').parent().trigger('click');
         });
     </script>
@@ -176,6 +177,40 @@
                     </div>
                 </div>
             </div>
+            <div class="line">
+                <div class="hu-card">
+                    <div class="hu-card-body">
+                        这是基本卡片
+                    </div>
+                </div>
+            </div>
+            <div class="line" style="background: #ccc; padding: 24px">
+                <div class="hu-card card-shadow">
+                    <div class="hu-card-head">
+                        有标题的卡片
+                    </div>
+                    <div class="hu-card-body">
+                        card-shadow
+                    </div>
+                </div>
+            </div>
+            <div class="line">
+                <div class="hu-card">
+                    <div class="hu-card-body">
+                        这是基本卡片
+                    </div>
+                </div>
+            </div>
+            <div class="line" style="background: #ccc; padding: 24px">
+                <div class="hu-card card-shadow">
+                    <div class="hu-card-head">
+                        有标题的卡片
+                    </div>
+                    <div class="hu-card-body">
+                        card-shadow
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="tab-pane" id="tab-7">
             <div>
@@ -310,18 +345,19 @@
         </div>
         <div class="tab-pane" id="tab-8">
             <ul class="hu-pagination">
-                <li class="hu-page-text">&lt;&lt;</li>
-                <li class="hu-page-text">&lt;</li>
+                <li class="hu-page-text page-first disabled"></li>
+                <li class="hu-page-text page-prev disabled"></li>
                 <li class="hu-page-num active">1</li>
                 <li class="hu-page-num ">2</li>
-                <li class="hu-page-text">&gt;</li>
-                <li class="hu-page-text">&gt;&gt;</li>
+                <li class="hu-page-text page-next"></li>
+                <li class="hu-page-text page-last"></li>
             </ul>
         </div>
         <div class="tab-pane" id="tab-9">
             <div class="hu-tag">hu-tag</div>
             <div class="hu-tag tag-primary">tag-primary</div>
-            <div class="hu-tag tag-primary tag-action">tag-action<i></i></div>
+            <div class="hu-tag tag-primary tag-action">tag-action<i class="close"></i></div>
+            <div class="hu-tag tag-primary tag-action">tag-action<i class="close"></i></div>
         </div>
         <div class="tab-pane" id="tab-10">
             <div>

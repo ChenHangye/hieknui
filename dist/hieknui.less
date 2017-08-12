@@ -2,7 +2,7 @@
      * @author: 
      *    jiangrun002
      * @version: 
-     *    v0.0.1
+     *    v0.0.3
      * @license:
      *    Copyright 2017, hiknowledge. All rights reserved.
      */
@@ -1055,6 +1055,7 @@ template {
 
 .@{backtop-cls} {
   .size(40px);
+  transform: scale(0);
   position: fixed;
   bottom: 32px;
   right: 16px;
@@ -1062,6 +1063,7 @@ template {
   background: @color-general-ac05 center center no-repeat;
   .backtop-bg-icon();
   cursor: pointer;
+  .normal-transition;
   &:hover {
     border-color: @color-primary;
     background-color: @color-primary-05;
@@ -1071,6 +1073,9 @@ template {
     border-color: @color-primary-00;
     background-color: @color-primary-04;
     .backtop-bg-icon(@color-primary-00);
+  }
+  &.on {
+    transform: scale(1);
   }
 }
 
@@ -1317,23 +1322,23 @@ label.@{checkbox-cls} {
 }
 
 .@{icon-cls}-14 {
-  .size(22px);
+  .size(18px);
 }
 
 .@{icon-cls}-16 {
-  .size(24px);
+  .size(20px);
 }
 
 .@{icon-cls}-18 {
-  .size(28px);
+  .size(22px);
 }
 
 .@{icon-cls}-24 {
-  .size(34px);
+  .size(30px);
 }
 
 .@{icon-cls}-32 {
-  .size(36px);
+  .size(38px);
 }
 
 
@@ -1412,10 +1417,38 @@ label.@{checkbox-cls} {
       background: @color-primary;
       border-color: @color-primary;
     }
-    &.@{page-text-cls}{
+    &.@{page-text-cls} {
       font-family: '宋体';
       font-weight: bold;
+      &.page-next, &.page-prev {
+        background: no-repeat center center;
+        .icon-arrow-right(@color-font-2);
+        &:hover {
+          .icon-arrow-right(@color-primary);
+        }
+      }
+      &.page-last, &.page-first {
+        background: no-repeat center center;
+        .icon-double-arrow-right(@color-font-2);
+        &:hover {
+          .icon-double-arrow-right(@color-primary);
+        }
+      }
+      &.page-prev, &.page-first{
+        transform: rotate(180deg);
+      }
     }
+    &.disabled{
+
+    }
+  }
+
+  .icon-arrow-right(@color:@color-font-2, @size: 16) {
+    background-image: url('data:image/svg+xml;charset=utf8,<svg fill="@{color}" height="@{size}" viewBox="0 0 24 24" width="@{size}" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  }
+
+  .icon-double-arrow-right(@color:@color-font-2, @size: 16) {
+    background-image: url('data:image/svg+xml;charset=utf8,<svg fill="@{color}" height="@{size}" viewBox="0 0 24 24" width="@{size}" xmlns="http://www.w3.org/2000/svg"><path d="M5.6,16.3l4.6-4.6L5.6,7.2L7,5.7l6,6l-6,6L5.6,16.3z"/><path d="M11.6,16.3l4.6-4.6l-4.6-4.6L13,5.7l6,6l-6,6L11.6,16.3z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
   }
   //&.page-md>li{
   //  .size(32px);
@@ -1684,8 +1717,8 @@ label.@{radio-cls} {
     padding: 3px 8px;
     i {
       display: inline-block;
-      margin: -2px 0 -4px 8px;
-      .size(16px);
+      margin:0 0 -1px 4px;
+      .size(12px);
       cursor: pointer;
       background: no-repeat center center;
       .tag-bg-icon();

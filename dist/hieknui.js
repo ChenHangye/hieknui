@@ -2,10 +2,35 @@
      * @author: 
      *    jiangrun002
      * @version: 
-     *    v0.0.1
+     *    v0.0.3
      * @license:
      *    Copyright 2017, hiknowledge. All rights reserved.
      */
+
+var huBackTop = (function () {
+    function huBackTop(selector) {
+        this.attrName = '';
+        this.namespace = '';
+        this.namespace = config.namespace;
+        this.attrName = this.namespace + 'data-pos';
+        this.items = $(selector);
+        this.init();
+    }
+    huBackTop.prototype.init = function () {
+        var _this = this;
+        $(window).scroll(function (event) {
+            var height = document.body.scrollTop || document.documentElement.scrollTop;
+            _this.items.toggleClass('on', height > 500);
+        });
+        this.items.each(function (i, v) {
+            var pos = $(v).attr(_this.attrName) || 0;
+            $(v).on('click', function (event) {
+                $("html,body").animate({ scrollTop: pos }, 300);
+            });
+        });
+    };
+    return huBackTop;
+}());
 
 var config = {
     namespace: 'hu-'
@@ -106,6 +131,23 @@ var huTabs = (function () {
         return this.$container.find(selector);
     };
     return huTabs;
+}());
+
+var huTag = (function () {
+    function huTag(selector) {
+        this.namespace = '';
+        this.namespace = config.namespace;
+        this.items = $(selector);
+        this.init();
+    }
+    huTag.prototype.init = function () {
+        this.items.each(function (i, v) {
+            $(v).find('i.close').on('click', function (event) {
+                $(event.currentTarget).closest('.tag-action').remove();
+            });
+        });
+    };
+    return huTag;
 }());
 
 var huUtils = (function () {

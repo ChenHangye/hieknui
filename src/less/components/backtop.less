@@ -5,6 +5,7 @@
 
 .@{backtop-cls} {
   .size(40px);
+  transform: scale(0);
   position: fixed;
   bottom: 32px;
   right: 16px;
@@ -12,6 +13,7 @@
   background: @color-general-ac05 center center no-repeat;
   .backtop-bg-icon();
   cursor: pointer;
+  .normal-transition;
   &:hover {
     border-color: @color-primary;
     background-color: @color-primary-05;
@@ -21,5 +23,8 @@
     border-color: @color-primary-00;
     background-color: @color-primary-04;
     .backtop-bg-icon(@color-primary-00);
+  }
+  &.on {
+    transform: scale(1);
   }
 }
