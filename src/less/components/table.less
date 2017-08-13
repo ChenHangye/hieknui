@@ -1,7 +1,67 @@
 @import "../define";
 
-@table-cls:~"@{css-prefix}table";
+@table-cls: ~"@{css-prefix}table";
 
-.@{table-cls}{
-
+.@{table-cls} {
+  .border-radius;
+  border-spacing: 0;
+  th, td {
+    text-align: left;
+    padding: 16px 8px 17px;
+    &.center {
+      text-align: center;
+    }
+  }
+  thead {
+    tr {
+      th, td {
+        min-height: 56px;
+        .font-body-2;
+        border: @divider-default;
+        border-width: 1px 0;
+        &:first-child {
+          border-left-width: 1px;
+          .border-radius(@border-radius, 0, 0, 0);
+        }
+        &:last-child {
+          border-right-width: 1px;
+          .border-radius(0, @border-radius, 0, 0);
+        }
+      }
+    }
+  }
+  tbody {
+    tr {
+      &:hover {
+        background-color: @color-general-ac06;
+      }
+      &:last-child td {
+        &:first-child {
+          .border-radius(0, 0, 0, @border-radius);
+        }
+        &:last-child {
+          .border-radius(0, 0, @border-radius, 0);
+        }
+      }
+      td {
+        min-height: 48px;
+        padding: 13px 8px;
+        .font-body-1;
+        border: @divider-default;
+        border-width: 0 0 1px 0;
+        a {
+          color: @color-font-05;
+          &:hover {
+            color: @color-primary;
+          }
+        }
+        &:first-child {
+          border-left-width: 1px;
+        }
+        &:last-child {
+          border-right-width: 1px;
+        }
+      }
+    }
+  }
 }

@@ -3862,11 +3862,11 @@ label.hu-radio.radio-lg:hover input + * {
 }
 .hu-switch > input[type="checkbox"]:disabled + * {
   cursor: not-allowed;
-  background: #dddddd;
+  background: #eeeeee;
 }
 .hu-switch > input[type="checkbox"]:disabled + * + * {
   cursor: not-allowed;
-  background: #eeeeee;
+  background: #dddddd;
 }
 .hu-switch > input[type="checkbox"] + * {
   border-radius: 24px;
@@ -3936,6 +3936,68 @@ label.hu-radio.radio-lg:hover input + * {
 }
 .hu-switch.switch-sm > input[type="checkbox"]:checked + *:not(:empty) + * {
   left: 43px;
+}
+.hu-table {
+  border-radius: 2px 2px 2px 2px;
+  border-spacing: 0;
+}
+.hu-table th,
+.hu-table td {
+  text-align: left;
+  padding: 16px 8px 17px;
+}
+.hu-table th.center,
+.hu-table td.center {
+  text-align: center;
+}
+.hu-table thead tr th,
+.hu-table thead tr td {
+  min-height: 56px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.4);
+  border: 1px solid #dddddd;
+  border-width: 1px 0;
+}
+.hu-table thead tr th:first-child,
+.hu-table thead tr td:first-child {
+  border-left-width: 1px;
+  border-radius: 2px 0 0 0;
+}
+.hu-table thead tr th:last-child,
+.hu-table thead tr td:last-child {
+  border-right-width: 1px;
+  border-radius: 0 2px 0 0;
+}
+.hu-table tbody tr:hover {
+  background-color: #f6f6f6;
+}
+.hu-table tbody tr:last-child td:first-child {
+  border-radius: 0 0 0 2px;
+}
+.hu-table tbody tr:last-child td:last-child {
+  border-radius: 0 0 2px 0;
+}
+.hu-table tbody tr td {
+  min-height: 48px;
+  padding: 13px 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+  border: 1px solid #dddddd;
+  border-width: 0 0 1px 0;
+}
+.hu-table tbody tr td a {
+  color: rgba(0, 0, 0, 0.8);
+}
+.hu-table tbody tr td a:hover {
+  color: #00b38a;
+}
+.hu-table tbody tr td:first-child {
+  border-left-width: 1px;
+}
+.hu-table tbody tr td:last-child {
+  border-right-width: 1px;
 }
 .hu-tabs {
   border-bottom: 2px solid #ddd;
