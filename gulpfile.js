@@ -73,6 +73,7 @@ gulp.task('minify-css', ['compile-less'], function () {
 });
 
 gulp.task('concat-less', ['clean-css'], function () {
+    gulp.src([src + 'less/define.less']).pipe(gulp.dest(dst));
     return gulp.src([src + 'less/**/*.less','!' + src + 'less/theme/*.less']).pipe(concat(lessDevFile)).pipe(replace(/@import .*;/g, '')).pipe(gulp.dest(dst));
 });
 

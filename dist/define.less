@@ -1,0 +1,357 @@
+/**
+     * @author: 
+     *    jiangrun002
+     * @version: 
+     *    v0.0.3
+     * @license:
+     *    Copyright 2017, hiknowledge. All rights reserved.
+     */
+
+@primary: 'seagreen';
+
+
+@color-font-05: rgba(0, 0, 0, 0.8);
+@color-font-04: rgba(0, 0, 0, 0.6);
+@color-font-03: rgba(0, 0, 0, 0.4);
+@color-font-02: rgba(0, 0, 0, 0.2);
+@color-font-01: @color-primary;
+
+@color-general-ac01: #333333;
+@color-general-ac02: #666666;
+@color-general-ac03: #999999;
+@color-general-ac04: #dddddd;
+@color-general-ac05: #eeeeee;
+@color-general-ac06: #f6f6f6;
+@color-general-bc04: #cccccc;
+@color-general-bc07: #fcfcfc;
+@color-general-bc08: #ffffff;
+
+@color-error: #e0453f;
+@color-warn: #ff9c00;
+@color-info: #74aff3;
+@color-success: #4ccaad;
+
+@border-radius: 2px;
+@color-light: #fff;
+@color-dark: #000;
+@body-background: @color-light;
+@color-inverse: @body-background;
+
+@divider-default: 1px solid @color-general-ac04;
+@divider-dashed: 1px dashed @color-general-ac04;
+@divider-secondary: 1px solid @color-general-ac05;
+
+@font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Lantinghei SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
+@code-family: Consolas, Menlo, Courier, monospace;
+@line-height: 1.5;
+@input-width:150px;
+
+@css-prefix: 'hu-';
+@grid-gutter-width: 0;
+@grid-columns: 24;
+
+@screen-xs: 480px;
+@screen-xs-min: @screen-xs;
+@screen-xs-max: (@screen-sm-min - 1);
+@screen-sm: 768px;
+@screen-sm-min: @screen-sm;
+@screen-sm-max: (@screen-md-min - 1);
+@screen-md: 992px;
+@screen-md-min: @screen-md;
+@screen-md-max: (@screen-lg-min - 1);
+@screen-lg: 1200px;
+@screen-lg-min: @screen-lg;
+@screen-lg-max: (@screen-xl-min - 1);
+@screen-xl: 1600px;
+@screen-xl-min: @screen-xl;
+
+@var-00: 'color-@{primary}-00';
+@var-01: 'color-@{primary}-01';
+@var-02: 'color-@{primary}-02';
+@var-03: 'color-@{primary}-03';
+@var-04: 'color-@{primary}-04';
+@var-05: 'color-@{primary}-05';
+@var-06: 'color-@{primary}-06';
+@var-ac01: 'color-@{primary}-ac01';
+@var-ac05: 'color-@{primary}-ac05';
+@color-primary-00: @@var-00;
+@color-primary-01: @@var-01;
+@color-primary-02: @@var-02;
+@color-primary-03: @@var-03;
+@color-primary-04: @@var-04;
+@color-primary-05: @@var-05;
+@color-primary-06: @@var-06;
+@color-primary-ac01: @@var-ac01;
+@color-primary-ac05: @@var-ac05;
+@color-primary: @color-primary-01;
+@color-primary-hover: @color-primary-02;
+@color-primary-active: @color-primary-00;
+
+@color-blue-00: #337fd6;
+@color-blue-01: #398dee;
+@color-blue-02: #74aff3;
+@color-blue-03: #87bbf5;
+@color-blue-04: #e0eafa;
+@color-blue-05: #eceff1;
+@color-blue-06: #f7f9f9;
+@color-blue-ac01: #174598;
+@color-blue-ac05: #f1f6ff;
+@color-blue: @color-blue-01;
+
+@color-red-00: #c44742;
+@color-red-01: #da4f4a;
+@color-red-02: #e58380;
+@color-red-03: #e99592;
+@color-red-04: #f9e5e4;
+@color-red-05: #fff4f3;
+@color-red-06: #fdfcfc;
+@color-red-ac01: #932743;
+@color-red-ac05: #ffefee;
+@color-red: @color-red-01;
+
+@color-seagreen-00: #00a17c;
+@color-seagreen-01: #00b38a;
+@color-seagreen-02: #4ccaad;
+@color-seagreen-03: #66d1b9;
+@color-seagreen-04: #d9f4ee;
+@color-seagreen-05: #effbf7;
+@color-seagreen-06: #fcfdfc;
+@color-seagreen-ac01: #006b5c;
+@color-seagreen-ac05: #e4f7f3;
+@color-seagreen: @color-seagreen-01;
+
+@color-purple-00: #70295c;
+@color-purple-01: #7d2e67;
+@color-purple-02: #a46c94;
+@color-purple-03: #b182a4;
+@color-purple-04: #f4dfee;
+@color-purple-05: #fdf0f9;
+@color-purple-06: #fffbfe;
+@color-purple-ac01: #4a1d49;
+@color-purple-ac05: #f8e6f3;
+@color-purple: @color-purple-01;
+
+@color-black-00: #333333;
+@color-black-01: #666666;
+@color-black-02: #999999;
+@color-black-03: #dddddd;
+@color-black-04: #eeeeee;
+@color-black-05: #f6f6f6;
+@color-black-06: #fcfcfc;
+@color-black-ac01: #222222;
+@color-black-ac05: #f2f2f2;
+@color-black: @color-black-01;
+
+@color-yellow-00: #fdb400;
+@color-yellow-01: #ffc107;
+@color-yellow-02: #ffd54f;
+@color-yellow-03: #ffe082;
+@color-yellow-04: #ffecb3;
+@color-yellow-05: #fff8e1;
+@color-yellow-06: #fffefa;
+@color-yellow-ac01: #a45102;
+@color-yellow-ac05: #fff1c8;
+@color-yellow: @color-yellow-01;
+
+@color-chart-01: #7bc0e1;
+@color-chart-01-light: #95cde7;
+@color-chart-02: #9ec683;
+@color-chart-02-light: #a6cb8d;
+@color-chart-03: #fde14d;
+@color-chart-03-light: #fde45c;
+@color-chart-04: #ab89f4;
+@color-chart-04-light: #b192f5;
+@color-chart-05: #e26f63;
+@color-chart-05-light: #e88c82;
+@color-chart-06: #dca8c6;
+@color-chart-06-light: #dfafca;
+@color-chart-07: #596690;
+@color-chart-07-light: #7a85a6;
+@color-chart-08: #eaad84;
+@color-chart-08-light: #ecb48e;
+@color-chart-09: #abe8bf;
+@color-chart-09-light: #bcedcc;
+@color-chart-10: #7979fc;
+@color-chart-10-light: #8484fd;
+
+@color-chart2-01: #6db5d6;
+@color-chart2-02: #d0648a;
+@color-chart2-03: #c0d684;
+@color-chart2-04: #f2bac9;
+@color-chart2-05: #847d99;
+@color-chart2-06: #baf2d8;
+@color-chart2-07: #bfb3de;
+@color-chart2-08: #f4817c;
+@color-chart2-09: #94cdba;
+@color-chart2-10: #b2cede;
+
+.font-size(@size,@line-height:@line-height) {
+  font-size: @size;
+  line-height: @line-height;
+}
+.font-body-1() {
+  .font-size(14px);
+  color: @color-font-04;
+}
+.font-body-2() {
+  .font-size(14px);
+  color: @color-font-03;
+}
+.font-body-3() {
+  .font-size(14px);
+  font-weight: bold;
+  color: @color-font-05;
+}
+.font-caption() {
+  .font-size(12px);
+  color: @color-font-03;
+}
+.font-disable() {
+  .font-size(12px);
+  color: @color-font-02;
+}
+.font-title() {
+  .font-size(16px);
+  font-weight: bold;
+  color: @color-font-05;
+}
+.font-display-1() {
+  .font-size(18px);
+  font-weight: bold;
+  color: @color-font-05;
+}
+.font-display-2() {
+  .font-size(24px);
+  font-weight: bold;
+  color: @color-font-05;
+}
+.font-display-3() {
+  .font-size(36px);
+  font-weight: bold;
+  color: @color-font-05;
+}
+
+.box-shadow(@x:1px,@y:1px,@d:2px,@color: rgba(0, 0, 0, .2)) {
+  box-shadow: @arguments;
+}
+.box-shadow-1() {
+  .box-shadow(0, 1px, 1px, rgba(0, 0, 0, .1));
+}
+.box-shadow-2() {
+  .box-shadow(0, 1px, 3px, rgba(0, 0, 0, .2));
+}
+
+.border-radius(@lt:@border-radius,@rt:@border-radius,@rb:@border-radius,@lb:@border-radius) {
+  border-radius: @arguments;
+}
+.transition(@property:all,@duration:.5s,@timing:cubic-bezier(.25, .8, .25, 1),@delay:0s) {
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+.scroll(@bg: @color-general-ac06,@thumb: @color-general-ac03,@btn: @color-general-ac03) {
+  scrollbar-3dlight-color: @bg;
+  scrollbar-highlight-color: @bg;
+  scrollbar-face-color: @thumb;
+  scrollbar-arrow-color: @btn;
+  scrollbar-shadow-color: @thumb;
+  scrollbar-dark-shadow-color: @thumb;
+  scrollbar-base-color: @bg;
+  scrollbar-track-color: @bg;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-button {
+    background-color: transparent;
+    display: none;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-track-piece {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  &::-webkit-resizer {
+    background: transparent;
+  }
+  &:hover {
+    &::-webkit-scrollbar {
+    }
+    &::-webkit-scrollbar-button {
+      background-color: @btn;
+    }
+    &::-webkit-scrollbar-track {
+      background: @bg;
+    }
+    &::-webkit-scrollbar-track-piece {
+      background: @bg;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: @thumb;
+    }
+    &::-webkit-scrollbar-corner {
+      background: @bg;
+    }
+    &::-webkit-resizer {
+      background: @bg;
+    }
+  }
+}
+.size(@size) {
+  width: @size;
+  height: @size;
+}
+.spin-keyframes() {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+.line-hidden() {
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.placeholder(@color: @color-font-02) {
+  &::-moz-placeholder {
+    color: @color;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    color: @color;
+  }
+  &::-webkit-input-placeholder {
+    color: @color;
+  }
+}
+.clearfix() {
+  zoom: 1;
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+  }
+}
