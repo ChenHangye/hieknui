@@ -5,13 +5,13 @@
 @card-head-cls: ~"@{css-prefix}card-head";
 @card-body-cls: ~"@{css-prefix}card-body";
 @card-foot-cls: ~"@{css-prefix}card-foot";
-@color-card-bg: #fff;
+@color-card-bg: @color-inverse;
 
 .@{card-cls} {
   border: @divider-default;
   .border-radius;
   background: @color-card-bg;
-  .normal-transition;
+  .transition;
   .@{card-head-cls}{
     border-bottom: @divider-default;
     .font-title;

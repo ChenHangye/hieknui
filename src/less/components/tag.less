@@ -13,24 +13,30 @@
   display: inline-block;
   cursor: default;
   .tag();
-  .normal-transition;
+  .transition;
+  i {
+    margin:0 0 -2px 4px;
+    .size(12px);
+    cursor: pointer;
+    background: no-repeat center center;
+    .tag-bg-icon();
+    .transition;
+    display: none;
+    &:hover {
+      .tag-bg-icon(@color-error)!important;
+    }
+  }
   &.tag-primary {
     .tag(@color-primary, @color-primary-ac05, @color-primary-05);
+    i{
+      .tag-bg-icon(@color-primary);
+    }
   }
   &.tag-action {
     border: @divider-default;
     padding: 3px 8px;
-    i {
+    i{
       display: inline-block;
-      margin:0 0 -2px 4px;
-      .size(12px);
-      cursor: pointer;
-      background: no-repeat center center;
-      .tag-bg-icon();
-      .normal-transition;
-      &:hover {
-        .tag-bg-icon(@color-error);
-      }
     }
   }
 }

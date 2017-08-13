@@ -3,8 +3,8 @@
 
 @switch-cls: ~"@{css-prefix}switch";
 
-@color-switch-pointer: #fff;
-@color-switch-text: #fff;
+@color-switch-pointer: @color-light;
+@color-switch-text: @color-light;
 
 .@{switch-cls} {
   position: relative;
@@ -16,7 +16,7 @@
     & + * {
       display: block;
       background: @color-general-bc04;
-      .normal-transition;
+      .transition;
       padding: 0 6px;
       .clearfix;
       & > * {
@@ -25,7 +25,7 @@
         display: inline-block;
         float: left;
         font-size: 12px;
-        .normal-transition;
+        .transition;
         &:nth-child(1) {
           text-align: left;
         }
@@ -39,7 +39,7 @@
         border-radius: 50%;
         background: @color-switch-pointer;
         position: absolute;
-        .normal-transition;
+        .transition;
         .box-shadow-1;
       }
     }

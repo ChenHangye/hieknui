@@ -3,7 +3,7 @@
 
 @dropdown-cls: ~"@{css-prefix}dropdown";
 @dropdown-items-cls: ~"@{css-prefix}dropdown-items";
-@color-dropdown-items: #fff;
+@color-dropdown-items: @color-inverse;
 
 .@{dropdown-cls} {
   position: relative;
@@ -18,7 +18,7 @@
     .dropdown(@color-font-05);
     .dropdown-sm();
     padding: 0 16px 0 8px;
-    .normal-transition;
+    .transition;
     &:hover {
       border-color: @color-primary;
       .dropdown(@color-primary);
@@ -76,7 +76,7 @@
     padding: 0 8px;
     .line-hidden;
     cursor: pointer;
-    .normal-transition;
+    .transition;
     &:hover, &.active {
       background: @color-general-ac05;
       color: @color-primary;

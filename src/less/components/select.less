@@ -3,7 +3,7 @@
 
 @select-cls: ~"@{css-prefix}select";
 @select-items-cls: ~"@{css-prefix}select-items";
-@color-select-items: #fff;
+@color-select-items: @color-inverse;
 
 .@{select-cls} {
   position: relative;
@@ -18,7 +18,7 @@
     .select(@color-font-05);
     .select-sm();
     padding: 0 16px 0 8px;
-    .normal-transition;
+    .transition;
     &:hover {
       border-color: @color-primary;
       .select(@color-primary);
@@ -76,7 +76,7 @@
     padding: 0 8px;
     .line-hidden;
     cursor: pointer;
-    .normal-transition;
+    .transition;
     &:hover, &.active {
       background: @color-general-ac05;
       color: @color-primary;

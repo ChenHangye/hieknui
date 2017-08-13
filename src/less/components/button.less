@@ -3,6 +3,8 @@
 
 @btn-cls: ~"@{css-prefix}btn";
 
+@color-button-text: @color-light;
+
 .@{btn-cls} {
   display: inline-block;
   font-weight: normal;
@@ -21,7 +23,7 @@
   box-shadow: none;
   outline: 0 !important;
   .border-radius;
-  .normal-transition;
+  .transition;
 
   .btn-md;
 
@@ -37,9 +39,8 @@
   &.btn-lg {
     .btn-lg;
   }
-  @color-light: #fff;
   &.btn-primary {
-    color: @color-light;
+    color: @color-button-text;
     background: @color-primary;
     border-color: @color-primary;
     &.btn-active, &:active, &.active {
@@ -53,21 +54,21 @@
   }
   &.btn-primary-outline {
     color: @color-primary;
-    background: @color-light;
+    background: transparent;
     border-color: @color-primary;
     &.btn-active, &:active, &.active {
-      color: @color-light;
+      color: @color-button-text;
       background: @color-primary;
     }
     &:hover {
-      color: @color-light;
+      color: @color-button-text;
       background: @color-primary;
     }
   }
   &.btn-primary, &.btn-primary-outline {
     &.btn-disabled, &[disabled], &.disabled {
       background: @color-general-ac04;
-      color: @color-light;
+      color: @color-button-text;
       border-color: @color-general-ac04;
       cursor: not-allowed;
     }
