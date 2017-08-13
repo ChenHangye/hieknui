@@ -3255,6 +3255,7 @@ label.hu-checkbox.checkbox-lg:hover input + * {
 .hu-dropdown {
   position: relative;
   display: inline-block;
+  width: 150px;
 }
 .hu-dropdown span {
   display: block;
@@ -3400,6 +3401,7 @@ label.hu-checkbox.checkbox-lg:hover input + * {
   outline: 0 !important;
   color: rgba(0, 0, 0, 0.6);
   background: #fff;
+  width: 150px;
   -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
   -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
   -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
@@ -3615,6 +3617,7 @@ label.hu-radio.radio-lg:hover input + * {
 .hu-select {
   position: relative;
   display: inline-block;
+  width: 150px;
 }
 .hu-select span {
   display: block;
@@ -4212,8 +4215,4 @@ body:hover::-webkit-resizer {
 }
 .tab-pane {
   min-height: 350px;
-}
-.hu-select,
-.hu-dropdown {
-  width: 150px;
 }

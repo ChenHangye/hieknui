@@ -63,6 +63,7 @@
 @font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Lantinghei SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
 @code-family: Consolas, Menlo, Courier, monospace;
 @line-height: 1.5;
+@input-width:150px;
 
 @css-prefix: 'hu-';
 @grid-gutter-width: 0;
@@ -1223,6 +1224,7 @@ label.@{checkbox-cls} {
 .@{dropdown-cls} {
   position: relative;
   display: inline-block;
+  width: @input-width;
   span {
     display: block;
     border: @divider-default;
@@ -1335,6 +1337,7 @@ label.@{checkbox-cls} {
   outline: 0 !important;
   color: @color-font-04;
   background: @color-inverse;
+  width: @input-width;
   .transition;
 
   &:active, &.active, &:hover {
@@ -1506,6 +1509,7 @@ label.@{radio-cls} {
 .@{select-cls} {
   position: relative;
   display: inline-block;
+  width: @input-width;
   span {
     display: block;
     border: @divider-default;

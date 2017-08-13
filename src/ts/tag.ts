@@ -1,18 +1,18 @@
 class huTag {
-    items: JQuery;
+    cls = '';
+    clsName = '';
     namespace: string = '';
 
-    constructor(selector: string) {
+    constructor() {
         this.namespace = config.namespace;
-        this.items = $(selector);
+        this.clsName = this.namespace + 'tag';
+        this.cls = '.' + this.clsName;
         this.init();
     }
 
     private init() {
-        this.items.each((i: number, v: Element) => {
-            $(v).find('i.close').on('click',(event)=>{
-                $(event.currentTarget).closest('.tag-action').remove();
-            });
+        $('body').on('click', this.cls + ' .close', (event) => {
+            $(event.currentTarget).closest(this.cls).remove();
         });
     }
 }

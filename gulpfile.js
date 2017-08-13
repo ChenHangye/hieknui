@@ -39,6 +39,7 @@ gulp.task('clean-js', function (cb) {
 
 gulp.task('concat-js', ['compile-ts'], function () {
     return gulp.src([
+        src + 'ts/config.js',
         src + 'ts/*.js'
     ]).pipe(concat(jsDevFile)).pipe(gulp.dest(dst));
 });

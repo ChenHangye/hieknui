@@ -1,15 +1,17 @@
 class huTabs {
+    cls = '';
+    clsName = '';
     namespace: string = '';
-    $container: JQuery;
 
-    constructor(selector: string) {
+    constructor() {
         this.namespace = config.namespace;
-        this.$container = $(selector);
+        this.clsName = this.namespace + 'tabs';
+        this.cls = '.' + this.clsName;
         this.init();
     }
 
-    private bindEvent() {
-        this.$container.children('li').on('click', (event) => {
+    private init() {
+        $('body').on('click', this.cls + '>li', (event) => {
             const $tab = $(event.currentTarget);
             const $tabOld = $tab.siblings('.active');
             const selector = $tab.find('a').attr('href');
@@ -21,13 +23,5 @@ class huTabs {
             $tabOld.removeClass('active');
             $pageOld.removeClass('active');
         });
-    }
-
-    private init() {
-        this.bindEvent();
-    }
-
-    private select(selector: string): JQuery {
-        return this.$container.find(selector);
     }
 }
