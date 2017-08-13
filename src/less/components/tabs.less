@@ -5,7 +5,8 @@
 @tab-content-cls: ~"@{css-prefix}tab-content";
 
 .@{tabs-cls} {
-  border-bottom: 2px solid #ddd;
+  border-bottom: @divider-default;
+  border-width: 2px;
   .tabs-md();
   &:before {
     display: table;

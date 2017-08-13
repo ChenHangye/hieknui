@@ -109,7 +109,7 @@ a:hover {
   text-decoration: none;
 }
 a[disabled] {
-  color: #ccc;
+  color: rgba(0, 0, 0, 0.2);
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -2871,7 +2871,7 @@ button:-moz-focusring,
  * Change the border, margin, and padding in all browsers (opinionated).
  */
 fieldset {
-  border: 1px solid #c0c0c0;
+  border: 1px solid #dddddd;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
@@ -3999,7 +3999,8 @@ label.hu-radio.radio-lg:hover input + * {
   border-right-width: 1px;
 }
 .hu-tabs {
-  border-bottom: 2px solid #ddd;
+  border-bottom: 1px solid #dddddd;
+  border-width: 2px;
   height: 48px;
   font-size: 16px;
   line-height: 1.5;
