@@ -4025,7 +4025,7 @@ label.hu-radio.radio-lg:hover input + * {
   line-height: 1em;
 }
 .hu-tabs > li {
-  padding: 16px 0;
+  padding: 15px 0;
   float: left;
   -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
   -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
@@ -4050,7 +4050,6 @@ label.hu-radio.radio-lg:hover input + * {
   color: #00b38a;
 }
 .hu-tabs > li.active {
-  padding-bottom: 14px;
   border-bottom: 2px solid #00b38a;
   background-image: url('data:image/svg+xml;utf8,<svg fill="#00b38a" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M5,17.5h14l-7-11L5,17.5z"/><path fill="none" d="M0,0h24v24H0V0z"/></svg>');
 }
