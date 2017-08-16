@@ -3,7 +3,7 @@
 *.iml
 node_modules
 bower_components
-src/**/*.css
-src/**/*.js
+src/less/**/*.css
+src/ts/**/*.js
 src/**/*.map
 package-lock.json

@@ -4215,3 +4215,24 @@ body:hover::-webkit-resizer {
 .tab-pane {
   min-height: 350px;
 }
+.icon_lists li {
+  float: left;
+  width: 150px;
+  height: 180px;
+  text-align: center;
+  list-style: none !important;
+  padding: 0 8px;
+  word-break: break-all;
+}
+.icon_lists .icon {
+  font-size: 42px;
+  line-height: 100px;
+  margin: 10px 0;
+  color: #333;
+  -webkit-transition: font-size 0.25s ease-out 0s;
+  -moz-transition: font-size 0.25s ease-out 0s;
+  transition: font-size 0.25s ease-out 0s;
+}
+.icon_lists .icon:hover {
+  font-size: 100px;
+}

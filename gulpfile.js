@@ -34,7 +34,7 @@ var LICENSE_TEMPLATE =
 
 
 gulp.task('clean-js', function (cb) {
-    return del([dst + '**/*.js', src + 'ts/**/*.js', src + 'ts/**/*.map'], cb);
+    return del([dst + '*.js', src + 'ts/**/*.js', src + 'ts/**/*.map'], cb);
 });
 
 gulp.task('concat-js', ['compile-ts'], function () {
@@ -57,7 +57,7 @@ gulp.task("compile-ts", ["clean-js"], function () {
 });
 
 gulp.task('clean-css', function (cb) {
-    return del([src + 'less/**/*.css', dst + '**/*.css', dst + '**/*.less'], cb);
+    return del([src + 'less/**/*.css', dst + '*.css', dst + '**/*.less'], cb);
 });
 
 gulp.task('compile-less', ['concat-less'], function () {
@@ -79,6 +79,10 @@ gulp.task('concat-less', ['clean-css'], function () {
 
 gulp.task('gent-theme', function () {
     return gulp.src([src + 'less/theme/*.less']).pipe(gulp.dest(dst + 'theme/'));
+});
+
+gulp.task('gent-font', function () {
+    return gulp.src([src + 'font/*']).pipe(gulp.dest(dst + 'font/'));
 });
 
 gulp.task('update-config-file', function () {
