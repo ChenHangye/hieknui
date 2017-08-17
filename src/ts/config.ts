@@ -1,3 +1,3 @@
-const config = {
+const huConfig = {
     namespace: 'hu-'
 };

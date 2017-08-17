@@ -7,7 +7,7 @@ class huDropdown {
     valueName = '';
 
     constructor() {
-        this.namespace = config.namespace;
+        this.namespace = huConfig.namespace;
         this.clsName = this.namespace + 'dropdown';
         this.cls = '.' + this.clsName;
         this.attrName = this.namespace + 'data-id';

@@ -2,7 +2,7 @@
      * @author: 
      *    jiangrun002
      * @version: 
-     *    v0.0.3
+     *    v0.1.0
      * @license:
      *    Copyright 2017, hiknowledge. All rights reserved.
      */
@@ -1379,7 +1379,6 @@ label.@{checkbox-cls} {
 
 
 @pagination-cls: ~"@{css-prefix}pagination";
-@page-text-cls: ~"@{css-prefix}page-text";
 
 @color-page-text: @color-light;
 
@@ -1399,38 +1398,42 @@ label.@{checkbox-cls} {
     &:first-child {
       margin-left: 0;
     }
-    &:hover {
+    &:not(.disabled):hover {
       color: @color-primary;
       border-color: @color-primary;
     }
     &.active {
-      color: @color-page-text;
-      background: @color-primary;
+      color: @color-page-text!important;
+      background: @color-primary!important;
       border-color: @color-primary;
     }
-    &.@{page-text-cls} {
-      font-family: '宋体';
-      font-weight: bold;
-      &.page-next, &.page-prev {
-        background: no-repeat center center;
-        .icon-arrow-right(@color-font-04);
-        &:hover {
-          .icon-arrow-right(@color-primary);
-        }
-      }
-      &.page-last, &.page-first {
-        background: no-repeat center center;
-        .icon-double-arrow-right(@color-font-04);
-        &:hover {
-          .icon-double-arrow-right(@color-primary);
-        }
-      }
-      &.page-prev, &.page-first{
-        transform: rotate(180deg);
+    &.page-next, &.page-prev {
+      background: no-repeat center center;
+      .icon-arrow-right(@color-font-04);
+      &:not(.disabled):hover {
+        .icon-arrow-right(@color-primary);
       }
     }
+    &.page-next-multi, &.page-prev-multi {
+      background: no-repeat center center;
+      .icon-double-arrow-right(@color-font-04);
+      &:not(.disabled):hover {
+        .icon-double-arrow-right(@color-primary);
+      }
+    }
+    &.page-last, &.page-first {
+      background: no-repeat center center;
+      .icon-end-arrow-right(@color-font-04);
+      &:not(.disabled):hover {
+        .icon-end-arrow-right(@color-primary);
+      }
+    }
+    &.page-prev, &.page-prev-multi, &.page-first{
+      transform: rotate(180deg);
+    }
     &.disabled{
-
+      opacity: .3;
+      cursor: not-allowed;
     }
   }
 
@@ -1440,6 +1443,10 @@ label.@{checkbox-cls} {
 
   .icon-double-arrow-right(@color:@color-font-04, @size: 16) {
     background-image: url('data:image/svg+xml;charset=utf8,<svg fill="@{color}" height="@{size}" viewBox="0 0 24 24" width="@{size}" xmlns="http://www.w3.org/2000/svg"><path d="M5.6,16.3l4.6-4.6L5.6,7.2L7,5.7l6,6l-6,6L5.6,16.3z"/><path d="M11.6,16.3l4.6-4.6l-4.6-4.6L13,5.7l6,6l-6,6L11.6,16.3z"/></svg>');
+  }
+
+  .icon-end-arrow-right(@color:@color-font-04, @size: 16) {
+    background-image: url('data:image/svg+xml;charset=utf8,<svg fill="@{color}" height="@{size}" viewBox="0 0 24 24" width="@{size}" xmlns="http://www.w3.org/2000/svg"><path d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"/></svg>');
   }
   //&.page-md>li{
   //  .size(32px);

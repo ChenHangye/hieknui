@@ -2,7 +2,7 @@
      * @author: 
      *    jiangrun002
      * @version: 
-     *    v0.0.3
+     *    v0.1.0
      * @license:
      *    Copyright 2017, hiknowledge. All rights reserved.
      */
@@ -3479,40 +3479,50 @@ label.hu-checkbox.checkbox-lg:hover input + * {
 .hu-pagination > li:first-child {
   margin-left: 0;
 }
-.hu-pagination > li:hover {
+.hu-pagination > li:not(.disabled):hover {
   color: #00b38a;
   border-color: #00b38a;
 }
 .hu-pagination > li.active {
-  color: #fff;
-  background: #00b38a;
+  color: #fff !important;
+  background: #00b38a !important;
   border-color: #00b38a;
 }
-.hu-pagination > li.hu-page-text {
-  font-family: '宋体';
-  font-weight: bold;
-}
-.hu-pagination > li.hu-page-text.page-next,
-.hu-pagination > li.hu-page-text.page-prev {
+.hu-pagination > li.page-next,
+.hu-pagination > li.page-prev {
   background: no-repeat center center;
   background-image: url('data:image/svg+xml;charset=utf8,<svg fill="rgba(0, 0, 0, 0.6)" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/></svg>');
 }
-.hu-pagination > li.hu-page-text.page-next:hover,
-.hu-pagination > li.hu-page-text.page-prev:hover {
+.hu-pagination > li.page-next:not(.disabled):hover,
+.hu-pagination > li.page-prev:not(.disabled):hover {
   background-image: url('data:image/svg+xml;charset=utf8,<svg fill="#00b38a" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/></svg>');
 }
-.hu-pagination > li.hu-page-text.page-last,
-.hu-pagination > li.hu-page-text.page-first {
+.hu-pagination > li.page-next-multi,
+.hu-pagination > li.page-prev-multi {
   background: no-repeat center center;
   background-image: url('data:image/svg+xml;charset=utf8,<svg fill="rgba(0, 0, 0, 0.6)" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5.6,16.3l4.6-4.6L5.6,7.2L7,5.7l6,6l-6,6L5.6,16.3z"/><path d="M11.6,16.3l4.6-4.6l-4.6-4.6L13,5.7l6,6l-6,6L11.6,16.3z"/></svg>');
 }
-.hu-pagination > li.hu-page-text.page-last:hover,
-.hu-pagination > li.hu-page-text.page-first:hover {
+.hu-pagination > li.page-next-multi:not(.disabled):hover,
+.hu-pagination > li.page-prev-multi:not(.disabled):hover {
   background-image: url('data:image/svg+xml;charset=utf8,<svg fill="#00b38a" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5.6,16.3l4.6-4.6L5.6,7.2L7,5.7l6,6l-6,6L5.6,16.3z"/><path d="M11.6,16.3l4.6-4.6l-4.6-4.6L13,5.7l6,6l-6,6L11.6,16.3z"/></svg>');
 }
-.hu-pagination > li.hu-page-text.page-prev,
-.hu-pagination > li.hu-page-text.page-first {
+.hu-pagination > li.page-last,
+.hu-pagination > li.page-first {
+  background: no-repeat center center;
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="rgba(0, 0, 0, 0.6)" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"/></svg>');
+}
+.hu-pagination > li.page-last:not(.disabled):hover,
+.hu-pagination > li.page-first:not(.disabled):hover {
+  background-image: url('data:image/svg+xml;charset=utf8,<svg fill="#00b38a" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"/></svg>');
+}
+.hu-pagination > li.page-prev,
+.hu-pagination > li.page-prev-multi,
+.hu-pagination > li.page-first {
   transform: rotate(180deg);
+}
+.hu-pagination > li.disabled {
+  opacity: .3;
+  cursor: not-allowed;
 }
 label.hu-radio {
   line-height: 21px;

@@ -8,7 +8,65 @@
     <script>
         $(function () {
             location.hash && $('a[href="' + location.hash + '"]').parent().trigger('click');
+            gentPage1(1);
+            gentPage2(1);
+            gentPage3(15);
         });
+
+        function gentPage1(current){
+            var config1 = {
+                data:{
+                    id:1
+                },
+                selector: '#page-1',
+                total: 17,
+                showNum: 9,
+                current: current,
+                callback: function (event,pageNo,data) {
+                    gentPage1(pageNo);
+                    console.log(data.id);
+                }
+            };
+            new huPagination(config1);
+        }
+
+        function gentPage2(current){
+            var config2 = {
+                data:{
+                    id:2
+                },
+                selector: '#page-2',
+                total: 17,
+                showNum: 0,
+                current: current,
+                prevNextEnable: true,
+                callback: function (event,pageNo,data) {
+                    gentPage2(pageNo);
+                    console.log(data.id);
+                }
+            };
+            new huPagination(config2);
+        }
+
+        function gentPage3(current){
+            var config3 = {
+                data:{
+                    id:3
+                },
+                selector: '#page-3',
+                total: 17,
+                showNum: 8,
+                current: current,
+                prevNextEnable: true,
+                prevNextMultiEnable: true,
+                startEndEnable: false,
+                callback: function (event,pageNo,data) {
+                    gentPage3(pageNo);
+                    console.log(data.id);
+                }
+            };
+            new huPagination(config3);
+        }
     </script>
     <!--<link rel="stylesheet" href="../dist/huui.css">-->
     <link rel="stylesheet" href="less/custom.theme.css">
@@ -128,7 +186,7 @@
                 </div>
             </div>
             <div>
-                 spin-xs
+                spin-xs
             </div>
             <div class="line">
                 <div class="hu-spin-container spin-xs">
@@ -137,7 +195,7 @@
                 <span style="font-size: 12px;">我是12号字</span>
             </div>
             <div>
-                 spin-sm
+                spin-sm
             </div>
             <div class="line">
                 <div class="hu-spin-container spin-sm">
@@ -146,7 +204,7 @@
                 <span style="font-size: 14px;">我是14号字</span>
             </div>
             <div>
-                 spin-md
+                spin-md
             </div>
             <div class="line">
                 <div class="hu-spin-container spin-md">
@@ -381,14 +439,9 @@
             </div>
         </div>
         <div class="tab-pane" id="tab-8">
-            <ul class="hu-pagination">
-                <li class="hu-page-text page-first disabled"></li>
-                <li class="hu-page-text page-prev disabled"></li>
-                <li class="hu-page-num active">1</li>
-                <li class="hu-page-num ">2</li>
-                <li class="hu-page-text page-next"></li>
-                <li class="hu-page-text page-last"></li>
-            </ul>
+            <div id="page-1"></div>
+            <div id="page-2"></div>
+            <div id="page-3"></div>
         </div>
         <div class="tab-pane" id="tab-9">
             <div class="hu-tag">hu-tag</div>
@@ -542,37 +595,37 @@
             <div>
                 <table class="hu-table" width="100%">
                     <thead>
-                        <tr>
-                            <th>标题</th>
-                            <th class="center">发布时间</th>
-                            <th>操作</th>
-                        </tr>
+                    <tr>
+                        <th>标题</th>
+                        <th class="center">发布时间</th>
+                        <th>操作</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>我是标题我是标题我是标题我是标题我是标题</td>
-                            <td class="center">2017.08.12</td>
-                            <td>
-                                <a href="javascript:;">删除</a>
-                                <a href="javascript:;">编辑</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>我是标题我是标题我是标题我是标题我是标题</td>
-                            <td class="center">2017.08.12</td>
-                            <td>
-                                <a href="javascript:;">删除</a>
-                                <a href="javascript:;">编辑</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>我是标题我是标题我是标题我是标题我是标题</td>
-                            <td class="center">2017.08.12</td>
-                            <td>
-                                <a href="javascript:;">删除</a>
-                                <a href="javascript:;">编辑</a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>我是标题我是标题我是标题我是标题我是标题</td>
+                        <td class="center">2017.08.12</td>
+                        <td>
+                            <a href="javascript:;">删除</a>
+                            <a href="javascript:;">编辑</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>我是标题我是标题我是标题我是标题我是标题</td>
+                        <td class="center">2017.08.12</td>
+                        <td>
+                            <a href="javascript:;">删除</a>
+                            <a href="javascript:;">编辑</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>我是标题我是标题我是标题我是标题我是标题</td>
+                        <td class="center">2017.08.12</td>
+                        <td>
+                            <a href="javascript:;">删除</a>
+                            <a href="javascript:;">编辑</a>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

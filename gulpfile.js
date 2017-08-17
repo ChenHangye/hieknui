@@ -94,7 +94,7 @@ gulp.task('update-config-file', function () {
 });
 
 gulp.task('build', ['update-config-file', 'concat-uglify-js', 'minify-css', 'gent-theme'], function () {
-    gulp.src([dst + '**/*'])
+    gulp.src([dst + '**/*.css',dst + '**/*.less',dst + '**/*.js'])
         .pipe(license(LICENSE_TEMPLATE))
         .pipe(gulp.dest(dst));
 });

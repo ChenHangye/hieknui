@@ -4,7 +4,7 @@ class huTag {
     namespace: string = '';
 
     constructor() {
-        this.namespace = config.namespace;
+        this.namespace = huConfig.namespace;
         this.clsName = this.namespace + 'tag';
         this.cls = '.' + this.clsName;
         this.init();

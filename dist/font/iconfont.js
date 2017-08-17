@@ -1,3 +1,12 @@
+/**
+     * @author: 
+     *    jiangrun002
+     * @version: 
+     *    v0.1.0
+     * @license:
+     *    Copyright 2017, hiknowledge. All rights reserved.
+     */
+
 ;(function(window) {
 
   var svgSprite = '<svg>' +

@@ -5,7 +5,7 @@ class huBackTop {
     namespace: string = '';
 
     constructor() {
-        this.namespace = config.namespace;
+        this.namespace = huConfig.namespace;
         this.attrName = this.namespace + 'data-pos';
         this.clsName = this.namespace + 'backtop';
         this.cls = '.' + this.clsName;
