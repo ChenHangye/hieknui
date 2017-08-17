@@ -1,16 +1,48 @@
 # hieknui
 
-## 使用说明 
-在页面`<head>`里引入以下文件:
+## 安装说明
+```npm
+bower install hieknui
+```
+
+## 一、基础使用说明
+
+[Demo][demo-url]
+ 
+#### 1、基本使用方法
+
+* 在页面`<head>`里引入以下文件:
 
 ```html
 <link href="<pathTo>/hieknui.min.css" rel="stylesheet">
 <script src="<pathTo>/hieknui.min.js"></script>
 ```
 
-[Demo][demo-url]
+#### 2、使用其他内置主题色
 
-##
+新建less文件，并引入以下代码生成新的css
+```less
+@import "dist/hieknui.less";
+@primary: 'purple'
+```
+目前仅提供：seagreen(默认)、blue、red、black、purple、yellow
+
+
+#### 3、使用暗色主题（实验性质）
+
+新建less文件，并引入以下代码生成新的css
+```less
+@import "dist/hieknui.less";
+@import "dist/theme/dark";
+```
+
+#### 4、使用less变量
+在需要使用define的less文件中引入以下代码
+```less
+@import "dist/define";
+```
+
+## 二、控件使用说明
 
 #### 1、图标字体使用
 * 在页面`<head>`里额外引入以下文件:
