@@ -166,16 +166,16 @@ bower install hieknui
 ```html
 <div class="hu-row hu-gutter-16">
     <div class="hu-col-lg-6 hu-col-md-12">
-        <div class="seagreen">hu-col-lg-6 hu-col-md-12</div>
+        <div>hu-col-lg-6 hu-col-md-12</div>
     </div>
     <div class="hu-col-lg-6 hu-col-md-12">
-        <div class="seagreen">hu-col-lg-6 hu-col-md-12</div>
+        <div>hu-col-lg-6 hu-col-md-12</div>
     </div>
     <div class="hu-col-lg-6 hu-col-md-12">
-        <div class="seagreen">hu-col-lg-6 hu-col-md-12</div>
+        <di>hu-col-lg-6 hu-col-md-12</div>
     </div>
     <div class="hu-col-lg-6 hu-col-md-12">
-        <div class="seagreen">hu-col-lg-6 hu-col-md-12</div>
+        <div>hu-col-lg-6 hu-col-md-12</div>
     </div>
 </div>
 ```
