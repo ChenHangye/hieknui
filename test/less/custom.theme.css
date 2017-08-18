@@ -3464,64 +3464,220 @@ label.hu-checkbox.checkbox-lg:hover input + * {
 }
 .hu-pagination > li {
   float: left;
-  margin-left: 8px;
   color: rgba(0, 0, 0, 0.6);
-  width: 32px;
-  height: 32px;
-  line-height: 30px;
-  font-size: 12px;
+}
+.hu-pagination > li:first-child {
+  margin-left: 0 !important;
+}
+.hu-pagination > li.page-item {
   border-radius: 2px 2px 2px 2px;
   border: 1px solid #dddddd;
   text-align: center;
   cursor: pointer;
 }
-.hu-pagination > li:first-child {
-  margin-left: 0;
-}
-.hu-pagination > li:not(.disabled):hover {
+.hu-pagination > li.page-item:not(.disabled):hover {
   color: #00b38a;
   border-color: #00b38a;
 }
-.hu-pagination > li.active {
+.hu-pagination > li.page-item.active {
   color: #fff !important;
   background: #00b38a !important;
   border-color: #00b38a;
 }
-.hu-pagination > li.page-next,
-.hu-pagination > li.page-prev {
+.hu-pagination > li.page-item.page-next,
+.hu-pagination > li.page-item.page-prev {
   background: no-repeat center center;
   background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20fill%3D%22rgba%280,%200,%200,%200.6%29%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2216%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M8.59%2016.34l4.58-4.59-4.58-4.59L10%205.75l6%206-6%206z%22/%3E%3C/svg%3E');
 }
-.hu-pagination > li.page-next:not(.disabled):hover,
-.hu-pagination > li.page-prev:not(.disabled):hover {
+.hu-pagination > li.page-item.page-next:not(.disabled):hover,
+.hu-pagination > li.page-item.page-prev:not(.disabled):hover {
   background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20fill%3D%22%2300b38a%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2216%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M8.59%2016.34l4.58-4.59-4.58-4.59L10%205.75l6%206-6%206z%22/%3E%3C/svg%3E');
 }
-.hu-pagination > li.page-next-multi,
-.hu-pagination > li.page-prev-multi {
+.hu-pagination > li.page-item.page-next-multi,
+.hu-pagination > li.page-item.page-prev-multi {
   background: no-repeat center center;
   background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20fill%3D%22rgba%280,%200,%200,%200.6%29%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2216%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M5.6,16.3l4.6-4.6L5.6,7.2L7,5.7l6,6l-6,6L5.6,16.3z%22/%3E%3Cpath%20d%3D%22M11.6,16.3l4.6-4.6l-4.6-4.6L13,5.7l6,6l-6,6L11.6,16.3z%22/%3E%3C/svg%3E');
 }
-.hu-pagination > li.page-next-multi:not(.disabled):hover,
-.hu-pagination > li.page-prev-multi:not(.disabled):hover {
+.hu-pagination > li.page-item.page-next-multi:not(.disabled):hover,
+.hu-pagination > li.page-item.page-prev-multi:not(.disabled):hover {
   background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20fill%3D%22%2300b38a%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2216%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M5.6,16.3l4.6-4.6L5.6,7.2L7,5.7l6,6l-6,6L5.6,16.3z%22/%3E%3Cpath%20d%3D%22M11.6,16.3l4.6-4.6l-4.6-4.6L13,5.7l6,6l-6,6L11.6,16.3z%22/%3E%3C/svg%3E');
 }
-.hu-pagination > li.page-last,
-.hu-pagination > li.page-first {
+.hu-pagination > li.page-item.page-last,
+.hu-pagination > li.page-item.page-first {
   background: no-repeat center center;
   background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20fill%3D%22rgba%280,%200,%200,%200.6%29%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2216%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M5.59%207.41L10.18%2012l-4.59%204.59L7%2018l6-6-6-6zM16%206h2v12h-2z%22/%3E%3C/svg%3E');
 }
-.hu-pagination > li.page-last:not(.disabled):hover,
-.hu-pagination > li.page-first:not(.disabled):hover {
+.hu-pagination > li.page-item.page-last:not(.disabled):hover,
+.hu-pagination > li.page-item.page-first:not(.disabled):hover {
   background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20fill%3D%22%2300b38a%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2216%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M5.59%207.41L10.18%2012l-4.59%204.59L7%2018l6-6-6-6zM16%206h2v12h-2z%22/%3E%3C/svg%3E');
 }
-.hu-pagination > li.page-prev,
-.hu-pagination > li.page-prev-multi,
-.hu-pagination > li.page-first {
+.hu-pagination > li.page-item.page-prev,
+.hu-pagination > li.page-item.page-prev-multi,
+.hu-pagination > li.page-item.page-first {
   transform: rotate(180deg);
 }
-.hu-pagination > li.disabled {
+.hu-pagination > li.page-item.disabled {
   opacity: .3;
   cursor: not-allowed;
+}
+.hu-pagination > li.page-jump {
+  border: 0;
+  width: auto;
+}
+.hu-pagination > li.page-jump span {
+  display: inline-block;
+}
+.hu-pagination > li.page-jump input {
+  padding: 0;
+  text-align: center;
+}
+.hu-pagination > li.page-jump input::-webkit-outer-spin-button,
+.hu-pagination > li.page-jump input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.hu-pagination > li.page-jump button {
+  padding: 0;
+  vertical-align: -1px;
+}
+.hu-pagination > li {
+  line-height: 30px;
+  font-size: 12px;
+}
+.hu-pagination > li.page-item {
+  margin-left: 8px;
+  width: 32px;
+  height: 32px;
+}
+.hu-pagination > li.page-jump span {
+  height: 32px;
+  margin-left: 8px;
+}
+.hu-pagination > li.page-jump span:first-child {
+  margin-left: 12px;
+  margin-right: 8px;
+}
+.hu-pagination > li.page-jump input {
+  width: 48px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 12px;
+}
+.hu-pagination > li.page-jump button {
+  min-width: 32px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+.hu-pagination.pagination-xs > li {
+  line-height: 14px;
+  font-size: 12px;
+}
+.hu-pagination.pagination-xs > li.page-item {
+  margin-left: 2px;
+  width: 16px;
+  height: 16px;
+}
+.hu-pagination.pagination-xs > li.page-jump span {
+  height: 16px;
+  margin-left: 2px;
+}
+.hu-pagination.pagination-xs > li.page-jump span:first-child {
+  margin-left: 3px;
+  margin-right: 2px;
+}
+.hu-pagination.pagination-xs > li.page-jump input {
+  width: 24px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 12px;
+}
+.hu-pagination.pagination-xs > li.page-jump button {
+  min-width: 16px;
+  font-size: 12px;
+  margin-left: 2px;
+}
+.hu-pagination.pagination-sm > li {
+  line-height: 22px;
+  font-size: 12px;
+}
+.hu-pagination.pagination-sm > li.page-item {
+  margin-left: 4px;
+  width: 24px;
+  height: 24px;
+}
+.hu-pagination.pagination-sm > li.page-jump span {
+  height: 24px;
+  margin-left: 4px;
+}
+.hu-pagination.pagination-sm > li.page-jump span:first-child {
+  margin-left: 6px;
+  margin-right: 4px;
+}
+.hu-pagination.pagination-sm > li.page-jump input {
+  width: 36px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+}
+.hu-pagination.pagination-sm > li.page-jump button {
+  min-width: 24px;
+  font-size: 12px;
+  margin-left: 4px;
+}
+.hu-pagination.pagination-md > li {
+  line-height: 30px;
+  font-size: 12px;
+}
+.hu-pagination.pagination-md > li.page-item {
+  margin-left: 8px;
+  width: 32px;
+  height: 32px;
+}
+.hu-pagination.pagination-md > li.page-jump span {
+  height: 32px;
+  margin-left: 8px;
+}
+.hu-pagination.pagination-md > li.page-jump span:first-child {
+  margin-left: 12px;
+  margin-right: 8px;
+}
+.hu-pagination.pagination-md > li.page-jump input {
+  width: 48px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 12px;
+}
+.hu-pagination.pagination-md > li.page-jump button {
+  min-width: 32px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+.hu-pagination.pagination-lg > li {
+  line-height: 46px;
+  font-size: 16px;
+}
+.hu-pagination.pagination-lg > li.page-item {
+  margin-left: 16px;
+  width: 48px;
+  height: 48px;
+}
+.hu-pagination.pagination-lg > li.page-jump span {
+  height: 48px;
+  margin-left: 16px;
+}
+.hu-pagination.pagination-lg > li.page-jump span:first-child {
+  margin-left: 24px;
+  margin-right: 16px;
+}
+.hu-pagination.pagination-lg > li.page-jump input {
+  width: 72px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 16px;
+}
+.hu-pagination.pagination-lg > li.page-jump button {
+  min-width: 48px;
+  font-size: 16px;
+  margin-left: 16px;
 }
 label.hu-radio {
   line-height: 21px;

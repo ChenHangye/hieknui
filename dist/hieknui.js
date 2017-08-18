@@ -98,19 +98,28 @@ var huPagination = (function () {
         this.clsName = '';
         this.defaultConfig = {
             callback: $.noop,
+            cls: '',
             current: 1,
-            // jumpEnable: false,
+            jumpEnable: false,
             prevNextEnable: false,
             prevNextMultiEnable: false,
             selector: '',
             showNum: 9,
             startEndEnable: true,
-            total: 0,
+            totalItemShow: false
         };
         this.namespace = '';
         this.config = $.extend(true, {}, this.defaultConfig, config);
+        if (!this.config.total) {
+            if (!this.config.totalItem || !this.config.pageSize) {
+                huUtils.error('total或totalItem与pageSize不能同时为空');
+            }
+            else {
+                this.config.total = Math.ceil(this.config.totalItem / this.config.pageSize);
+            }
+        }
         if (!this.config.selector) {
-            console.error('selector不能为空');
+            huUtils.error('selector不能为空');
         }
         else {
             this.namespace = huConfig.namespace;
@@ -128,6 +137,7 @@ var huPagination = (function () {
                 this.$container.html(container);
                 this.$container = this.$container.find(this.cls);
             }
+            this.$container.addClass(this.config.cls);
             this.init();
         }
     }
@@ -137,54 +147,102 @@ var huPagination = (function () {
     };
     huPagination.prototype.buildHTML = function () {
         var total = this.config.total;
-        var all = this.config.showNum;
-        var half = (this.config.showNum - 1) / 2;
-        var first = 1;
-        var last = total;
-        var center = Math.floor(this.config.current);
-        var cur = center;
-        var prevNextEnable = this.config.prevNextEnable;
-        var prevNextMultiEnable = this.config.prevNextMultiEnable;
-        var startEndEnable = this.config.startEndEnable;
-        if (last > all) {
-            if (center - half > 1) {
-                first = Math.ceil(center - half);
-            }
-            if (last - center < half) {
-                first = last - all + 1;
-            }
-            else {
-                last = first + all - 1;
-            }
-        }
+        var cur = Math.floor(this.config.current);
         var html = '';
-        if (this.config.total == 0) {
+        if (total == 0) {
             html = '';
         }
+        else if (total < cur) {
+            html = '';
+            huUtils.error('当前页数不能大于总页数');
+        }
         else {
+            var all = this.config.showNum;
+            var half = (this.config.showNum - 1) / 2;
+            var first = 1;
+            var last = total;
+            var prevNextEnable = this.config.prevNextEnable;
+            var prevNextMultiEnable = this.config.prevNextMultiEnable;
+            var startEndEnable = this.config.startEndEnable;
+            var jumpEnable = this.config.jumpEnable;
+            var totalItemShow = this.config.totalItemShow;
+            if (last > all) {
+                if (cur - half > 1) {
+                    first = Math.ceil(cur - half);
+                }
+                if (last - cur < half) {
+                    first = last - all + 1;
+                }
+                else {
+                    last = first + all - 1;
+                }
+            }
             var firstEnable = cur != 1;
             var firstEnableCls = firstEnable ? '' : 'disabled';
             var lastEnable = cur != total;
             var lastEnableCls = lastEnable ? '' : 'disabled';
-            startEndEnable && (html += "<li class=\"page-first " + firstEnableCls + "\" " + this.attrName + "=\"1\" title=\"\u9996\u9875\"></li>");
-            prevNextMultiEnable && (html += "<li class=\"page-prev-multi " + firstEnableCls + "\" " + this.attrName + "=\"" + ((cur - all) < 1 ? 1 : (cur - all)) + "\" title=\"\u5F80\u524D\u7FFB" + all + "\u9875\"></li>");
-            prevNextEnable && (html += "<li class=\"page-prev " + firstEnableCls + "\" " + this.attrName + "=\"" + ((cur - 1) < 1 ? 1 : (cur - 1)) + "\" title=\"\u4E0A\u4E00\u9875\"></li>");
+            totalItemShow && (html += "<li class=\"page-total\">\u5171\u8BA1" + this.config.totalItem + "\u4E2A</li>");
+            startEndEnable && (html += "<li class=\"page-item page-first " + firstEnableCls + "\" " + this.attrName + "=\"1\" title=\"\u9996\u9875\"></li>");
+            prevNextMultiEnable && (html += "<li class=\"page-item page-prev-multi " + firstEnableCls + "\" " + this.attrName + "=\"" + ((cur - all) < 1 ? 1 : (cur - all)) + "\" title=\"\u5F80\u524D\u7FFB" + all + "\u9875\"></li>");
+            prevNextEnable && (html += "<li class=\"page-item page-prev " + firstEnableCls + "\" " + this.attrName + "=\"" + ((cur - 1) < 1 ? 1 : (cur - 1)) + "\" title=\"\u4E0A\u4E00\u9875\"></li>");
             for (var i = first; i <= last; i++) {
-                html += "<li class=\"" + (i == cur ? 'active' : '') + "\" " + this.attrName + "=\"" + i + "\">" + i + "</li>";
+                html += "<li class=\"page-item " + (i == cur ? 'active' : '') + "\" " + this.attrName + "=\"" + i + "\">" + i + "</li>";
             }
-            prevNextEnable && (html += "<li class=\"page-next " + lastEnableCls + "\" " + this.attrName + "=\"" + ((cur + 1) > total ? total : (cur + 1)) + "\" title=\"\u4E0B\u4E00\u9875\"></li>");
-            prevNextMultiEnable && (html += "<li class=\"page-next-multi " + lastEnableCls + "\" " + this.attrName + "=\"" + ((cur + all) > total ? total : (cur + all)) + "\" title=\"\u5F80\u540E\u7FFB" + all + "\u9875\"></li>");
-            startEndEnable && (html += "<li class=\"page-last " + lastEnableCls + "\" " + this.attrName + "=\"" + total + "\" title=\"\u672B\u9875\"></li>");
+            prevNextEnable && (html += "<li class=\"page-item page-next " + lastEnableCls + "\" " + this.attrName + "=\"" + ((cur + 1) > total ? total : (cur + 1)) + "\" title=\"\u4E0B\u4E00\u9875\"></li>");
+            prevNextMultiEnable && (html += "<li class=\"page-item page-next-multi " + lastEnableCls + "\" " + this.attrName + "=\"" + ((cur + all) > total ? total : (cur + all)) + "\" title=\"\u5F80\u540E\u7FFB" + all + "\u9875\"></li>");
+            startEndEnable && (html += "<li class=\"page-item page-last " + lastEnableCls + "\" " + this.attrName + "=\"" + total + "\" title=\"\u672B\u9875\"></li>");
+            jumpEnable && (html += "<li class=\"page-jump\"><span>\u8DF3\u8F6C\u5230</span><input type=\"number\" min=\"1\" max=\"" + total + "\" step=\"1\" class=\"" + this.namespace + "input\" value=\"" + cur + "\"><span>\u9875</span></li>");
         }
         this.$container.html(html);
     };
     huPagination.prototype.bindEvent = function () {
         var _this = this;
-        this.$container.on('click', 'li:not(.disabled)', { eventData: this.config.data }, function (event) {
+        this.$container.off();
+        this.$container.on('click', 'li:not(.disabled)[' + this.attrName + ']', { eventData: this.config.data }, function (event) {
             var eventData = event.data.eventData;
             var pageNo = $(event.currentTarget).attr(_this.attrName);
             _this.config.callback(event, pageNo, eventData);
         });
+        this.$container.on('click', 'li.page-jump button', { eventData: this.config.data }, function (event) {
+            var eventData = event.data.eventData;
+            var pageNo = $(event.currentTarget).prev('input').val();
+            _this.goTo(event, pageNo, eventData);
+        });
+        this.$container.on('keyup', 'li.page-jump input', { eventData: this.config.data }, function (event) {
+            var pageNo = $(event.currentTarget).val();
+            var re = /^[0-9]*$/;
+            if (pageNo == '') {
+            }
+            else if (!re.test(pageNo + '')) {
+                var old = $(event.currentTarget).data('data');
+                $(event.currentTarget).val(old);
+            }
+            else if (pageNo > _this.config.total) {
+                $(event.currentTarget).val(_this.config.total);
+            }
+            else if (pageNo < 1) {
+                $(event.currentTarget).val(1);
+            }
+        });
+        this.$container.on('keydown', 'li.page-jump input', { eventData: this.config.data }, function (event) {
+            var code = event.keyCode || event.which || event.charCode;
+            var pageNo = $(event.currentTarget).val();
+            if (code == 13) {
+                var eventData = event.data.eventData;
+                _this.goTo(event, pageNo, eventData);
+            }
+            else {
+                $(event.currentTarget).data('data', pageNo);
+            }
+        });
+    };
+    huPagination.prototype.goTo = function (event, pageNo, eventData) {
+        if (pageNo <= this.config.total && pageNo > 0) {
+            this.config.callback(event, pageNo, eventData);
+        }
+        else {
+            huUtils.error('跳转页不存在');
+        }
     };
     return huPagination;
 }());
@@ -292,6 +350,9 @@ var huUtils = (function () {
         if (prefix === void 0) { prefix = ''; }
         if (postfix === void 0) { postfix = ''; }
         return prefix + new Date().getTime() + Math.ceil(Math.random() * 1000) + postfix;
+    };
+    huUtils.error = function (msg) {
+        console.error(msg);
     };
     return huUtils;
 }());

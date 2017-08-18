@@ -1,4 +1,5 @@
 @import "../define";
+@import "../mixins/pagination";
 
 @pagination-cls: ~"@{css-prefix}pagination";
 
@@ -8,79 +9,90 @@
   display: inline-block;
   & > li {
     float: left;
-    margin-left: 8px;
     color: @color-font-04;
-    .size(32px);
-    line-height: 30px;
-    font-size: 12px;
-    .border-radius;
-    border: @divider-default;
-    text-align: center;
-    cursor: pointer;
     &:first-child {
-      margin-left: 0;
+      margin-left: 0 !important;
     }
-    &:not(.disabled):hover {
-      color: @color-primary;
-      border-color: @color-primary;
-    }
-    &.active {
-      color: @color-page-text!important;
-      background: @color-primary!important;
-      border-color: @color-primary;
-    }
-    &.page-next, &.page-prev {
-      background: no-repeat center center;
-      .icon-arrow-right(@color-font-04);
+    &.page-item {
+      .border-radius;
+      border: @divider-default;
+      text-align: center;
+      cursor: pointer;
       &:not(.disabled):hover {
-        .icon-arrow-right(@color-primary);
+        color: @color-primary;
+        border-color: @color-primary;
+      }
+      &.active {
+        color: @color-page-text !important;
+        background: @color-primary !important;
+        border-color: @color-primary;
+      }
+      &.page-next, &.page-prev {
+        background: no-repeat center center;
+        .icon-arrow-right(@color-font-04);
+        &:not(.disabled):hover {
+          .icon-arrow-right(@color-primary);
+        }
+      }
+      &.page-next-multi, &.page-prev-multi {
+        background: no-repeat center center;
+        .icon-double-arrow-right(@color-font-04);
+        &:not(.disabled):hover {
+          .icon-double-arrow-right(@color-primary);
+        }
+      }
+      &.page-last, &.page-first {
+        background: no-repeat center center;
+        .icon-end-arrow-right(@color-font-04);
+        &:not(.disabled):hover {
+          .icon-end-arrow-right(@color-primary);
+        }
+      }
+      &.page-prev, &.page-prev-multi, &.page-first {
+        transform: rotate(180deg);
+      }
+      &.disabled {
+        opacity: .3;
+        cursor: not-allowed;
       }
     }
-    &.page-next-multi, &.page-prev-multi {
-      background: no-repeat center center;
-      .icon-double-arrow-right(@color-font-04);
-      &:not(.disabled):hover {
-        .icon-double-arrow-right(@color-primary);
+    &.page-jump {
+      border: 0;
+      width: auto;
+      span {
+        display: inline-block;
       }
-    }
-    &.page-last, &.page-first {
-      background: no-repeat center center;
-      .icon-end-arrow-right(@color-font-04);
-      &:not(.disabled):hover {
-        .icon-end-arrow-right(@color-primary);
+      input {
+        padding: 0;
+        text-align: center;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
       }
-    }
-    &.page-prev, &.page-prev-multi, &.page-first{
-      transform: rotate(180deg);
-    }
-    &.disabled{
-      opacity: .3;
-      cursor: not-allowed;
+      button {
+        padding: 0;
+        vertical-align: -1px;
+      }
     }
   }
 
-  .icon-arrow-right(@color:@color-font-04, @size: 16) {
-    @img: escape('<svg fill="@{color}" height="@{size}" viewBox="0 0 24 24" width="@{size}" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/></svg>');
-    background-image: url('data:image/svg+xml;charset=UTF-8,@{img}');
+  .pagination;
+
+  &.pagination-xs{
+    .pagination(16px, 2px);
   }
 
-  .icon-double-arrow-right(@color:@color-font-04, @size: 16) {
-    @img: escape('<svg fill="@{color}" height="@{size}" viewBox="0 0 24 24" width="@{size}" xmlns="http://www.w3.org/2000/svg"><path d="M5.6,16.3l4.6-4.6L5.6,7.2L7,5.7l6,6l-6,6L5.6,16.3z"/><path d="M11.6,16.3l4.6-4.6l-4.6-4.6L13,5.7l6,6l-6,6L11.6,16.3z"/></svg>');
-    background-image: url('data:image/svg+xml;charset=UTF-8,@{img}');
+  &.pagination-sm{
+    .pagination(24px, 4px);
   }
 
-  .icon-end-arrow-right(@color:@color-font-04, @size: 16) {
-    @img: escape('<svg fill="@{color}" height="@{size}" viewBox="0 0 24 24" width="@{size}" xmlns="http://www.w3.org/2000/svg"><path d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"/></svg>');
-    background-image: url('data:image/svg+xml;charset=UTF-8,@{img}');
+  &.pagination-md{
+    .pagination;
   }
-  //&.page-md>li{
-  //  .size(32px);
-  //  line-height: 30px;
-  //  font-size: 12px;
-  //}
-  //&.page-lg>li{
-  //  .size(48px);
-  //  line-height: 46px;
-  //  font-size: 16px;
-  //}
+
+  &.pagination-lg{
+    .pagination(48px, 16px, 16px);
+  }
+
 }

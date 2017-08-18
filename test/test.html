@@ -14,45 +14,51 @@
             gentPage3(15);
         });
 
-        function gentPage1(current){
-            var config1 = {
-                data:{
-                    id:1
+        function gentPage1(current) {
+            var config = {
+                data: {
+                    id: 1
                 },
+                cls: '',
                 selector: '#page-1',
-                total: 17,
-                showNum: 9,
+                totalItem: 165,
+                totalItemShow: true,
+                pageSize: 10,
+                showNum: 0,
                 current: current,
-                callback: function (event,pageNo,data) {
+                prevNextEnable: true,
+                startEndEnable: false,
+                jumpEnable: true,
+                callback: function (event, pageNo, data) {
                     gentPage1(pageNo);
                     console.log(data.id);
                 }
             };
-            new huPagination(config1);
+            new huPagination(config);
         }
 
-        function gentPage2(current){
-            var config2 = {
-                data:{
-                    id:2
+        function gentPage2(current) {
+            var config = {
+                data: {
+                    id: 2
                 },
                 selector: '#page-2',
                 total: 17,
                 showNum: 0,
                 current: current,
                 prevNextEnable: true,
-                callback: function (event,pageNo,data) {
+                callback: function (event, pageNo, data) {
                     gentPage2(pageNo);
                     console.log(data.id);
                 }
             };
-            new huPagination(config2);
+            new huPagination(config);
         }
 
-        function gentPage3(current){
-            var config3 = {
-                data:{
-                    id:3
+        function gentPage3(current) {
+            var config = {
+                data: {
+                    id: 3
                 },
                 selector: '#page-3',
                 total: 17,
@@ -61,12 +67,12 @@
                 prevNextEnable: true,
                 prevNextMultiEnable: true,
                 startEndEnable: false,
-                callback: function (event,pageNo,data) {
+                callback: function (event, pageNo, data) {
                     gentPage3(pageNo);
                     console.log(data.id);
                 }
             };
-            new huPagination(config3);
+            new huPagination(config);
         }
     </script>
     <!--<link rel="stylesheet" href="../dist/huui.css">-->
