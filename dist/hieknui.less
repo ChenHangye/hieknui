@@ -2,7 +2,7 @@
      * @author: 
      *    jiangrun002
      * @version: 
-     *    v0.1.2
+     *    v0.1.3
      * @license:
      *    Copyright 2017, hiknowledge. All rights reserved.
      */
@@ -1807,11 +1807,8 @@ label.@{radio-cls} {
 .@{tabs-cls} {
   border-bottom: @divider-default;
   border-width: 2px;
-  .tabs-md();
-  &:before {
-    display: table;
-    content: " ";
-  }
+  .tabs-md;
+  .clearfix;
   &.tabs-xs {
     .tabs-xs;
   }
@@ -1832,7 +1829,10 @@ label.@{radio-cls} {
     float: left;
     .transition;
     background:  no-repeat center 34px;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
     a {
+      line-height: 1em;
       color: @color-font-05;
       padding: 0 24px;
       display: block;
@@ -1846,7 +1846,7 @@ label.@{radio-cls} {
       color: @color-primary;
     }
     &.active {
-      border-bottom: 2px solid @color-primary;
+      border-color: @color-primary;
       @img: escape('<svg fill="@{color-primary}" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M5,17.5h14l-7-11L5,17.5z"/><path fill="none" d="M0,0h24v24H0V0z"/></svg>');
       background-image: url('data:image/svg+xml;charset=UTF-8,@{img}');
       a {
@@ -2337,10 +2337,7 @@ label.@{radio-cls} {
 }
 
 .tabs-md() {
-  height: 48px;
   .font-title;
-  line-height: 1em;
-  //padding: 16px 24px;
 }
 
 .tabs-lg() {
