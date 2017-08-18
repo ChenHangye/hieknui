@@ -4239,12 +4239,25 @@ body:hover::-webkit-resizer {
   line-height: 100px;
   margin: 10px 0;
   color: #333;
+  cursor: pointer;
   -webkit-transition: font-size 0.25s ease-out 0s;
   -moz-transition: font-size 0.25s ease-out 0s;
   transition: font-size 0.25s ease-out 0s;
 }
 .icon_lists .icon:hover {
   font-size: 100px;
+}
+.prompt-success {
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -15px 0 0 -100px;
+  display: none;
 }
 .test {
   line-height: 21px;

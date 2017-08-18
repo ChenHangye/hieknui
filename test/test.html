@@ -5,6 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Title</title>
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
     <script src="../dist/hieknui.js"></script>
     <script>
         $(function () {
@@ -12,6 +13,7 @@
             gentPage1(1);
             gentPage2(1);
             gentPage3(15);
+            copy();
         });
 
         function gentPage1(current){
@@ -67,6 +69,24 @@
                 }
             };
             new huPagination(config3);
+        }
+
+        function copy() {
+
+            var clipboard = new Clipboard('.icon');
+
+            $('li').find('i').each(function () {
+                $(this).attr('data-clipboard-text',this.outerHTML)
+            });
+
+            clipboard.on('success', function(e) {
+                $('.prompt-success').show(200,function () {
+                    setTimeout(function () {
+                        $('.prompt-success').hide(200)
+                    },500)
+                });
+            });
+
         }
     </script>
     <!--<link rel="stylesheet" href="../dist/huui.css">-->
@@ -6221,6 +6241,10 @@
                 </li>
 
             </ul>
+
+            <div class="prompt-success seagreen">
+                复制成功~
+            </div>
 
         </div>
     </div>
