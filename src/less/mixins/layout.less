@@ -6,7 +6,7 @@
 
 .make-gutter(@width: 0px) {
   @name: unit(@width);
-  &.hu-gutter-@{name} {
+  &.@{gutter-prefix-cls}-@{name} {
     @mp: @width/2;
     margin: 0 -@mp;
     & > [class*="@{col-prefix-cls}"] {
