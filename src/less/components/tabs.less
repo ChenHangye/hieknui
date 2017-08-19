@@ -2,6 +2,7 @@
 @import "../mixins/tabs";
 
 @tabs-cls: ~"@{css-prefix}tabs";
+@tabs-container-cls: ~"@{css-prefix}tabs-container";
 @tab-content-cls: ~"@{css-prefix}tab-content";
 
 .@{tabs-cls} {
@@ -31,6 +32,7 @@
     background:  no-repeat center 34px;
     border-bottom: 2px solid transparent;
     margin-bottom: -2px;
+    cursor: pointer;
     a {
       line-height: 1em;
       color: @color-font-05;
@@ -63,6 +65,61 @@
     display: none;
     &.active {
       display: block;
+    }
+  }
+}
+
+
+.@{tabs-container-cls}{
+  &.tabs-left,&.tabs-right{
+    .clearfix;
+    //position: relative;
+    //overflow: hidden;
+    .@{tabs-cls}{
+      border-bottom: 0;
+      li{
+        float: none;
+        border-bottom-width: 0;
+        a{
+          border: 0;
+        }
+        &.active{
+          border-color: @color-primary;
+          background-image: none;
+        }
+      }
+    }
+    .@{tab-content-cls}{
+      overflow: hidden;
+      //width: auto;
+    }
+  }
+  &.tabs-left{
+    .@{tabs-cls}{
+      float:left;
+      border-right: @divider-default;
+      margin-right: -1px;
+      li{
+        margin-right: -1px;
+        border-right: 2px solid transparent;
+      }
+    }
+    .@{tab-content-cls}{
+      border-left: @divider-default;
+    }
+  }
+  &.tabs-right{
+    .@{tabs-cls}{
+      float:right;
+      border-left: @divider-default;
+      margin-left: -1px;
+      li{
+        margin-left: -1px;
+        border-left: 2px solid transparent;
+      }
+    }
+    .@{tab-content-cls}{
+      border-right: @divider-default;
     }
   }
 }

@@ -4204,6 +4204,7 @@ label.hu-radio.radio-lg:hover input + * {
   background: no-repeat center 34px;
   border-bottom: 2px solid transparent;
   margin-bottom: -2px;
+  cursor: pointer;
 }
 .hu-tabs > li a {
   line-height: 1em;
@@ -4234,6 +4235,70 @@ label.hu-radio.radio-lg:hover input + * {
 }
 .hu-tab-content > .tab-pane.active {
   display: block;
+}
+.hu-tabs-container.tabs-left,
+.hu-tabs-container.tabs-right {
+  zoom: 1;
+}
+.hu-tabs-container.tabs-left:before,
+.hu-tabs-container.tabs-right:before,
+.hu-tabs-container.tabs-left:after,
+.hu-tabs-container.tabs-right:after {
+  content: "";
+  display: table;
+}
+.hu-tabs-container.tabs-left:after,
+.hu-tabs-container.tabs-right:after {
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+}
+.hu-tabs-container.tabs-left .hu-tabs,
+.hu-tabs-container.tabs-right .hu-tabs {
+  border-bottom: 0;
+}
+.hu-tabs-container.tabs-left .hu-tabs li,
+.hu-tabs-container.tabs-right .hu-tabs li {
+  float: none;
+  border-bottom-width: 0;
+}
+.hu-tabs-container.tabs-left .hu-tabs li a,
+.hu-tabs-container.tabs-right .hu-tabs li a {
+  border: 0;
+}
+.hu-tabs-container.tabs-left .hu-tabs li.active,
+.hu-tabs-container.tabs-right .hu-tabs li.active {
+  border-color: #00b38a;
+  background-image: none;
+}
+.hu-tabs-container.tabs-left .hu-tab-content,
+.hu-tabs-container.tabs-right .hu-tab-content {
+  overflow: hidden;
+}
+.hu-tabs-container.tabs-left .hu-tabs {
+  float: left;
+  border-right: 1px solid #dddddd;
+  margin-right: -1px;
+}
+.hu-tabs-container.tabs-left .hu-tabs li {
+  margin-right: -1px;
+  border-right: 2px solid transparent;
+}
+.hu-tabs-container.tabs-left .hu-tab-content {
+  border-left: 1px solid #dddddd;
+}
+.hu-tabs-container.tabs-right .hu-tabs {
+  float: right;
+  border-left: 1px solid #dddddd;
+  margin-left: -1px;
+}
+.hu-tabs-container.tabs-right .hu-tabs li {
+  margin-left: -1px;
+  border-left: 2px solid transparent;
+}
+.hu-tabs-container.tabs-right .hu-tab-content {
+  border-right: 1px solid #dddddd;
 }
 .hu-tag {
   border-radius: 2px 2px 2px 2px;
