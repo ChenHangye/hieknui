@@ -29,7 +29,7 @@
     padding: 15px 0;
     float: left;
     .transition;
-    background:  no-repeat center 34px;
+    background: no-repeat center 34px;
     border-bottom: 2px solid transparent;
     margin-bottom: -2px;
     cursor: pointer;
@@ -40,11 +40,12 @@
       display: block;
       border-left: @divider-default;
       .transition;
+      pointer-events: none;
     }
     &:first-child a {
       border: 0;
     }
-    &:hover a{
+    &:not(.disabled):hover a {
       color: @color-primary;
     }
     &.active {
@@ -55,70 +56,93 @@
         color: @color-primary;
       }
     }
+
+    &.disabled{
+      opacity: .3;
+      cursor: not-allowed;
+    }
   }
   &.tabs-primary {
   }
 }
 
 .@{tab-content-cls} {
+  overflow: hidden;
   & > .tab-pane {
+    //.transition;
+    //transform: translate3d(-100%, 0, 0);
     display: none;
+    //height: 0;
     &.active {
       display: block;
+      //height: auto;
+      //transform: translate3d(0, 0, 0);
+    }
+    &.front-in {
+
+    }
+    &.front-out {
+      //transform: translate3d(-100%, 0, 0);
+      //padding: 0!important;
+    }
+    &.back-in {
+
+    }
+    &.back-out {
+      //transform: translate3d(100%, 0, 0);
+      //padding: 0!important;
     }
   }
 }
 
-
-.@{tabs-container-cls}{
-  &.tabs-left,&.tabs-right{
+.@{tabs-container-cls} {
+  &.tabs-left, &.tabs-right {
     .clearfix;
     //position: relative;
     //overflow: hidden;
-    .@{tabs-cls}{
+    .@{tabs-cls} {
       border-bottom: 0;
-      li{
+      li {
         float: none;
         border-bottom-width: 0;
-        a{
+        a {
           border: 0;
         }
-        &.active{
+        &.active {
           border-color: @color-primary;
           background-image: none;
         }
       }
     }
-    .@{tab-content-cls}{
-      overflow: hidden;
+    .@{tab-content-cls} {
       //width: auto;
     }
   }
-  &.tabs-left{
-    .@{tabs-cls}{
-      float:left;
+  &.tabs-left {
+    .@{tabs-cls} {
+      float: left;
       border-right: @divider-default;
       margin-right: -1px;
-      li{
+      li {
         margin-right: -1px;
         border-right: 2px solid transparent;
       }
     }
-    .@{tab-content-cls}{
+    .@{tab-content-cls} {
       border-left: @divider-default;
     }
   }
-  &.tabs-right{
-    .@{tabs-cls}{
-      float:right;
+  &.tabs-right {
+    .@{tabs-cls} {
+      float: right;
       border-left: @divider-default;
       margin-left: -1px;
-      li{
+      li {
         margin-left: -1px;
         border-left: 2px solid transparent;
       }
     }
-    .@{tab-content-cls}{
+    .@{tab-content-cls} {
       border-right: @divider-default;
     }
   }

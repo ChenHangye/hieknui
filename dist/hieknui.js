@@ -55,7 +55,7 @@ var huDropdown = (function () {
     }
     huDropdown.prototype.init = function () {
         var _this = this;
-        $('body').on('click', this.cls + '>span', function (event) {
+        $('body').on('click', this.cls + ':not(.disabled)>span', function (event) {
             var $item = $(event.currentTarget);
             var id = $item.attr(_this.attrName);
             if (!id) {
@@ -71,7 +71,7 @@ var huDropdown = (function () {
                 left: left,
                 width: $item.outerWidth()
             }).toggleClass('on');
-        }).on('click', this.itemsCls + '>li', function (event) {
+        }).on('click', this.itemsCls + '>li:not(.disabled)', function (event) {
             var $item = $(event.currentTarget);
             $item.addClass('active').siblings('.active').removeClass('active');
         }).on('click', function (event) {
@@ -265,7 +265,7 @@ var huSelect = (function () {
     }
     huSelect.prototype.init = function () {
         var _this = this;
-        $('body').on('click', this.cls + '>span', function (event) {
+        $('body').on('click', this.cls + ':not(.disabled)>span', function (event) {
             var $item = $(event.currentTarget);
             var id = $item.attr(_this.attrName);
             if (!id) {
@@ -281,7 +281,7 @@ var huSelect = (function () {
                 left: left,
                 width: $item.outerWidth()
             }).toggleClass('on');
-        }).on('click', this.itemsCls + '>li', function (event) {
+        }).on('click', this.itemsCls + '>li:not(.disabled)', function (event) {
             var $item = $(event.currentTarget);
             $item.addClass('active').siblings('.active').removeClass('active');
             var id = $item.parent().attr(_this.attrName);
@@ -308,17 +308,34 @@ var huTabs = (function () {
         this.init();
     }
     huTabs.prototype.init = function () {
-        $('body').on('click', this.cls + '>li', function (event) {
+        $('body').on('click', this.cls + '>li:not(.disabled)', function (event) {
             var $tab = $(event.currentTarget);
             var $tabOld = $tab.siblings('.active');
+            var newIdx = $tab.index();
+            var oldIdx = $tabOld.index();
             var selector = $tab.find('a').attr('href');
             var selectorOld = $tabOld.find('a').attr('href');
             var $page = $(selector);
             var $pageOld = $(selectorOld);
+            // $tab.removeClass('front-in front-out back-in back-out');
+            // $page.removeClass('front-in front-out back-in back-out');
+            // $tabOld.removeClass('front-in front-out back-in back-out');
+            // $pageOld.removeClass('front-in front-out back-in back-out');
             $tab.addClass('active');
             $page.addClass('active');
             $tabOld.removeClass('active');
             $pageOld.removeClass('active');
+            // if(newIdx > oldIdx){
+            //     $tab.addClass('back-in');
+            //     $page.addClass('back-in');
+            //     $tabOld.addClass('front-out');
+            //     $pageOld.addClass('front-out');
+            // }else{
+            //     $tab.addClass('front-in');
+            //     $page.addClass('front-in');
+            //     $tabOld.addClass('back-out');
+            //     $pageOld.addClass('back-out');
+            // }
         });
     };
     return huTabs;
@@ -336,7 +353,7 @@ var huTag = (function () {
     }
     huTag.prototype.init = function () {
         var _this = this;
-        $('body').on('click', this.cls + ' .close', function (event) {
+        $('body').on('click', this.cls + ':not(.disabled) .close', function (event) {
             $(event.currentTarget).closest(_this.cls).remove();
         });
     };

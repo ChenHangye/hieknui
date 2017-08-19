@@ -285,46 +285,24 @@
     background: transparent;
   }
   &::-webkit-scrollbar-button {
-    background-color: transparent;
+    background-color: @btn;
     display: none;
   }
   &::-webkit-scrollbar-track {
-    background: transparent;
+    background: @bg;
   }
   &::-webkit-scrollbar-track-piece {
-    background: transparent;
+    background: @bg;
   }
   &::-webkit-scrollbar-thumb {
-    background: transparent;
+    background: @thumb;
     border-radius: 10px;
   }
   &::-webkit-scrollbar-corner {
-    background: transparent;
+    background: @bg;
   }
   &::-webkit-resizer {
-    background: transparent;
-  }
-  &:hover {
-    &::-webkit-scrollbar {
-    }
-    &::-webkit-scrollbar-button {
-      background-color: @btn;
-    }
-    &::-webkit-scrollbar-track {
-      background: @bg;
-    }
-    &::-webkit-scrollbar-track-piece {
-      background: @bg;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: @thumb;
-    }
-    &::-webkit-scrollbar-corner {
-      background: @bg;
-    }
-    &::-webkit-resizer {
-      background: @bg;
-    }
+    background: @bg;
   }
 }
 .size(@size) {
@@ -347,6 +325,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.disabled(){
+  opacity: .3;
+  cursor: not-allowed;
 }
 .placeholder(@color: @color-font-02) {
   &::-moz-placeholder {
@@ -1236,10 +1218,18 @@ label.@{checkbox-cls} {
     .dropdown-sm();
     padding: 0 16px 0 8px;
     .transition;
-    &:hover {
+    &:not(.disabled):hover {
       border-color: @color-primary;
       .dropdown(@color-primary);
     }
+  }
+  &:not(.disabled) span:hover {
+    border-color: @color-primary;
+    .dropdown(@color-primary);
+  }
+
+  &.disabled span{
+    .disabled
   }
 
   .@{dropdown-items-cls} {
@@ -1294,9 +1284,12 @@ label.@{checkbox-cls} {
     .line-hidden;
     cursor: pointer;
     .transition;
-    &:hover, &.active {
+    &:not(.disabled):hover, &.active {
       background: @color-general-ac05;
       color: @color-primary;
+    }
+    &.disabled {
+      .disabled
     }
   }
 }
@@ -1430,8 +1423,7 @@ label.@{checkbox-cls} {
         transform: rotate(180deg);
       }
       &.disabled {
-        opacity: .3;
-        cursor: not-allowed;
+        .disabled
       }
     }
     &.page-jump {
@@ -1543,10 +1535,15 @@ label.@{radio-cls} {
     .select-sm();
     padding: 0 16px 0 8px;
     .transition;
-    &:hover {
-      border-color: @color-primary;
-      .select(@color-primary);
-    }
+  }
+
+  &:not(.disabled) span:hover {
+    border-color: @color-primary;
+    .select(@color-primary);
+  }
+
+  &.disabled span{
+    .disabled
   }
 
   .@{select-items-cls} {
@@ -1601,9 +1598,12 @@ label.@{radio-cls} {
     .line-hidden;
     cursor: pointer;
     .transition;
-    &:hover, &.active {
+    &:not(.disabled):hover, &.active {
       background: @color-general-ac05;
       color: @color-primary;
+    }
+    &.disabled {
+      .disabled
     }
   }
 }
@@ -1829,7 +1829,7 @@ label.@{radio-cls} {
     padding: 15px 0;
     float: left;
     .transition;
-    background:  no-repeat center 34px;
+    background: no-repeat center 34px;
     border-bottom: 2px solid transparent;
     margin-bottom: -2px;
     cursor: pointer;
@@ -1840,11 +1840,12 @@ label.@{radio-cls} {
       display: block;
       border-left: @divider-default;
       .transition;
+      pointer-events: none;
     }
     &:first-child a {
       border: 0;
     }
-    &:hover a{
+    &:not(.disabled):hover a {
       color: @color-primary;
     }
     &.active {
@@ -1855,70 +1856,93 @@ label.@{radio-cls} {
         color: @color-primary;
       }
     }
+
+    &.disabled{
+      opacity: .3;
+      cursor: not-allowed;
+    }
   }
   &.tabs-primary {
   }
 }
 
 .@{tab-content-cls} {
+  overflow: hidden;
   & > .tab-pane {
+    //.transition;
+    //transform: translate3d(-100%, 0, 0);
     display: none;
+    //height: 0;
     &.active {
       display: block;
+      //height: auto;
+      //transform: translate3d(0, 0, 0);
+    }
+    &.front-in {
+
+    }
+    &.front-out {
+      //transform: translate3d(-100%, 0, 0);
+      //padding: 0!important;
+    }
+    &.back-in {
+
+    }
+    &.back-out {
+      //transform: translate3d(100%, 0, 0);
+      //padding: 0!important;
     }
   }
 }
 
-
-.@{tabs-container-cls}{
-  &.tabs-left,&.tabs-right{
+.@{tabs-container-cls} {
+  &.tabs-left, &.tabs-right {
     .clearfix;
     //position: relative;
     //overflow: hidden;
-    .@{tabs-cls}{
+    .@{tabs-cls} {
       border-bottom: 0;
-      li{
+      li {
         float: none;
         border-bottom-width: 0;
-        a{
+        a {
           border: 0;
         }
-        &.active{
+        &.active {
           border-color: @color-primary;
           background-image: none;
         }
       }
     }
-    .@{tab-content-cls}{
-      overflow: hidden;
+    .@{tab-content-cls} {
       //width: auto;
     }
   }
-  &.tabs-left{
-    .@{tabs-cls}{
-      float:left;
+  &.tabs-left {
+    .@{tabs-cls} {
+      float: left;
       border-right: @divider-default;
       margin-right: -1px;
-      li{
+      li {
         margin-right: -1px;
         border-right: 2px solid transparent;
       }
     }
-    .@{tab-content-cls}{
+    .@{tab-content-cls} {
       border-left: @divider-default;
     }
   }
-  &.tabs-right{
-    .@{tabs-cls}{
-      float:right;
+  &.tabs-right {
+    .@{tabs-cls} {
+      float: right;
       border-left: @divider-default;
       margin-left: -1px;
-      li{
+      li {
         margin-left: -1px;
         border-left: 2px solid transparent;
       }
     }
-    .@{tab-content-cls}{
+    .@{tab-content-cls} {
       border-right: @divider-default;
     }
   }
@@ -1942,14 +1966,10 @@ label.@{radio-cls} {
   i {
     margin:0 0 -2px 4px;
     .size(12px);
-    cursor: pointer;
     background: no-repeat center center;
     .tag-bg-icon();
     .transition;
     display: none;
-    &:hover {
-      .tag-bg-icon(@color-error)!important;
-    }
   }
   &.tag-primary {
     .tag(@color-primary, @color-primary-ac05, @color-primary-05);
@@ -1962,6 +1982,15 @@ label.@{radio-cls} {
     padding: 3px 8px;
     i{
       display: inline-block;
+    }
+  }
+  &.disabled{
+    .disabled;
+  }
+  &:not(.disabled) i{
+    cursor: pointer;
+    &:hover{
+      .tag-bg-icon(@color-error)!important;
     }
   }
 }

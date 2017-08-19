@@ -15,8 +15,15 @@ body {
   }
 }
 
-.hu-row {
-  *:nth-child(odd) .seagreen {
+#tab-7 .hu-row {
+  *>div {
+    color: #fff;
+    background: @color-primary;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+  }
+  *:nth-child(odd)>div {
     background: fade(@color-primary, 50);
   }
 }
@@ -25,14 +32,6 @@ body {
   .hu-card {
     width: 100%;
   }
-}
-
-.seagreen {
-  color: #fff;
-  background: @color-primary;
-  height: 100px;
-  text-align: center;
-  line-height: 100px;
 }
 
 .hu-card {
@@ -46,10 +45,6 @@ body {
     text-align: center;
     line-height: 200px;
   }
-}
-
-.tab-pane {
-  min-height: 350px;
 }
 
 .icon_lists {
@@ -88,5 +83,6 @@ body {
   top: 50%;
   left: 50%;
   margin: -15px 0 0 -100px;
-  display: none
+  display: none;
+  background: @color-primary;
 }

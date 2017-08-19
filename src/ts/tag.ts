@@ -11,7 +11,7 @@ class huTag {
     }
 
     private init() {
-        $('body').on('click', this.cls + ' .close', (event) => {
+        $('body').on('click', this.cls + ':not(.disabled) .close', (event) => {
             $(event.currentTarget).closest(this.cls).remove();
         });
     }

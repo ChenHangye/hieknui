@@ -17,7 +17,7 @@ class huSelect {
     }
 
     private init() {
-        $('body').on('click', this.cls + '>span', (event) => {
+        $('body').on('click', this.cls + ':not(.disabled)>span', (event) => {
             const $item = $(event.currentTarget);
             let id = $item.attr(this.attrName);
             if(!id){
@@ -33,7 +33,7 @@ class huSelect {
                 left: left,
                 width: $item.outerWidth()
             }).toggleClass('on');
-        }).on('click', this.itemsCls + '>li', (event) => {
+        }).on('click', this.itemsCls + '>li:not(.disabled)', (event) => {
             const $item = $(event.currentTarget);
             $item.addClass('active').siblings('.active').removeClass('active');
             const id = $item.parent().attr(this.attrName);
