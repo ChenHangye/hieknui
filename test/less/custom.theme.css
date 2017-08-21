@@ -4247,6 +4247,9 @@ label.hu-radio.radio-lg:hover input + * {
   opacity: .3;
   cursor: not-allowed;
 }
+.hu-tabs > li.disabled a {
+  cursor: not-allowed;
+}
 .hu-tabs.tabs-primary > li {
   background: no-repeat center 34px;
   padding: 15px 0;
@@ -4277,11 +4280,25 @@ label.hu-radio.radio-lg:hover input + * {
 }
 .hu-tab-content {
   overflow: hidden;
+  position: relative;
 }
 .hu-tab-content > .tab-pane {
-  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  z-index: 1;
 }
 .hu-tab-content > .tab-pane.active {
+  position: relative;
+  z-index: 2;
+  opacity: 1;
   display: block;
 }
 @-webkit-keyframes front-in-keyframes {
@@ -4549,6 +4566,9 @@ body::-webkit-resizer {
 }
 #tab-6 .hu-card {
   width: 100%;
+}
+.hu-tabs a {
+  pointer-events: initial!important;
 }
 .hu-card {
   float: left;

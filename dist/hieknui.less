@@ -1885,6 +1885,9 @@ label.@{radio-cls} {
     &.disabled {
       opacity: .3;
       cursor: not-allowed;
+      a{
+        cursor: not-allowed;
+      }
     }
   }
   &.tabs-primary {
@@ -1895,7 +1898,7 @@ label.@{radio-cls} {
         @img: escape('<svg fill="@{color-primary}" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M5,17.5h14l-7-11L5,17.5z"/><path fill="none" d="M0,0h24v24H0V0z"/></svg>');
         background-image: url('data:image/svg+xml;charset=UTF-8,@{img}');
       }
-      a{
+      a {
         border-left: @divider-default;
         line-height: 1em;
         height: 16px;
@@ -1920,27 +1923,22 @@ label.@{radio-cls} {
 
 .@{tab-content-cls} {
   overflow: hidden;
+  position: relative;
   & > .tab-pane {
-    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    .transition;
+    z-index: 1;
     &.active {
+      position: relative;
+      z-index: 2;
+      opacity: 1;
       display: block;
     }
-    //&.front-in {
-    //  -webkit-animation: front-in-keyframes 2s linear;
-    //  animation: front-in-keyframes 2s linear;
-    //}
-    //&.front-out {
-    //  -webkit-animation: front-out-keyframes 2s linear;
-    //  animation: front-out-keyframes 2s linear;
-    //}
-    //&.back-in {
-    //  -webkit-animation: back-in-keyframes 2s linear;
-    //  animation: back-in-keyframes 2s linear;
-    //}
-    //&.back-out {
-    //  -webkit-animation: back-out-keyframes 2s linear;
-    //  animation: back-out-keyframes 2s linear;
-    //}
   }
 }
 
