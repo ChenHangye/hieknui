@@ -79,7 +79,7 @@ bower install hieknui
     </div>
 </div>
 ```
-[Tab Demo][demo-url]
+[Tab Demo][demo-url-tab]
 
 #### 3、按钮使用
 
@@ -337,3 +337,4 @@ new huPagination({
 [demo-url-select]: https://jiangrun002.github.io/hieknui/test/test.html#tab-13
 [demo-url-table]: https://jiangrun002.github.io/hieknui/test/test.html#tab-14
 [demo-url-icon]: https://jiangrun002.github.io/hieknui/test/test.html#tab-15
+[demo-url-tab]: https://jiangrun002.github.io/hieknui/test/test.html#tab-16
