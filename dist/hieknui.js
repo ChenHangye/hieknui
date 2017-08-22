@@ -299,28 +299,162 @@ var huSelect = (function () {
 
 var huTabs = (function () {
     function huTabs() {
-        this.cls = '';
-        this.clsName = '';
-        this.namespace = '';
-        this.namespace = huConfig.namespace;
-        this.clsName = this.namespace + 'tabs';
-        this.cls = '.' + this.clsName;
-        this.init();
+        huTabs.namespace = huConfig.namespace;
+        huTabs.clsName = huTabs.namespace + 'tabs';
+        huTabs.navContainerClsName = huTabs.clsName + '-nav-container';
+        huTabs.wrapClsName = huTabs.clsName + '-wrap';
+        huTabs.cls = '.' + huTabs.clsName;
+        huTabs.init();
     }
-    huTabs.prototype.init = function () {
-        $('body').on('click', this.cls + '>li:not(.disabled)', function (event) {
+    huTabs.bindEvent = function () {
+        $('body').on('click', huTabs.cls + '>li:not(.disabled)', function (event) {
             var $tab = $(event.currentTarget);
-            var $tabOld = $tab.siblings('.active');
             var selector = $tab.find('a').attr('href');
-            var selectorOld = $tabOld.find('a').attr('href');
+            $tab = $('a[href="' + selector + '"]').closest('li');
             var $page = $(selector);
-            var $pageOld = $(selectorOld);
+            var $pageOld = $page.siblings('.active');
+            var selectorOld = '#' + $pageOld.attr('id');
+            var $tabOld = $('a[href="' + selectorOld + '"]').closest('li');
             $tab.addClass('active');
             $page.addClass('active');
             $tabOld.removeClass('active');
             $pageOld.removeClass('active');
+            $tab.each(function (i, v) {
+                huTabs.resize($(v).closest(huTabs.cls));
+            });
+        }).on('click', '.tabs-prev-control:not(.disabled)', function (event) {
+            var $item = $(event.currentTarget);
+            var $wrap = $item.siblings('.' + huTabs.wrapClsName);
+            var $ul = $wrap.children('ul');
+            var f = 'outerWidth';
+            var cssAttr = 'margin-left';
+            if (huTabs.isVertical($item)) {
+                f = 'outerHeight';
+                cssAttr = 'margin-top';
+            }
+            var pos = parseInt($ul.css(cssAttr));
+            var wSize = $wrap[f]();
+            var newPos = pos + wSize;
+            var tarPos = newPos < 0 ? newPos : 0;
+            $ul.css(cssAttr, tarPos);
+            huTabs.resetClickable($ul, tarPos !== 0, true);
+        }).on('click', '.tabs-next-control:not(.disabled)', function (event) {
+            var $item = $(event.currentTarget);
+            var $wrap = $item.siblings('.' + huTabs.wrapClsName);
+            var $ul = $wrap.children('ul');
+            var f = 'outerWidth';
+            var cssAttr = 'margin-left';
+            if (huTabs.isVertical($item)) {
+                f = 'outerHeight';
+                cssAttr = 'margin-top';
+            }
+            var pos = parseInt($ul.css(cssAttr));
+            var wSize = $wrap[f]();
+            var uSize = $ul[f]() - wSize;
+            var newPos = pos - wSize;
+            var tarPos = newPos > -uSize ? newPos : -uSize;
+            $ul.css(cssAttr, tarPos);
+            huTabs.resetClickable($ul, true, tarPos !== -uSize);
+        });
+        $(window).resize(function (event) {
+            huTabs.resizeAll();
         });
     };
+    huTabs.calcEnable = function ($item, pPos) {
+        var $wrap = $item.parent();
+        var f = 'width';
+        var cssAttr = 'margin-left';
+        if (huTabs.isVertical($item)) {
+            f = 'height';
+            cssAttr = 'margin-top';
+        }
+        pPos = typeof pPos == 'undefined' ? parseInt($item.css(cssAttr)) : pPos;
+        return { prev: pPos < 0, next: $wrap[f]() - pPos < $item[f]() };
+    };
+    huTabs.init = function () {
+        huTabs.bindEvent();
+        huTabs.resizeAll();
+    };
+    huTabs.isVertical = function ($item) {
+        return $item.closest('.' + huTabs.navContainerClsName).parent('.tabs-left,.tabs-right').length;
+    };
+    huTabs.resetAllClickable = function () {
+        $(huTabs.cls).each(function (i, v) {
+            huTabs.resetClickable($(v));
+        });
+    };
+    huTabs.resetClickable = function ($item, prevEnable, nextEnable) {
+        if (typeof prevEnable == 'undefined' || typeof nextEnable == 'undefined') {
+            var status_1 = huTabs.calcEnable($item);
+            prevEnable = status_1.prev;
+            nextEnable = status_1.next;
+        }
+        var $wrap = $item.parent();
+        $wrap.siblings('.tabs-prev-control').toggleClass('disabled', !prevEnable);
+        $wrap.siblings('.tabs-next-control').toggleClass('disabled', !nextEnable);
+    };
+    huTabs.resizeAll = function () {
+        huTabs.wrapAll();
+        $(huTabs.cls).each(function (i, v) {
+            huTabs.resize($(v));
+        });
+    };
+    huTabs.resize = function ($item) {
+        var f = 'width';
+        var of = 'outerWidth';
+        var type = 'left';
+        var cssAttr = 'margin-' + type;
+        if (huTabs.isVertical($item)) {
+            f = 'height';
+            of = 'outerHeight';
+            type = 'top';
+            cssAttr = 'margin-' + type;
+        }
+        var lis = 0;
+        $item.children('li').each(function (j, li) {
+            lis += $(li)[of]();
+        });
+        var $navContainer = $item.closest('.' + huTabs.navContainerClsName);
+        var l = $navContainer[f]();
+        $navContainer.toggleClass('show-all', l >= lis);
+        if (l < lis) {
+            $item[f](lis);
+            var $active = $item.children('li.active');
+            var pos = $active.position()[type];
+            var pPos = parseInt($item.css(cssAttr));
+            if (pos + pPos < 0) {
+                pPos = -pos;
+            }
+            else if ((pos + $active[of]() + pPos) > l) {
+                pPos = l - $active[of]() - pos;
+            }
+            var pSize = $item[f]();
+            if (l > (pSize + pPos) && pPos < 0) {
+                pPos = l - pSize;
+            }
+            $item.css(cssAttr, pPos);
+            var status_2 = huTabs.calcEnable($item, pPos);
+            huTabs.resetClickable($item, status_2.prev, status_2.next);
+        }
+    };
+    huTabs.wrapAll = function () {
+        $(huTabs.cls).each(function (i, v) {
+            huTabs.wrap($(v));
+        });
+    };
+    huTabs.wrap = function ($item) {
+        if (!$item.parent('.' + huTabs.wrapClsName).length) {
+            var wrap = '<div class="' + huTabs.wrapClsName + '"></div>';
+            var container = '<div class="' + huTabs.navContainerClsName + '"></div>';
+            var controls = '<div class="tabs-control tabs-prev-control"></div><div class="tabs-control tabs-next-control"></div>';
+            $item.wrap(container).after(controls).wrap(wrap);
+        }
+    };
+    huTabs.cls = '';
+    huTabs.clsName = '';
+    huTabs.namespace = '';
+    huTabs.navContainerClsName = '';
+    huTabs.wrapClsName = '';
     return huTabs;
 }());
 

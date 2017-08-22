@@ -4,14 +4,6 @@
   @wh-icon: @size + 4px;
   @wh-icon-num: unit(@wh-icon);
   @item-height: @size * @line-height;
-  .icon-radio(@color:@color-primary) {
-    @img: escape('<svg fill="@{color}" height="@{wh-icon-num}" viewBox="0 0 24 24" width="@{wh-icon-num}" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
-    background-image: url('data:image/svg+xml;charset=UTF-8,@{img}');
-  }
-  .icon-radio-checked(@color:@color-primary) {
-    @img: escape('<svg fill="@{color}" height="@{wh-icon-num}" viewBox="0 0 24 24" width="@{wh-icon-num}" xmlns="http://www.w3.org/2000/svg"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
-    background-image: url('data:image/svg+xml;charset=UTF-8,@{img}');
-  }
   line-height: @item-height;
   height: @item-height;
   font-size: @size;
@@ -19,22 +11,22 @@
     & + * {
       padding-left: @wh-icon + 4px;
       line-height: @item-height;
-      background:  no-repeat 0 (@item-height - @wh-icon) / 2;
-      .icon-radio(@color-font-03);
+      background: no-repeat 0 (@item-height - @wh-icon) / 2;
+      .icon-radio-button-unchecked(@color-font-03, @wh-icon-num);
     }
     &:checked + * {
-      .icon-radio-checked();
+      .icon-radio-button-checked(@color-primary, @wh-icon-num);
     }
     &[disabled] {
       & + * {
-        .icon-radio(@color-font-02);
+        .icon-radio-button-unchecked(@color-font-02, @wh-icon-num);
       }
       &:checked + * {
-        .icon-radio-checked(@color-font-02);
+        .icon-radio-button-checked(@color-font-02, @wh-icon-num);
       }
     }
   }
   &:hover input + * {
-    .icon-radio();
+    .icon-radio-button-unchecked(@color-primary, @wh-icon-num);
   }
 }

@@ -68,13 +68,20 @@ gulp.task('compile-less', ['concat-less'], function () {
         .pipe(gulp.dest(dst));
 });
 
+gulp.task('compile-less-test', ['minify-css'], function () {
+    return gulp.src('test/less/*.less')
+        .pipe(plumber())
+        .pipe(gulpLess())
+        .pipe(gulp.dest('test/less/'));
+});
+
 gulp.task('minify-css', ['compile-less'], function () {
     return gulp.src(dst + '/' + cssDevFile).pipe(concat(cssFile)).pipe(cleanCss({compatibility: 'ie8'})).pipe(gulp.dest(dst));
 });
 
 gulp.task('concat-less', ['clean-css'], function () {
     gulp.src([src + 'less/define.less']).pipe(gulp.dest(dst));
-    return gulp.src([src + 'less/**/*.less','!' + src + 'less/theme/*.less']).pipe(concat(lessDevFile)).pipe(replace(/@import .*;/g, '')).pipe(gulp.dest(dst));
+    return gulp.src([src + 'less/**/*.less', '!' + src + 'less/theme/*.less']).pipe(concat(lessDevFile)).pipe(replace(/@import .*;/g, '')).pipe(gulp.dest(dst));
 });
 
 gulp.task('gent-theme', function () {
@@ -94,13 +101,13 @@ gulp.task('update-config-file', function () {
 });
 
 gulp.task('build', ['update-config-file', 'concat-uglify-js', 'minify-css', 'gent-theme'], function () {
-    gulp.src([dst + '**/*.css',dst + '**/*.less',dst + '**/*.js'])
+    gulp.src([dst + '**/*.css', dst + '**/*.less', dst + '**/*.js'])
         .pipe(license(LICENSE_TEMPLATE))
         .pipe(gulp.dest(dst));
 });
 
 gulp.task('watch', function () {
-    gulp.watch([src + '**/*.less'], ['minify-css', 'gent-theme']);
+    gulp.watch([src + '**/*.less'], ['minify-css', 'gent-theme', 'compile-less-test']);
     gulp.watch([src + '**/*.ts'], ['concat-uglify-js']);
 });
 

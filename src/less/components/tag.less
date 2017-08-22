@@ -18,14 +18,14 @@
     margin:0 0 -2px 4px;
     .size(12px);
     background: no-repeat center center;
-    .tag-bg-icon();
+    .icon-close(@color-font-03);
     .transition;
     display: none;
   }
   &.tag-primary {
     .tag(@color-primary, @color-primary-ac05, @color-primary-05);
     i{
-      .tag-bg-icon(@color-primary);
+      .icon-close(@color-primary);
     }
   }
   &.tag-action {
@@ -41,7 +41,7 @@
   &:not(.disabled) i{
     cursor: pointer;
     &:hover{
-      .tag-bg-icon(@color-error)!important;
+      .icon-close(@color-error)!important;
     }
   }
 }

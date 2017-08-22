@@ -2,7 +2,8 @@
 //@import "../../dist/dark";
 //@primary: 'purple';
 
-body {
+html, body {
+  height: 100%;
   .scroll();
 }
 
@@ -16,14 +17,14 @@ body {
 }
 
 #tab-7 .hu-row {
-  *>div {
+  * > div {
     color: #fff;
     background: @color-primary;
     height: 100px;
     text-align: center;
     line-height: 100px;
   }
-  *:nth-child(odd)>div {
+  *:nth-child(odd) > div {
     background: fade(@color-primary, 50);
   }
 }
@@ -34,9 +35,9 @@ body {
   }
 }
 
-.hu-tabs{
-  a{
-    pointer-events: initial!important;
+.demo-tabs {
+  a {
+    pointer-events: initial !important;
   }
 }
 
@@ -92,6 +93,4 @@ body {
   display: none;
   background: @color-primary;
 }
-
-
 

@@ -3,9 +3,13 @@
 
 @tabs-cls: ~"@{css-prefix}tabs";
 @tabs-container-cls: ~"@{css-prefix}tabs-container";
+@tabs-wrap-cls: ~"@{css-prefix}tabs-wrap";
+@tabs-nav-container-cls: ~"@{css-prefix}tabs-nav-container";
 @tab-content-cls: ~"@{css-prefix}tab-content";
 
 .@{tabs-cls} {
+  @size: 48px;
+  height: @size;
   border-bottom: @divider-default;
   border-width: 2px;
   .font-title;
@@ -14,7 +18,6 @@
 
   }
   & > li {
-    @size: 48px;
     float: left;
     .transition;
     border-bottom: 2px solid transparent;
@@ -41,7 +44,7 @@
     &.disabled {
       opacity: .3;
       cursor: not-allowed;
-      a{
+      a {
         cursor: not-allowed;
       }
     }
@@ -51,8 +54,7 @@
       background: no-repeat center 34px;
       padding: 15px 0;
       &.active {
-        @img: escape('<svg fill="@{color-primary}" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M5,17.5h14l-7-11L5,17.5z"/><path fill="none" d="M0,0h24v24H0V0z"/></svg>');
-        background-image: url('data:image/svg+xml;charset=UTF-8,@{img}');
+        .icon-arrow-drop-up(@color-primary, 20);
       }
       a {
         border-left: @divider-default;
@@ -66,6 +68,7 @@
   }
   &.tabs-secondary {
     @size: 40px;
+    height: @size;
     .font-body-1;
     & > li {
       padding: 0;
@@ -80,15 +83,18 @@
 .@{tab-content-cls} {
   overflow: hidden;
   position: relative;
+  height: 100%;
   & > .tab-pane {
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: auto;
     opacity: 0;
     position: absolute;
     .transition;
     z-index: 1;
+    .scroll;
     &.active {
       position: relative;
       z-index: 2;
@@ -98,87 +104,153 @@
   }
 }
 
-@-webkit-keyframes front-in-keyframes {
-  .front-in-keyframes;
-}
-
-@keyframes front-in-keyframes {
-  .front-in-keyframes;
-}
-
-@-webkit-keyframes front-out-keyframes {
-  .front-out-keyframes;
-}
-
-@keyframes front-out-keyframes {
-  .front-out-keyframes;
-}
-
-@-webkit-keyframes back-in-keyframes {
-  .back-in-keyframes;
-}
-
-@keyframes back-in-keyframes {
-  .back-in-keyframes;
-}
-
-@-webkit-keyframes back-out-keyframes {
-  .back-out-keyframes;
-}
-
-@keyframes back-out-keyframes {
-  .back-out-keyframes;
-}
-
 .@{tabs-container-cls} {
   &.tabs-left, &.tabs-right {
     .clearfix;
-    //position: relative;
-    //overflow: hidden;
-    .@{tabs-cls} {
-      border-bottom: 0;
-      li {
-        float: none;
-        border-bottom-width: 0;
-        a {
-          border: 0;
-        }
-        &.active {
-          border-color: @color-primary;
-          background-image: none;
+    &>.@{tabs-nav-container-cls} {
+      padding: 20px 0;
+      height: 100%;
+      .@{tabs-cls} {
+        border-bottom: 0;
+        height: auto;
+        &>li {
+          float: none;
+          border-bottom-width: 0;
+          margin-bottom: 0;
+          a {
+            border: 0;
+            text-align: center;
+          }
+          &.active {
+            border-color: @color-primary;
+            background-image: none;
+          }
         }
       }
-    }
-    .@{tab-content-cls} {
-      //width: auto;
+      .tabs-control {
+        width: 100%;
+        height: 20px;
+        border: 0;
+        &.tabs-prev-control {
+          .icon-keyboard-arrow-bottom(@color-font-03, 20);
+          transform: rotate(180deg);
+        }
+        &.tabs-next-control {
+          top: auto;
+          bottom: 0;
+          .icon-keyboard-arrow-bottom(@color-font-03, 20);
+        }
+        &.disabled {
+          .icon-keyboard-arrow-bottom(@color-font-02, 20);
+        }
+        &:not(.disabled):hover {
+          .icon-keyboard-arrow-bottom(@color-font-01, 20);
+        }
+      }
+      .@{tabs-wrap-cls} {
+        height: 100%;
+      }
+      &.show-all {
+        padding: 0;
+        .@{tabs-wrap-cls} {
+          & > ul {
+            height: 100% !important;
+            width: auto !important;
+          }
+        }
+      }
     }
   }
   &.tabs-left {
-    .@{tabs-cls} {
+    &>.@{tab-content-cls} {
+      border-left: @divider-default;
+    }
+    &>.@{tabs-nav-container-cls} {
       float: left;
       border-right: @divider-default;
       margin-right: -1px;
-      li {
+      .@{tabs-cls} {
+        float: left;
+        border-right: @divider-default;
         margin-right: -1px;
-        border-right: 2px solid transparent;
+        li {
+          margin-right: -1px;
+          border-right: 2px solid transparent;
+        }
       }
-    }
-    .@{tab-content-cls} {
-      border-left: @divider-default;
     }
   }
   &.tabs-right {
-    .@{tabs-cls} {
+    &>.@{tab-content-cls} {
+      border-right: @divider-default;
+    }
+    &>.@{tabs-nav-container-cls} {
       float: right;
       border-left: @divider-default;
       margin-left: -1px;
-      li {
+      .@{tabs-cls} {
+        float: right;
+        border-left: @divider-default;
         margin-left: -1px;
-        border-left: 2px solid transparent;
+        li {
+          margin-left: -1px;
+          border-left: 2px solid transparent;
+        }
       }
     }
-    .@{tab-content-cls} {
-      border-right: @divider-default;
+  }
+}
+
+.@{tabs-nav-container-cls} {
+  position: relative;
+  padding: 0 20px;
+  .tabs-control {
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    background: no-repeat center center;
+    border-width: 2px !important;
+    cursor: pointer;
+    &.tabs-prev-control {
+      left: 0;
+      top: 0;
+      .icon-keyboard-arrow-right(@color-font-03, 20);
+      transform: rotate(180deg);
+      border-top: @divider-default;
+    }
+    &.tabs-next-control {
+      right: 0;
+      top: 0;
+      border-bottom: @divider-default;
+      .icon-keyboard-arrow-right(@color-font-03, 20);
+    }
+    &.disabled {
+      .icon-keyboard-arrow-right(@color-font-02, 20);
+    }
+    &:not(.disabled):hover {
+      .icon-keyboard-arrow-right(@color-font-01, 20);
+    }
+  }
+  .@{tabs-wrap-cls} {
+    overflow: hidden;
+    & > ul {
+      .transition;
+      position: relative;
+      margin-left: 0;
+      margin-top: 0;
+    }
+  }
+  &.show-all {
+    padding: 0;
+    .tabs-control {
+      display: none;
+    }
+    .@{tabs-wrap-cls} {
+      & > ul {
+        width: 100% !important;
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+      }
     }
   }
 }
