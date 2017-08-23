@@ -333,6 +333,24 @@
   }
 }
 
+.center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hide-text() {
+  font: ~"0/0" a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.text-hide() {
+  .hide-text();
+}
+
 
 .icon-arrow-drop-down(@color:@color-font-04, @size: 16) {
   @img: escape('<svg width="@{size}" height="@{size}" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="@{color}"><path d="M7 10l5 5 5-5z"/></svg>');
