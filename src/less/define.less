@@ -176,6 +176,8 @@
 @color-chart2-09: #94cdba;
 @color-chart2-10: #b2cede;
 
+@animation-timing:.2s;
+
 .font-size(@size,@line-height:@line-height) {
   font-size: @size;
   line-height: @line-height;
@@ -281,10 +283,12 @@
     background: @bg;
   }
 }
+
 .size(@size) {
   width: @size;
   height: @size;
 }
+
 .spin-keyframes() {
   0% {
     -webkit-transform: rotate(0deg);

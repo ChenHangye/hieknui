@@ -1,9 +1,8 @@
 @import "../define";
 @import "../mixins/dropdown";
+@import "../mixins/select-dropdown";
 
 @dropdown-cls: ~"@{css-prefix}dropdown";
-@dropdown-items-cls: ~"@{css-prefix}dropdown-items";
-@color-dropdown-items: @color-inverse;
 
 .@{dropdown-cls} {
   position: relative;
@@ -30,7 +29,7 @@
     .disabled
   }
 
-  .@{dropdown-items-cls} {
+  .@{select-dropdown-cls} {
     width: 100%;
   }
 
@@ -48,19 +47,7 @@
   }
 }
 
-.@{dropdown-items-cls} {
-  background: @color-dropdown-items;
-  .font-body-1;
-  line-height: 32px;
-  position: absolute;
-  top: 36px;
-  border: @divider-default;
-  .box-shadow-2;
-  .border-radius;
-  display: none;
-  &.on {
-    display: block;
-  }
+.@{select-dropdown-cls}{
   &.dropdown-xs li {
     font-size: 12px;
     line-height: 24px;
@@ -76,18 +63,5 @@
   &.dropdown-lg li {
     font-size: 18px;
     line-height: 48px;
-  }
-  li {
-    padding: 0 8px;
-    .line-hidden;
-    cursor: pointer;
-    .transition;
-    &:not(.disabled):hover, &.active {
-      background: @color-general-ac05;
-      color: @color-primary;
-    }
-    &.disabled {
-      .disabled
-    }
   }
 }

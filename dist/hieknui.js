@@ -50,7 +50,7 @@ var huDropdown = (function () {
         this.cls = '.' + this.clsName;
         this.attrName = this.namespace + 'data-id';
         this.valueName = this.namespace + 'data-value';
-        this.itemsCls = '.' + this.namespace + 'dropdown-items';
+        this.itemsCls = '.' + this.namespace + 'select-dropdown';
         this.init();
     }
     huDropdown.prototype.init = function () {
@@ -61,7 +61,21 @@ var huDropdown = (function () {
             if (!id) {
                 id = _this.namespace + huUtils.randomId();
                 $item.attr(_this.attrName, id);
-                $item.siblings(_this.itemsCls).attr(_this.attrName, id).appendTo('body');
+                var $container = $item.closest(_this.cls);
+                var cls = 'inactive ';
+                if ($container.hasClass('dropdown-xs')) {
+                    cls += 'dropdown-xs';
+                }
+                else if ($container.hasClass('dropdown-sm')) {
+                    cls += 'dropdown-sm';
+                }
+                else if ($container.hasClass('dropdown-md')) {
+                    cls += 'dropdown-md';
+                }
+                else if ($container.hasClass('dropdown-lg')) {
+                    cls += 'dropdown-lg';
+                }
+                $item.siblings(_this.itemsCls).attr(_this.attrName, id).attr('data-role', 'dropdown').addClass(cls).appendTo('body');
             }
             var offset = $item.offset();
             var left = offset.left;
@@ -70,13 +84,13 @@ var huDropdown = (function () {
                 top: top,
                 left: left,
                 width: $item.outerWidth()
-            }).toggleClass('on');
+            }).toggleClass('active inactive');
         }).on('click', this.itemsCls + '>li:not(.disabled)', function (event) {
             var $item = $(event.currentTarget);
             $item.addClass('active').siblings('.active').removeClass('active');
         }).on('click', function (event) {
             if (!$(event.target).closest(_this.cls).length) {
-                $('.on' + _this.itemsCls).removeClass('on');
+                $('.on[data-role="dropdown"]' + _this.itemsCls).removeClass('active').addClass('inactive');
             }
         });
     };
@@ -260,7 +274,7 @@ var huSelect = (function () {
         this.cls = '.' + this.clsName;
         this.attrName = this.namespace + 'data-id';
         this.valueName = this.namespace + 'data-value';
-        this.itemsCls = '.' + this.namespace + 'select-items';
+        this.itemsCls = '.' + this.namespace + 'select-dropdown';
         this.init();
     }
     huSelect.prototype.init = function () {
@@ -271,7 +285,21 @@ var huSelect = (function () {
             if (!id) {
                 id = _this.namespace + huUtils.randomId();
                 $item.attr(_this.attrName, id);
-                $item.siblings(_this.itemsCls).attr(_this.attrName, id).appendTo('body');
+                var $container = $item.closest(_this.cls);
+                var cls = 'inactive ';
+                if ($container.hasClass('select-xs')) {
+                    cls += 'select-xs';
+                }
+                else if ($container.hasClass('select-sm')) {
+                    cls += 'select-sm';
+                }
+                else if ($container.hasClass('select-md')) {
+                    cls += 'select-md';
+                }
+                else if ($container.hasClass('select-lg')) {
+                    cls += 'select-lg';
+                }
+                $item.siblings(_this.itemsCls).attr(_this.attrName, id).attr('data-role', 'select').addClass(cls).appendTo('body');
             }
             var offset = $item.offset();
             var left = offset.left;
@@ -280,7 +308,7 @@ var huSelect = (function () {
                 top: top,
                 left: left,
                 width: $item.outerWidth()
-            }).toggleClass('on');
+            }).toggleClass('active inactive');
         }).on('click', this.itemsCls + '>li:not(.disabled)', function (event) {
             var $item = $(event.currentTarget);
             $item.addClass('active').siblings('.active').removeClass('active');
@@ -290,7 +318,7 @@ var huSelect = (function () {
             $(_this.cls + ' span[' + _this.attrName + '="' + id + '"]').text(text).attr(_this.valueName, value);
         }).on('click', function (event) {
             if (!$(event.target).closest(_this.cls).length) {
-                $('.on' + _this.itemsCls).removeClass('on');
+                $('.on[data-role="select"]' + _this.itemsCls).removeClass('active').addClass('inactive');
             }
         });
     };

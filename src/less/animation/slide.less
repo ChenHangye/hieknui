@@ -1,0 +1,57 @@
+.slideIn(@from:scaleY(0),@to:scaleY(1),@origin:0% 0%) {
+  0% {
+    opacity: 0;
+    transform-origin: @origin;
+    transform: @from;
+  }
+  100% {
+    opacity: 1;
+    transform-origin: @origin;
+    transform: @to;
+  }
+}
+
+.slideOut(@from:scaleY(1),@to:scaleY(0),@origin:0% 0%) {
+  0% {
+    opacity: 1;
+    transform-origin: @origin;
+    transform: @from;
+  }
+  100% {
+    opacity: 0;
+    transform-origin: @origin;
+    transform: @to;
+  }
+}
+
+@keyframes slideUpIn {
+  .slideIn;
+}
+
+@keyframes slideUpOut {
+  .slideOut;
+}
+
+@keyframes slideDownIn {
+  .slideIn(@origin:100% 100%);
+}
+
+@keyframes slideDownOut {
+  .slideOut(@origin:100% 100%);
+}
+
+@keyframes slideLeftIn {
+  .slideIn(scaleX(0), scaleX(1));
+}
+
+@keyframes slideLeftOut {
+  .slideOut(scaleX(1), scaleX(0))
+}
+
+@keyframes slideRightIn {
+  .slideIn(@origin:100% 0%);
+}
+
+@keyframes slideRightOut {
+  .slideOut(@origin:100% 0%);
+}

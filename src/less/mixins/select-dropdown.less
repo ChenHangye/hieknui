@@ -1,0 +1,46 @@
+@import "../define";
+@import "../animation/slide";
+
+@select-dropdown-cls: ~"@{css-prefix}select-dropdown";
+@color-select-dropdown-items: @color-inverse;
+@index-select-dropdown:900;
+
+.@{select-dropdown-cls} {
+  background: @color-select-dropdown-items;
+  .font-body-1;
+  position: absolute;
+  top: 36px;
+  border: @divider-default;
+  .box-shadow-2;
+  .border-radius;
+  display: none;
+  max-height: 250px;
+  overflow: auto;
+  z-index: @index-select-dropdown;
+  .scroll;
+  &.active {
+    display: block;
+    -webkit-animation: slideUpIn @animation-timing linear both;
+    animation: slideUpIn @animation-timing linear both;
+  }
+  &.inactive {
+    display: block;
+    -webkit-animation: slideUpOut @animation-timing linear both;
+    animation: slideUpOut @animation-timing linear both;
+  }
+  li {
+    font-size: 14px;
+    line-height: 32px;
+    padding: 0 8px;
+    .line-hidden;
+    cursor: pointer;
+    .transition;
+    &:not(.disabled):hover, &.active {
+      background: @color-general-ac05;
+      color: @color-primary;
+    }
+    &.disabled {
+      .disabled
+    }
+  }
+}
