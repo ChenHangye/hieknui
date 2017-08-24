@@ -3588,6 +3588,10 @@ label.hu-checkbox.checkbox-lg:hover input + * {
   border: 1px solid #dddddd;
   text-align: center;
   cursor: pointer;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
 }
 .hu-pagination > li.page-item:not(.disabled):hover {
   color: #00b38a;

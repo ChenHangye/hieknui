@@ -1,12 +1,3 @@
-/**
-     * @author: 
-     *    jiangrun002
-     * @version: 
-     *    v0.1.6
-     * @license:
-     *    Copyright 2017, hiknowledge. All rights reserved.
-     */
-
 var huConfig = {
     namespace: 'hu-'
 };
@@ -90,7 +81,7 @@ var huDropdown = (function () {
             $item.addClass('active').siblings('.active').removeClass('active');
         }).on('click', function (event) {
             if (!$(event.target).closest(_this.cls).length) {
-                $('.on[data-role="dropdown"]' + _this.itemsCls).removeClass('active').addClass('inactive');
+                $('.active[data-role="dropdown"]' + _this.itemsCls).removeClass('active').addClass('inactive');
             }
         });
     };
@@ -318,7 +309,7 @@ var huSelect = (function () {
             $(_this.cls + ' span[' + _this.attrName + '="' + id + '"]').text(text).attr(_this.valueName, value);
         }).on('click', function (event) {
             if (!$(event.target).closest(_this.cls).length) {
-                $('.on[data-role="select"]' + _this.itemsCls).removeClass('active').addClass('inactive');
+                $('.active[data-role="select"]' + _this.itemsCls).removeClass('active').addClass('inactive');
             }
         });
     };

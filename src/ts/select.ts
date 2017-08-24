@@ -53,7 +53,7 @@ class huSelect {
             $(this.cls + ' span[' + this.attrName + '="' + id + '"]').text(text).attr(this.valueName, value);
         }).on('click', (event) => {
             if (!$(event.target).closest(this.cls).length) {
-                $('.on[data-role="select"]' + this.itemsCls).removeClass('active').addClass('inactive');
+                $('.active[data-role="select"]' + this.itemsCls).removeClass('active').addClass('inactive');
             }
         });
     }

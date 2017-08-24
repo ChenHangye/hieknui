@@ -49,7 +49,7 @@ class huDropdown {
             $item.addClass('active').siblings('.active').removeClass('active');
         }).on('click', (event) => {
             if (!$(event.target).closest(this.cls).length) {
-                $('.on[data-role="dropdown"]' + this.itemsCls).removeClass('active').addClass('inactive');
+                $('.active[data-role="dropdown"]' + this.itemsCls).removeClass('active').addClass('inactive');
             }
         });
     }
