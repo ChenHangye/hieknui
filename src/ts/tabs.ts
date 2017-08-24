@@ -2,20 +2,16 @@ class huTabs {
     static cls = '';
     static clsName = '';
     static namespace: string = '';
-    static navContainerClsName = '';
-    static wrapClsName = '';
 
     constructor() {
         huTabs.namespace = huConfig.namespace;
         huTabs.clsName = huTabs.namespace + 'tabs';
-        huTabs.navContainerClsName = huTabs.clsName + '-nav-container';
-        huTabs.wrapClsName = huTabs.clsName + '-wrap';
         huTabs.cls = '.' + huTabs.clsName;
         huTabs.init();
     }
 
     private static bindEvent() {
-        const xPath = '>.hu-tabs-nav-container:not(.show-all)>.hu-tabs-wrap';
+        const xPath = '>.tabs-nav-container:not(.show-all)>.tabs-wrap';
 
         $('body').on('click', huTabs.cls + '>li:not(.disabled)', (event) => {
             let $tab = $(event.currentTarget);
@@ -31,10 +27,11 @@ class huTabs {
             $pageOld.removeClass('active');
             $tab.each((i, v) => {
                 huTabs.resize($(v).closest(huTabs.cls));
+                // huTabs.resetDecorationPos($item);
             });
         }).on('click', '.tabs-prev-control:not(.disabled)', (event) => {
             const $item = $(event.currentTarget);
-            const $wrap = $item.siblings('.' + huTabs.wrapClsName);
+            const $wrap = $item.siblings('.tabs-wrap');
             const isVertical = huTabs.isVertical($item);
             let f = 'outerWidth';
             if (isVertical) {
@@ -44,7 +41,7 @@ class huTabs {
             huTabs.resetPos($wrap, wSize, isVertical);
         }).on('click', '.tabs-next-control:not(.disabled)', (event) => {
             const $item = $(event.currentTarget);
-            const $wrap = $item.siblings('.' + huTabs.wrapClsName);
+            const $wrap = $item.siblings('.tabs-wrap');
             const isVertical = huTabs.isVertical($item);
             let f = 'outerWidth';
             if (isVertical) {
@@ -52,7 +49,7 @@ class huTabs {
             }
             const wSize = $wrap[f]();
             huTabs.resetPos($wrap, -wSize, isVertical);
-        }).on('mousewheel', '.tabs-left' + xPath +  ',.tabs-right' + xPath, function (event: any) {
+        }).on('mousewheel', '.tabs-left' + xPath + ',.tabs-right' + xPath, function (event: any) {
             const $wrap = $(event.currentTarget);
             huTabs.resetPos($wrap, event.deltaY * event.deltaFactor, true);
         });
@@ -60,24 +57,6 @@ class huTabs {
         $(window).resize((event) => {
             huTabs.resizeAll();
         });
-    }
-
-    private static resetPos($wrap: JQuery, deltaPos: number, isVertical: boolean) {
-        const $ul = $wrap.children('ul');
-        let f = 'outerWidth';
-        let cssAttr = 'margin-left';
-        if (isVertical) {
-            f = 'outerHeight';
-            cssAttr = 'margin-top';
-        }
-        const wSize = $wrap[f]();
-        const uSize = $ul[f]() - wSize;
-        const pos = parseInt($ul.css(cssAttr));
-        const newPos = pos + deltaPos;
-        let tarPos = newPos > -uSize ? newPos : -uSize;
-        tarPos = tarPos < 0 ? tarPos : 0;
-        $ul.css(cssAttr, tarPos);
-        huTabs.resetClickable($ul, tarPos !== 0, tarPos !== -uSize);
     }
 
     private static calcEnable($item: JQuery, pPos?: number) {
@@ -97,8 +76,8 @@ class huTabs {
         huTabs.resizeAll();
     }
 
-    private static isVertical($item: JQuery){
-        return $item.closest('.' + huTabs.navContainerClsName).parent('.tabs-left,.tabs-right').length > 0;
+    private static isVertical($item: JQuery) {
+        return $item.closest('.tabs-nav-container').parent('.tabs-left,.tabs-right').length > 0;
     }
 
     private static resetAllClickable() {
@@ -116,6 +95,45 @@ class huTabs {
         const $wrap = $item.parent();
         $wrap.siblings('.tabs-prev-control').toggleClass('disabled', !prevEnable);
         $wrap.siblings('.tabs-next-control').toggleClass('disabled', !nextEnable);
+    }
+
+    private static resetDecorationPos($item: JQuery) {
+        const isVertical = huTabs.isVertical($item);
+        let fun = 'width';
+        let sizeFun = 'outerWidth';
+        let posFixFun = 'outerHeight';
+        let posChangeAtt = 'left';
+        if (isVertical) {
+            fun = 'height';
+            sizeFun = 'outerHeight';
+            posFixFun = 'outerWidth';
+            posChangeAtt = 'top';
+        }
+        let size = $item[sizeFun]();
+        let posFix = $item[posFixFun]();
+        let posChange = $item.position()[posChangeAtt] + $item.parent().position()[posChangeAtt] + parseInt($item.parent().css('margin-'+posChangeAtt));
+        const $decoration = $item.closest('.tabs-wrap').siblings('.tabs-decoration');
+        $decoration[fun](size);
+        $decoration.css(posChangeAtt, posChange);
+        console.log($item,$decoration, size, posFix, posChange);
+    }
+
+    private static resetPos($wrap: JQuery, deltaPos: number, isVertical: boolean) {
+        const $ul = $wrap.children('ul');
+        let f = 'outerWidth';
+        let cssAttr = 'margin-left';
+        if (isVertical) {
+            f = 'outerHeight';
+            cssAttr = 'margin-top';
+        }
+        const wSize = $wrap[f]();
+        const uSize = $ul[f]() - wSize;
+        const pos = parseInt($ul.css(cssAttr));
+        const newPos = pos + deltaPos;
+        let tarPos = newPos > -uSize ? newPos : -uSize;
+        tarPos = tarPos < 0 ? tarPos : 0;
+        $ul.css(cssAttr, tarPos);
+        huTabs.resetClickable($ul, tarPos !== 0, tarPos !== -uSize);
     }
 
     private static resizeAll() {
@@ -140,7 +158,7 @@ class huTabs {
         $item.children('li').each((j, li) => {
             lis += $(li)[of]();
         });
-        const $navContainer = $item.closest('.' + huTabs.navContainerClsName);
+        const $navContainer = $item.closest('.tabs-nav-container');
         const l = $navContainer[f]();
         $navContainer.toggleClass('show-all', l >= lis);
         if (l < lis) {
@@ -170,10 +188,11 @@ class huTabs {
     }
 
     private static wrap($item: JQuery) {
-        if (!$item.parent('.' + huTabs.wrapClsName).length) {
-            const wrap = '<div class="' + huTabs.wrapClsName + '"></div>';
-            const container = '<div class="' + huTabs.navContainerClsName + '"></div>';
-            const controls = '<div class="tabs-control tabs-prev-control"></div><div class="tabs-control tabs-next-control"></div>';
+        if (!$item.parent('.tabs-wrap').length) {
+            const wrap = '<div class="tabs-wrap"></div>';
+            const container = '<div class="tabs-nav-container"></div>';
+            const decoration = '';//'<div class="tabs-decoration"></div>';
+            const controls = decoration + '<div class="tabs-control tabs-prev-control"></div><div class="tabs-control tabs-next-control"></div>';
             $item.wrap(container).after(controls).wrap(wrap);
         }
     }

@@ -320,13 +320,11 @@ var huTabs = (function () {
     function huTabs() {
         huTabs.namespace = huConfig.namespace;
         huTabs.clsName = huTabs.namespace + 'tabs';
-        huTabs.navContainerClsName = huTabs.clsName + '-nav-container';
-        huTabs.wrapClsName = huTabs.clsName + '-wrap';
         huTabs.cls = '.' + huTabs.clsName;
         huTabs.init();
     }
     huTabs.bindEvent = function () {
-        var xPath = '>.hu-tabs-nav-container:not(.show-all)>.hu-tabs-wrap';
+        var xPath = '>.tabs-nav-container:not(.show-all)>.tabs-wrap';
         $('body').on('click', huTabs.cls + '>li:not(.disabled)', function (event) {
             var $tab = $(event.currentTarget);
             var selector = $tab.find('a').attr('href');
@@ -341,10 +339,11 @@ var huTabs = (function () {
             $pageOld.removeClass('active');
             $tab.each(function (i, v) {
                 huTabs.resize($(v).closest(huTabs.cls));
+                // huTabs.resetDecorationPos($item);
             });
         }).on('click', '.tabs-prev-control:not(.disabled)', function (event) {
             var $item = $(event.currentTarget);
-            var $wrap = $item.siblings('.' + huTabs.wrapClsName);
+            var $wrap = $item.siblings('.tabs-wrap');
             var isVertical = huTabs.isVertical($item);
             var f = 'outerWidth';
             if (isVertical) {
@@ -354,7 +353,7 @@ var huTabs = (function () {
             huTabs.resetPos($wrap, wSize, isVertical);
         }).on('click', '.tabs-next-control:not(.disabled)', function (event) {
             var $item = $(event.currentTarget);
-            var $wrap = $item.siblings('.' + huTabs.wrapClsName);
+            var $wrap = $item.siblings('.tabs-wrap');
             var isVertical = huTabs.isVertical($item);
             var f = 'outerWidth';
             if (isVertical) {
@@ -369,23 +368,6 @@ var huTabs = (function () {
         $(window).resize(function (event) {
             huTabs.resizeAll();
         });
-    };
-    huTabs.resetPos = function ($wrap, deltaPos, isVertical) {
-        var $ul = $wrap.children('ul');
-        var f = 'outerWidth';
-        var cssAttr = 'margin-left';
-        if (isVertical) {
-            f = 'outerHeight';
-            cssAttr = 'margin-top';
-        }
-        var wSize = $wrap[f]();
-        var uSize = $ul[f]() - wSize;
-        var pos = parseInt($ul.css(cssAttr));
-        var newPos = pos + deltaPos;
-        var tarPos = newPos > -uSize ? newPos : -uSize;
-        tarPos = tarPos < 0 ? tarPos : 0;
-        $ul.css(cssAttr, tarPos);
-        huTabs.resetClickable($ul, tarPos !== 0, tarPos !== -uSize);
     };
     huTabs.calcEnable = function ($item, pPos) {
         var $wrap = $item.parent();
@@ -403,7 +385,7 @@ var huTabs = (function () {
         huTabs.resizeAll();
     };
     huTabs.isVertical = function ($item) {
-        return $item.closest('.' + huTabs.navContainerClsName).parent('.tabs-left,.tabs-right').length > 0;
+        return $item.closest('.tabs-nav-container').parent('.tabs-left,.tabs-right').length > 0;
     };
     huTabs.resetAllClickable = function () {
         $(huTabs.cls).each(function (i, v) {
@@ -419,6 +401,43 @@ var huTabs = (function () {
         var $wrap = $item.parent();
         $wrap.siblings('.tabs-prev-control').toggleClass('disabled', !prevEnable);
         $wrap.siblings('.tabs-next-control').toggleClass('disabled', !nextEnable);
+    };
+    huTabs.resetDecorationPos = function ($item) {
+        var isVertical = huTabs.isVertical($item);
+        var fun = 'width';
+        var sizeFun = 'outerWidth';
+        var posFixFun = 'outerHeight';
+        var posChangeAtt = 'left';
+        if (isVertical) {
+            fun = 'height';
+            sizeFun = 'outerHeight';
+            posFixFun = 'outerWidth';
+            posChangeAtt = 'top';
+        }
+        var size = $item[sizeFun]();
+        var posFix = $item[posFixFun]();
+        var posChange = $item.position()[posChangeAtt] + $item.parent().position()[posChangeAtt] + parseInt($item.parent().css('margin-' + posChangeAtt));
+        var $decoration = $item.closest('.tabs-wrap').siblings('.tabs-decoration');
+        $decoration[fun](size);
+        $decoration.css(posChangeAtt, posChange);
+        console.log($item, $decoration, size, posFix, posChange);
+    };
+    huTabs.resetPos = function ($wrap, deltaPos, isVertical) {
+        var $ul = $wrap.children('ul');
+        var f = 'outerWidth';
+        var cssAttr = 'margin-left';
+        if (isVertical) {
+            f = 'outerHeight';
+            cssAttr = 'margin-top';
+        }
+        var wSize = $wrap[f]();
+        var uSize = $ul[f]() - wSize;
+        var pos = parseInt($ul.css(cssAttr));
+        var newPos = pos + deltaPos;
+        var tarPos = newPos > -uSize ? newPos : -uSize;
+        tarPos = tarPos < 0 ? tarPos : 0;
+        $ul.css(cssAttr, tarPos);
+        huTabs.resetClickable($ul, tarPos !== 0, tarPos !== -uSize);
     };
     huTabs.resizeAll = function () {
         huTabs.wrapAll();
@@ -441,7 +460,7 @@ var huTabs = (function () {
         $item.children('li').each(function (j, li) {
             lis += $(li)[of]();
         });
-        var $navContainer = $item.closest('.' + huTabs.navContainerClsName);
+        var $navContainer = $item.closest('.tabs-nav-container');
         var l = $navContainer[f]();
         $navContainer.toggleClass('show-all', l >= lis);
         if (l < lis) {
@@ -470,18 +489,17 @@ var huTabs = (function () {
         });
     };
     huTabs.wrap = function ($item) {
-        if (!$item.parent('.' + huTabs.wrapClsName).length) {
-            var wrap = '<div class="' + huTabs.wrapClsName + '"></div>';
-            var container = '<div class="' + huTabs.navContainerClsName + '"></div>';
-            var controls = '<div class="tabs-control tabs-prev-control"></div><div class="tabs-control tabs-next-control"></div>';
+        if (!$item.parent('.tabs-wrap').length) {
+            var wrap = '<div class="tabs-wrap"></div>';
+            var container = '<div class="tabs-nav-container"></div>';
+            var decoration = ''; //'<div class="tabs-decoration"></div>';
+            var controls = decoration + '<div class="tabs-control tabs-prev-control"></div><div class="tabs-control tabs-next-control"></div>';
             $item.wrap(container).after(controls).wrap(wrap);
         }
     };
     huTabs.cls = '';
     huTabs.clsName = '';
     huTabs.namespace = '';
-    huTabs.navContainerClsName = '';
-    huTabs.wrapClsName = '';
     return huTabs;
 }());
 

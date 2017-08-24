@@ -3,8 +3,6 @@
 
 @tabs-cls: ~"@{css-prefix}tabs";
 @tabs-container-cls: ~"@{css-prefix}tabs-container";
-@tabs-wrap-cls: ~"@{css-prefix}tabs-wrap";
-@tabs-nav-container-cls: ~"@{css-prefix}tabs-nav-container";
 @tab-content-cls: ~"@{css-prefix}tab-content";
 
 .@{tabs-cls} {
@@ -107,7 +105,7 @@
 .@{tabs-container-cls} {
   &.tabs-left, &.tabs-right {
     .clearfix;
-    &>.@{tabs-nav-container-cls} {
+    &>.tabs-nav-container {
       padding: 20px 0;
       height: 100%;
       .@{tabs-cls} {
@@ -147,17 +145,22 @@
           .icon-keyboard-arrow-bottom(@color-font-01, 20);
         }
       }
-      .@{tabs-wrap-cls} {
+      .tabs-wrap {
         height: 100%;
       }
       &.show-all {
         padding: 0;
-        .@{tabs-wrap-cls} {
+        .tabs-wrap {
           & > ul {
             height: 100% !important;
             width: auto !important;
           }
         }
+      }
+      .tabs-decoration{
+        height: 0;
+        width: 2px;
+        bottom: auto;
       }
     }
   }
@@ -165,7 +168,7 @@
     &>.@{tab-content-cls} {
       border-left: @divider-default;
     }
-    &>.@{tabs-nav-container-cls} {
+    &>.tabs-nav-container {
       float: left;
       border-right: @divider-default;
       margin-right: -1px;
@@ -178,13 +181,16 @@
           border-right: 2px solid transparent;
         }
       }
+      .tabs-decoration{
+        right: 0;
+      }
     }
   }
   &.tabs-right {
     &>.@{tab-content-cls} {
       border-right: @divider-default;
     }
-    &>.@{tabs-nav-container-cls} {
+    &>.tabs-nav-container {
       float: right;
       border-left: @divider-default;
       margin-left: -1px;
@@ -197,11 +203,14 @@
           border-left: 2px solid transparent;
         }
       }
+      .tabs-decoration{
+        left: 0;
+      }
     }
   }
 }
 
-.@{tabs-nav-container-cls} {
+.tabs-nav-container {
   position: relative;
   padding: 0 20px;
   .tabs-control {
@@ -231,7 +240,14 @@
       .icon-keyboard-arrow-right(@color-font-01, 20);
     }
   }
-  .@{tabs-wrap-cls} {
+  .tabs-decoration{
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    background: @color-primary;
+    width: 0;
+  }
+  .tabs-wrap {
     overflow: hidden;
     & > ul {
       .transition;
@@ -245,7 +261,7 @@
     .tabs-control {
       display: none;
     }
-    .@{tabs-wrap-cls} {
+    .tabs-wrap {
       & > ul {
         width: 100% !important;
         margin-top: 0 !important;
