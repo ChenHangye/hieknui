@@ -52,6 +52,7 @@ gulp.task('concat-uglify-js', ['concat-js'], function () {
 
 gulp.task("compile-ts", ["clean-js"], function () {
     var tsResult = gulp.src(src + "ts/*.ts")
+        .pipe(plumber())
         .pipe(ts(tsconfig.compilerOptions));
     return tsResult.js.pipe(gulp.dest(src + 'ts/'));
 });
