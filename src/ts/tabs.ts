@@ -15,59 +15,69 @@ class huTabs {
     }
 
     private static bindEvent() {
+        const xPath = '>.hu-tabs-nav-container:not(.show-all)>.hu-tabs-wrap';
+
         $('body').on('click', huTabs.cls + '>li:not(.disabled)', (event) => {
             let $tab = $(event.currentTarget);
             const selector = $tab.find('a').attr('href');
-            $tab = $('a[href="'+selector+'"]').closest('li');
+            $tab = $('a[href="' + selector + '"]').closest('li');
             const $page = $(selector);
             const $pageOld = $page.siblings('.active');
             const selectorOld = '#' + $pageOld.attr('id');
-            const $tabOld = $('a[href="'+selectorOld+'"]').closest('li');
+            const $tabOld = $('a[href="' + selectorOld + '"]').closest('li');
             $tab.addClass('active');
             $page.addClass('active');
             $tabOld.removeClass('active');
             $pageOld.removeClass('active');
-            $tab.each((i,v)=>{
+            $tab.each((i, v) => {
                 huTabs.resize($(v).closest(huTabs.cls));
             });
         }).on('click', '.tabs-prev-control:not(.disabled)', (event) => {
             const $item = $(event.currentTarget);
             const $wrap = $item.siblings('.' + huTabs.wrapClsName);
-            const $ul = $wrap.children('ul');
+            const isVertical = huTabs.isVertical($item);
             let f = 'outerWidth';
-            let cssAttr = 'margin-left';
-            if (huTabs.isVertical($item)) {
+            if (isVertical) {
                 f = 'outerHeight';
-                cssAttr = 'margin-top';
             }
-            const pos = parseInt($ul.css(cssAttr));
             const wSize = $wrap[f]();
-            const newPos = pos + wSize;
-            const tarPos = newPos < 0 ? newPos : 0;
-            $ul.css(cssAttr, tarPos);
-            huTabs.resetClickable($ul, tarPos !== 0, true);
+            huTabs.resetPos($wrap, wSize, isVertical);
         }).on('click', '.tabs-next-control:not(.disabled)', (event) => {
             const $item = $(event.currentTarget);
             const $wrap = $item.siblings('.' + huTabs.wrapClsName);
-            const $ul = $wrap.children('ul');
+            const isVertical = huTabs.isVertical($item);
             let f = 'outerWidth';
-            let cssAttr = 'margin-left';
-            if (huTabs.isVertical($item)) {
+            if (isVertical) {
                 f = 'outerHeight';
-                cssAttr = 'margin-top';
             }
-            const pos = parseInt($ul.css(cssAttr));
             const wSize = $wrap[f]();
-            const uSize = $ul[f]() - wSize;
-            const newPos = pos - wSize;
-            const tarPos = newPos > -uSize ? newPos : -uSize;
-            $ul.css(cssAttr, tarPos);
-            huTabs.resetClickable($ul, true, tarPos !== -uSize);
+            huTabs.resetPos($wrap, -wSize, isVertical);
+        }).on('mousewheel', '.tabs-left' + xPath +  ',.tabs-right' + xPath, function (event: any) {
+            const $wrap = $(event.currentTarget);
+            huTabs.resetPos($wrap, event.deltaY * event.deltaFactor, true);
         });
 
         $(window).resize((event) => {
             huTabs.resizeAll();
         });
+    }
+
+    private static resetPos($wrap: JQuery, deltaPos: number, isVertical: boolean) {
+        const $ul = $wrap.children('ul');
+        let f = 'outerWidth';
+        let cssAttr = 'margin-left';
+        if (isVertical) {
+            f = 'outerHeight';
+            cssAttr = 'margin-top';
+        }
+        const wSize = $wrap[f]();
+        const uSize = $ul[f]() - wSize;
+        const pos = parseInt($ul.css(cssAttr));
+        const newPos = pos + deltaPos;
+        let tarPos = newPos > -uSize ? newPos : -uSize;
+        tarPos = tarPos < 0 ? tarPos : 0;
+        $ul.css(cssAttr, tarPos);
+        huTabs.resetClickable($ul, tarPos !== 0, tarPos !== -uSize);
     }
 
     private static calcEnable($item: JQuery, pPos?: number) {
@@ -87,8 +97,8 @@ class huTabs {
         huTabs.resizeAll();
     }
 
-    private static isVertical($item: JQuery) {
-        return $item.closest('.' + huTabs.navContainerClsName).parent('.tabs-left,.tabs-right').length;
+    private static isVertical($item: JQuery){
+        return $item.closest('.' + huTabs.navContainerClsName).parent('.tabs-left,.tabs-right').length > 0;
     }
 
     private static resetAllClickable() {

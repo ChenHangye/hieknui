@@ -2,7 +2,7 @@
      * @author: 
      *    jiangrun002
      * @version: 
-     *    v0.1.5
+     *    v0.1.6
      * @license:
      *    Copyright 2017, hiknowledge. All rights reserved.
      */
@@ -307,6 +307,7 @@ var huTabs = (function () {
         huTabs.init();
     }
     huTabs.bindEvent = function () {
+        var xPath = '>.hu-tabs-nav-container:not(.show-all)>.hu-tabs-wrap';
         $('body').on('click', huTabs.cls + '>li:not(.disabled)', function (event) {
             var $tab = $(event.currentTarget);
             var selector = $tab.find('a').attr('href');
@@ -325,40 +326,47 @@ var huTabs = (function () {
         }).on('click', '.tabs-prev-control:not(.disabled)', function (event) {
             var $item = $(event.currentTarget);
             var $wrap = $item.siblings('.' + huTabs.wrapClsName);
-            var $ul = $wrap.children('ul');
+            var isVertical = huTabs.isVertical($item);
             var f = 'outerWidth';
-            var cssAttr = 'margin-left';
-            if (huTabs.isVertical($item)) {
+            if (isVertical) {
                 f = 'outerHeight';
-                cssAttr = 'margin-top';
             }
-            var pos = parseInt($ul.css(cssAttr));
             var wSize = $wrap[f]();
-            var newPos = pos + wSize;
-            var tarPos = newPos < 0 ? newPos : 0;
-            $ul.css(cssAttr, tarPos);
-            huTabs.resetClickable($ul, tarPos !== 0, true);
+            huTabs.resetPos($wrap, wSize, isVertical);
         }).on('click', '.tabs-next-control:not(.disabled)', function (event) {
             var $item = $(event.currentTarget);
             var $wrap = $item.siblings('.' + huTabs.wrapClsName);
-            var $ul = $wrap.children('ul');
+            var isVertical = huTabs.isVertical($item);
             var f = 'outerWidth';
-            var cssAttr = 'margin-left';
-            if (huTabs.isVertical($item)) {
+            if (isVertical) {
                 f = 'outerHeight';
-                cssAttr = 'margin-top';
             }
-            var pos = parseInt($ul.css(cssAttr));
             var wSize = $wrap[f]();
-            var uSize = $ul[f]() - wSize;
-            var newPos = pos - wSize;
-            var tarPos = newPos > -uSize ? newPos : -uSize;
-            $ul.css(cssAttr, tarPos);
-            huTabs.resetClickable($ul, true, tarPos !== -uSize);
+            huTabs.resetPos($wrap, -wSize, isVertical);
+        }).on('mousewheel', '.tabs-left' + xPath + ',.tabs-right' + xPath, function (event) {
+            var $wrap = $(event.currentTarget);
+            huTabs.resetPos($wrap, event.deltaY * event.deltaFactor, true);
         });
         $(window).resize(function (event) {
             huTabs.resizeAll();
         });
+    };
+    huTabs.resetPos = function ($wrap, deltaPos, isVertical) {
+        var $ul = $wrap.children('ul');
+        var f = 'outerWidth';
+        var cssAttr = 'margin-left';
+        if (isVertical) {
+            f = 'outerHeight';
+            cssAttr = 'margin-top';
+        }
+        var wSize = $wrap[f]();
+        var uSize = $ul[f]() - wSize;
+        var pos = parseInt($ul.css(cssAttr));
+        var newPos = pos + deltaPos;
+        var tarPos = newPos > -uSize ? newPos : -uSize;
+        tarPos = tarPos < 0 ? tarPos : 0;
+        $ul.css(cssAttr, tarPos);
+        huTabs.resetClickable($ul, tarPos !== 0, tarPos !== -uSize);
     };
     huTabs.calcEnable = function ($item, pPos) {
         var $wrap = $item.parent();
@@ -376,7 +384,7 @@ var huTabs = (function () {
         huTabs.resizeAll();
     };
     huTabs.isVertical = function ($item) {
-        return $item.closest('.' + huTabs.navContainerClsName).parent('.tabs-left,.tabs-right').length;
+        return $item.closest('.' + huTabs.navContainerClsName).parent('.tabs-left,.tabs-right').length > 0;
     };
     huTabs.resetAllClickable = function () {
         $(huTabs.cls).each(function (i, v) {
