@@ -1,3 +1,12 @@
+/**
+     * @author: 
+     *    jiangrun002
+     * @version: 
+     *    v0.1.7
+     * @license:
+     *    Copyright 2017, hiknowledge. All rights reserved.
+     */
+
 var huConfig = {
     namespace: 'hu-'
 };
@@ -338,8 +347,15 @@ var huTabs = (function () {
             $tabOld.removeClass('active');
             $pageOld.removeClass('active');
             $tab.each(function (i, v) {
-                huTabs.resize($(v).closest(huTabs.cls));
-                // huTabs.resetDecorationPos($item);
+                var $item = $(v);
+                huTabs.resize($item.closest(huTabs.cls));
+                huTabs.resetDecorationPos($item);
+            });
+            $tabOld.each(function (i, v) {
+                var $item = $(v);
+                if (!$item.siblings('.active').length) {
+                    huTabs.resetDecorationPos($item);
+                }
             });
         }).on('click', '.tabs-prev-control:not(.disabled)', function (event) {
             var $item = $(event.currentTarget);
@@ -406,21 +422,25 @@ var huTabs = (function () {
         var isVertical = huTabs.isVertical($item);
         var fun = 'width';
         var sizeFun = 'outerWidth';
-        var posFixFun = 'outerHeight';
         var posChangeAtt = 'left';
         if (isVertical) {
             fun = 'height';
             sizeFun = 'outerHeight';
-            posFixFun = 'outerWidth';
             posChangeAtt = 'top';
         }
-        var size = $item[sizeFun]();
-        var posFix = $item[posFixFun]();
-        var posChange = $item.position()[posChangeAtt] + $item.parent().position()[posChangeAtt] + parseInt($item.parent().css('margin-' + posChangeAtt));
-        var $decoration = $item.closest('.tabs-wrap').siblings('.tabs-decoration');
-        $decoration[fun](size);
-        $decoration.css(posChangeAtt, posChange);
-        console.log($item, $decoration, size, posFix, posChange);
+        var $decoration = $item.siblings('.tabs-decoration');
+        if ($item.hasClass('active')) {
+            var size = $item[sizeFun]();
+            $decoration[fun](size);
+            var posChange = $item.position()[posChangeAtt];
+            $decoration.css(posChangeAtt, posChange);
+        }
+        else {
+            var size = $decoration[sizeFun]();
+            $decoration[fun](0);
+            var posChange = $decoration.position()[posChangeAtt];
+            $decoration.css(posChangeAtt, posChange + size / 2);
+        }
     };
     huTabs.resetPos = function ($wrap, deltaPos, isVertical) {
         var $ul = $wrap.children('ul');
@@ -457,7 +477,7 @@ var huTabs = (function () {
             cssAttr = 'margin-' + type;
         }
         var lis = 0;
-        $item.children('li').each(function (j, li) {
+        $item.children('li:not(.tabs-decoration)').each(function (j, li) {
             lis += $(li)[of]();
         });
         var $navContainer = $item.closest('.tabs-nav-container');
@@ -492,9 +512,11 @@ var huTabs = (function () {
         if (!$item.parent('.tabs-wrap').length) {
             var wrap = '<div class="tabs-wrap"></div>';
             var container = '<div class="tabs-nav-container"></div>';
-            var decoration = ''; //'<div class="tabs-decoration"></div>';
-            var controls = decoration + '<div class="tabs-control tabs-prev-control"></div><div class="tabs-control tabs-next-control"></div>';
+            var $decoration = $('<li class="tabs-decoration"></li>');
+            var controls = '<div class="tabs-control tabs-prev-control"></div><div class="tabs-control tabs-next-control"></div>';
             $item.wrap(container).after(controls).wrap(wrap);
+            $item.append($decoration);
+            huTabs.resetDecorationPos($item.children('li.active'));
         }
     };
     huTabs.cls = '';

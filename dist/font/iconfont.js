@@ -2,7 +2,7 @@
      * @author: 
      *    jiangrun002
      * @version: 
-     *    v0.1.6
+     *    v0.1.7
      * @license:
      *    Copyright 2017, hiknowledge. All rights reserved.
      */

@@ -26,8 +26,15 @@ class huTabs {
             $tabOld.removeClass('active');
             $pageOld.removeClass('active');
             $tab.each((i, v) => {
-                huTabs.resize($(v).closest(huTabs.cls));
-                // huTabs.resetDecorationPos($item);
+                const $item = $(v);
+                huTabs.resize($item.closest(huTabs.cls));
+                huTabs.resetDecorationPos($item);
+            });
+            $tabOld.each((i, v) => {
+                const $item = $(v);
+                if (!$item.siblings('.active').length) {
+                    huTabs.resetDecorationPos($item);
+                }
             });
         }).on('click', '.tabs-prev-control:not(.disabled)', (event) => {
             const $item = $(event.currentTarget);
@@ -101,21 +108,24 @@ class huTabs {
         const isVertical = huTabs.isVertical($item);
         let fun = 'width';
         let sizeFun = 'outerWidth';
-        let posFixFun = 'outerHeight';
         let posChangeAtt = 'left';
         if (isVertical) {
             fun = 'height';
             sizeFun = 'outerHeight';
-            posFixFun = 'outerWidth';
             posChangeAtt = 'top';
         }
-        let size = $item[sizeFun]();
-        let posFix = $item[posFixFun]();
-        let posChange = $item.position()[posChangeAtt] + $item.parent().position()[posChangeAtt] + parseInt($item.parent().css('margin-'+posChangeAtt));
-        const $decoration = $item.closest('.tabs-wrap').siblings('.tabs-decoration');
-        $decoration[fun](size);
-        $decoration.css(posChangeAtt, posChange);
-        console.log($item,$decoration, size, posFix, posChange);
+        const $decoration = $item.siblings('.tabs-decoration');
+        if ($item.hasClass('active')) {
+            let size = $item[sizeFun]();
+            $decoration[fun](size);
+            let posChange = $item.position()[posChangeAtt];
+            $decoration.css(posChangeAtt, posChange);
+        } else {
+            let size = $decoration[sizeFun]();
+            $decoration[fun](0);
+            let posChange = $decoration.position()[posChangeAtt];
+            $decoration.css(posChangeAtt, posChange + size / 2);
+        }
     }
 
     private static resetPos($wrap: JQuery, deltaPos: number, isVertical: boolean) {
@@ -155,7 +165,7 @@ class huTabs {
             cssAttr = 'margin-' + type;
         }
         let lis = 0;
-        $item.children('li').each((j, li) => {
+        $item.children('li:not(.tabs-decoration)').each((j, li) => {
             lis += $(li)[of]();
         });
         const $navContainer = $item.closest('.tabs-nav-container');
@@ -191,9 +201,11 @@ class huTabs {
         if (!$item.parent('.tabs-wrap').length) {
             const wrap = '<div class="tabs-wrap"></div>';
             const container = '<div class="tabs-nav-container"></div>';
-            const decoration = '';//'<div class="tabs-decoration"></div>';
-            const controls = decoration + '<div class="tabs-control tabs-prev-control"></div><div class="tabs-control tabs-next-control"></div>';
+            const $decoration = $('<li class="tabs-decoration"></li>');
+            const controls = '<div class="tabs-control tabs-prev-control"></div><div class="tabs-control tabs-next-control"></div>';
             $item.wrap(container).after(controls).wrap(wrap);
+            $item.append($decoration);
+            huTabs.resetDecorationPos($item.children('li.active'));
         }
     }
 }
