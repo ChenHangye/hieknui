@@ -1,0 +1,133 @@
+.fr {
+  float: right;
+}
+.btn-flat {
+  background: none;
+  border: 0;
+  outline: 0;
+}
+label {
+  font-weight: normal!important;
+}
+.parser-create-form {
+  margin-top: 50px;
+}
+.parser-create-form .col-sm-5:nth-child(2) {
+  padding-right: 0;
+}
+.parser-create-form .col-sm-5:nth-child(3) {
+  padding-left: 5px;
+}
+.parser-create-form .form-group {
+  margin-bottom: 5px;
+}
+.parser-create-form .form-group > label {
+  padding-right: 0;
+  padding-left: 0;
+  padding-top: 5px;
+}
+.parser-create-form .form-group > label span {
+  color: #f54b4b;
+  font-family: '宋体';
+}
+.parser-create-form .form-group .form-control {
+  padding: 4px 10px;
+  height: 34px;
+  border-radius: 2px;
+  box-shadow: none;
+  background: #e0e0e0;
+  color: #333;
+  border: 0;
+}
+.parser-create-form .form-group textarea.form-control {
+  height: 60px;
+  resize: none;
+}
+.parser-create-form .form-group .form-group-title {
+  line-height: 34px;
+  position: absolute;
+  padding: 0 5px 0 10px;
+  background: #fff;
+  z-index: 1;
+  margin: 5px 16px;
+}
+.parser-create-form .form-group .form-group-title span {
+  color: #f54b4b;
+  font-family: '宋体';
+}
+.parser-create-form .form-group input[type=checkbox],
+.parser-create-form .form-group input[type=radio] {
+  margin: 8px 0 0 8px;
+}
+.parser-create-form .form-group .btn-warning-outline {
+  margin-right: 8px;
+}
+.parser-create-form .form-group fieldset {
+  border: 1px solid #ccc;
+  padding: 32px 25px 16px 25px;
+  position: relative;
+}
+.parser-create-form .form-group fieldset:only-child {
+  padding: 16px 25px 10px;
+}
+.parser-create-form .form-group fieldset:only-child .btn-close {
+  display: none;
+}
+.parser-create-form .form-group fieldset[name] {
+  margin: 20px 0 10px;
+}
+.parser-create-form .form-group fieldset[name] .form-group-title {
+  margin: 5px 32px;
+}
+.parser-create-form .form-group fieldset[name] .btn-danger {
+  margin-left: 8px;
+}
+.parser-create-form .form-group fieldset[name] fieldset[name] {
+  margin: 25px 0 10px 0;
+}
+.parser-create-form .form-group fieldset[name] fieldset[name][name='filterJson'] {
+  margin: 0 0 10px;
+}
+.parser-create-form .form-group fieldset[name] fieldset[name] .form-group-title {
+  margin: -5px 48px;
+}
+.parser-create-form .form-group fieldset[name=priorityJson] .col-sm-6 {
+  padding: 0;
+}
+.parser-create-form .form-group fieldset.noline {
+  border: 0;
+  margin: 0 !important;
+  padding: 0;
+}
+.parser-create-form .form-group fieldset .btn-close {
+  right: 3px;
+  top: 0;
+  position: absolute;
+  font-size: 28px;
+  color: #ccc;
+  cursor: pointer;
+}
+.parser-create-form .form-group fieldset fieldset {
+  padding: 16px 25px 10px;
+}
+.parser-create-form .fieldset-container {
+  border: 1px solid #ccc;
+  margin: 15px 0;
+  padding: 15px;
+}
+.parser-create-form .fieldset-container > div:nth-child(1) label {
+  line-height: 34px;
+}
+.parser-create-form .fieldset-container fieldset[name] {
+  margin: 10px 0 !important;
+}
+.parser-create-form .connectedSortable {
+  min-height: 200px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.parser-create-form .connectedSortable li {
+  cursor: move;
+  padding: 4px 8px;
+  border-radius: 2px;
+}

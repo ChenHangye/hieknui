@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <title>form test</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" type="text/css"/>
+    <link href="less/form.css" rel="stylesheet" type="text/css">
+
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdn.staticfile.org/lodash.js/4.17.4/lodash.min.js"></script>
+    <script src="../dist/hieknui.js"></script>
+    <script src="js/form.js"></script>
+</head>
+
+<body>
+    <div id="new-parser-box" class="list-box container">
+    <div class="edit-container">
+        <div class="form-horizontal parser-create-form">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="parser-name"><span>*</span>名称：</label>
+                <div class="col-sm-10">
+                    <input type="text" name="name" class="form-control" id="parser-name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="parser-test"><span>*</span>测试：</label>
+                <div class="col-sm-10">
+                    <input type="checkbox" name="test" id="parser-test" hu-data-switch>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="form-group-title"><span>*</span>选择数据源：</div>
+                    <div>
+                        <fieldset name="sourceJson" hu-data-type="array">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="parser-task"><span>*</span>采集任务：</label>
+                                <div class="col-sm-10">
+                                    <div class="search-component">
+                                        <div class="search-box">
+                                            <i class="fa fa-search"></i>
+                                            <input type="text" autocomplete="off" name="task"
+                                                   class="form-control search-text" id="parser-task"
+                                                   placeholder="选择数据来源">
+                                            <a class="search-clear-btn"><i class="fa fa-close"></i></a>
+                                        </div>
+                                        <ul class="autocomplete-content dropdown-content">
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <span class="btn-close" onclick="formService.removeSourceConfig(this)">&times;</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span>*</span>分析源：</label>
+                                <div class="col-sm-10">
+                                    <label for="parser-crawlConfig-14892942972400">
+                                        <input type="checkbox" name="crawlConfig" id="parser-crawlConfig-14892942972400"
+                                               value="3" task-id="33">维基百科
+                                    </label>
+                                    <label for="parser-crawlConfig-14892942972411">
+                                        <input type="checkbox" name="crawlConfig" id="parser-crawlConfig-14892942972411"
+                                               value="2" task-id="33">互动百科
+                                    </label>
+                                    <label for="parser-crawlConfig-14892942972412">
+                                        <input type="checkbox" name="crawlConfig" id="parser-crawlConfig-14892942972412"
+                                               value="1" task-id="33">百度百科
+                                    </label>
+                                    <label for="parser-crawlConfig-14892942972413">
+                                        <input type="checkbox" name="crawlConfig" id="parser-crawlConfig-14892942972413"
+                                               value="4" task-id="33">CBDB
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="col-sm-12 clearfix">
+                    <button class="btn btn-success fr" id="source-config-add"
+                            onclick="formService.addSourceConfig(this)"><i class="fa fa-plus-circle"></i> 添加数据源
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="form-group-title"><span>*</span>配置映射：</div>
+                    <fieldset name="projectJson">
+                        <div class="form-group">
+                            <label class="col-sm-9" for="parser-project"></label>
+                            <div class="col-sm-3">
+                                <button class="btn btn-flat fr" id="project-config-detail"
+                                        onclick="formService.viewProjectConfig(this)"><i class="fa fa-chevron-down"></i>
+                                    展开/收起
+                                </button>
+                            </div>
+                        </div>
+                        <hr class="hide">
+                        <div class="form-group hide">
+                            <label class="col-sm-2 control-label" for="parser-project">来源：</label>
+                            <div class="col-sm-10">
+                                <div class="search-component">
+                                    <div class="search-box">
+                                        <i class="fa fa-search"></i>
+                                        <input type="text" autocomplete="off" name="project"
+                                               class="form-control search-text" id="parser-project"
+                                               placeholder="选择已有模板">
+                                        <a class="search-clear-btn"><i class="fa fa-close"></i></a>
+                                    </div>
+                                    <ul class="autocomplete-content dropdown-content">
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hide noline">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"
+                                       for="project-nameSource"><span>*</span>实体来源：</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="nameSource" id="project-nameSource"
+                                            onchange="formService.changeNameSource(this)">
+                                        <option value="0">词条名</option>
+                                        <option value="1">抽取器</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group hide">
+                                <label class="col-sm-2 control-label"
+                                       for="project-nameExtrator"><span>*</span>抽取器配置：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="nameExtrator" class="form-control"
+                                           id="project-nameExtrator">
+                                </div>
+                            </div>
+                            <div class="form-group container-fluid fieldset-container">
+                                <div class="col-sm-12 clearfix">
+                                    <label class="col-sm-9" for="phrase-config-bean-list">谓词短语配置</label>
+                                    <div class="col-sm-3">
+                                        <button class="btn btn-flat fr" id="phrase-config-bean-list"
+                                                onclick="formService.viewPhraseConfig(this)"><i
+                                                class="fa fa-chevron-down"></i> 展开/收起
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <fieldset name="phraseConfigBeanList" hu-data-type="array">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="project-key"><span>*</span>谓语配置：</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="key" class="form-control" id="project-key">
+                                            </div>
+                                            <span class="btn-close"
+                                                  onclick="formService.removeProjectConfig(this)">&times;</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-group-title">宾语配置：</div>
+                                            <div class="col-sm-12">
+                                                <fieldset name="infoBoxKeyList">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label"
+                                                               for="project-infoBoxKeyList">infoBox映射字段：</label>
+                                                        <div class="col-sm-9">
+                                                            <textarea type="text" name="infoBoxKeyList"
+                                                                      class="form-control" id="project-infoBoxKeyList"
+                                                                      placeholder="多个请用逗号“，”分隔"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label"
+                                                               for="project-valueExtrator">抽取器：</label>
+                                                        <div class="col-sm-9">
+                                                            <textarea type="text" name="valueExtrator"
+                                                                      class="form-control"
+                                                                      id="project-valueExtrator"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label"
+                                                               for="project-valueExtratorIndex">抽取器索引：</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="number" name="valueExtratorIndex"
+                                                                   class="form-control" id="project-valueExtratorIndex"
+                                                                   value="0">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label"
+                                                               for="project-valueJsonPath">JsonPath：</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" name="valueJsonPath" class="form-control"
+                                                                   id="project-valueJsonPath">
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-12 clearfix">
+                                    <button class="btn btn-success fr" id="project-config-add"
+                                            onclick="formService.addProjectConfig(this)"><i
+                                            class="fa fa-plus-circle"></i> 添加谓词短语配置项
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hide">
+                        <div class="form-group hide">
+                            <div class="col-sm-12 clearfix">
+                                <button class="btn btn-warning-outline fr" id="project-config-cancel"
+                                        onclick="formService.createProjectConfig(this)"><i class="fa fa-reply"></i> 清空
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="form-group-title">配置过滤：</div>
+                    <fieldset name="filterJson" hu-data-type="array">
+                        <div class="form-group">
+                            <label class="col-sm-10" for="filter-config-detail"></label>
+                            <div class="col-sm-2">
+                                <button class="btn btn-flat fr" id="filter-config-detail"
+                                        onclick="formService.viewFilterConfig(this)"><i class="fa fa-chevron-down"></i>
+                                    展开/收起
+                                </button>
+                            </div>
+                            <span class="btn-close" onclick="formService.removeFilterConfig(this)">&times;</span>
+                        </div>
+                        <hr class="hide">
+                        <div class="form-group hide">
+                            <label class="col-sm-2 control-label" for="parser-filter">来源：</label>
+                            <div class="col-sm-10">
+                                <div class="search-component">
+                                    <div class="search-box">
+                                        <i class="fa fa-search"></i>
+                                        <input type="text" autocomplete="off" name="filter"
+                                               class="form-control search-text" id="parser-filter" placeholder="选择已有模板">
+                                        <a class="search-clear-btn"><i class="fa fa-close"></i></a>
+                                    </div>
+                                    <ul class="autocomplete-content dropdown-content">
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <span class="btn-close" onclick="formService.removeFilterConfig(this)">&times;</span>
+                        </div>
+                        <div class="hide noline">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="filter-fieldName"><span>*</span>字段：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="fieldName" class="form-control" id="filter-fieldName">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="filter-regex">正则：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="regex" class="form-control" id="filter-regex">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="filter-type">类型：</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="type" id="filter-type"
+                                            onchange="formService.changeType(this)">
+                                        <option value="number">数字</option>
+                                        <option value="string">字符串</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="filter-check">过滤错误匹配：</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="check" id="filter-check">
+                                        <option value="0" selected>不过滤</option>
+                                        <option value="1">过滤</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="filter-regulation">规则：</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="regulation" id="filter-regulation"
+                                            onchange="formService.changeRegulation(this)">
+                                        <option value="bigger" class="t-number hide">大于</option>
+                                        <option value="smaller" class="t-number hide">小于</option>
+                                        <option value="range" class="t-number hide">区间</option>
+                                        <option value="contains" class="t-string hide">包含</option>
+                                        <option value="notcontains" class="t-string hide">不包含</option>
+                                        <option value="equals" class="t-string t-number hide">等于</option>
+                                        <option value="notequals" class="t-string t-number hide">不等于</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="filter-regulationValue">规则边界值：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="regulationValue" class="form-control"
+                                           id="filter-regulationValue" hu-data-type="array">
+                                </div>
+                                <div class="col-sm-10 col-sm-offset-2" style="margin-top: 5px;">
+                                    <input type="text" name="regulationValue-1" class="form-control"
+                                           id="filter-regulationValue-1">
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hide">
+                        <div class="form-group hide">
+                            <div class="col-sm-12 clearfix">
+                                <button class="btn btn-warning-outline fr" id="filter-config-cancel"
+                                        onclick="formService.createFilterConfig(this)"><i class="fa fa-reply"></i> 清空
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-sm-12 clearfix">
+                    <button class="btn btn-success fr" id="filter-config-add"
+                            onclick="formService.addFilterConfig(this)"><i class="fa fa-plus-circle"></i> 添加过滤规则
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix">
+            <div class="fr">
+                <button type="button" class="btn btn-primary" onclick="formService.setParser(this);">
+                    <i class="fa fa-floppy-o"></i>
+                    设置
+                </button>
+                <button type="button" class="btn btn-primary" onclick="formService.saveParser(this);">
+                    <i class="fa fa-floppy-o"></i>
+                    保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -2,7 +2,7 @@
      * @author: 
      *    jiangrun002
      * @version: 
-     *    v0.1.7
+     *    v0.2.0
      * @license:
      *    Copyright 2017, hiknowledge. All rights reserved.
      */
@@ -64,6 +64,7 @@
 @code-family: Consolas, Menlo, Courier, monospace;
 @line-height: 1.5;
 @input-width: 150px;
+@textarea-width: 250px;
 
 @css-prefix: 'hu-';
 @grid-gutter-width: 0;
@@ -1508,6 +1509,15 @@ label.@{checkbox-cls} {
 }
 
 
+@form-cls: ~"@{css-prefix}form";
+@form-model-attr: ~"@{css-prefix}data-model";
+
+[@{form-model-attr}] {
+  display: none !important;
+}
+
+
+
 @icon-cls:~"@{css-prefix}icon";
 
 .@{icon-cls}-12 {
@@ -2313,6 +2323,42 @@ label.@{radio-cls} {
 
 
 
+@textarea-cls: ~"@{css-prefix}textarea";
+
+.@{textarea-cls} {
+  border: 1px solid @color-font-02;
+  outline: 0 !important;
+  color: @color-font-04;
+  background: @color-inverse;
+  width: @textarea-width;
+  .transition;
+
+  &:active, &.active, &:hover {
+    border-color: @color-primary;
+  }
+  .border-radius;
+  .placeholder;
+  .textarea-md;
+
+  &.textarea-xs {
+    .textarea-xs;
+  }
+  &.textarea-sm {
+    .textarea-sm;
+  }
+  &.textarea-md {
+    .textarea-md;
+  }
+  &.textarea-lg {
+    .textarea-lg;
+  }
+  &.textarea-disabled, &[disabled], &.disabled {
+
+  }
+}
+
+
+
 
 .btn-xs() {
   min-width: 48px;
@@ -2733,4 +2779,30 @@ label.@{radio-cls} {
   &:hover {
     background-color: @color-bg-hover;
   }
+}
+
+
+
+.textarea-xs() {
+  line-height: 24px;
+  font-size: 12px;
+  padding: 0 8px;
+}
+
+.textarea-sm() {
+  line-height: 32px;
+  font-size: 14px;
+  padding: 0 8px;
+}
+
+.textarea-md() {
+  line-height: 40px;
+  font-size: 14px;
+  padding: 0 8px;
+}
+
+.textarea-lg() {
+  line-height: 48px;
+  font-size: 18px;
+  padding: 0 8px;
 }

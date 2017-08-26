@@ -2,7 +2,7 @@
      * @author: 
      *    jiangrun002
      * @version: 
-     *    v0.1.7
+     *    v0.2.0
      * @license:
      *    Copyright 2017, hiknowledge. All rights reserved.
      */
@@ -95,6 +95,298 @@ var huDropdown = (function () {
         });
     };
     return huDropdown;
+}());
+
+var huForm = (function () {
+    function huForm() {
+    }
+    huForm.isArrayItem = function ($item) {
+        return $item.attr(huForm.attrArray) == 'array';
+    };
+    huForm.setFormData = function ($form, data, settings) {
+        if (settings === void 0) { settings = {}; }
+        var config = huForm.setConfig;
+        $.extend(true, config, settings);
+        var attr = config.attr;
+        var selector = 'fieldset[' + attr + '],.' + huForm.namespace + 'fieldset[' + attr + ']';
+        huForm.setFormDataObj($form, data, config);
+        var fieldsets = $form.find(selector);
+        $.each(fieldsets, function (i, v) {
+            var $item = $(v);
+            var name = $item.attr(attr);
+            if (name) {
+                var $container = $item.parent().closest(selector);
+                if (!$container.length || $container.attr(attr) == $form.attr(attr)) {
+                    if (huForm.isArrayItem($item)) {
+                        var $parent = $item.parent();
+                        var $model = $parent.children('[' + huForm.attrModel + ']');
+                        if ($model.length) {
+                            $parent.children('[' + attr + '="' + name + '"]:not([' + huForm.attrModel + '])').remove();
+                        }
+                        else {
+                            $parent.children('[' + attr + '="' + name + '"]:gt(0)').remove();
+                        }
+                        for (var idx in data[name]) {
+                            if (data[name].hasOwnProperty(idx)) {
+                                var $obj = $item;
+                                if (idx != '0' || $model.length) {
+                                    $obj = $obj.clone();
+                                    if ($model.length) {
+                                        $obj.removeAttr(huForm.attrModel);
+                                    }
+                                    $obj.appendTo($parent);
+                                }
+                                huForm.setFormData($obj, data[name][idx], config);
+                            }
+                        }
+                    }
+                    else {
+                        huForm.setFormData($item, data[name], config);
+                    }
+                }
+            }
+        });
+    };
+    huForm.setFormDataObj = function ($form, data, settings) {
+        if (settings === void 0) { settings = {}; }
+        var config = huForm.setConfig;
+        $.extend(true, config, settings);
+        var attr = config.attr;
+        var selector = 'fieldset[' + attr + '],.' + huForm.namespace + 'fieldset[' + attr + ']';
+        var $inputs = $form.find('input[' + attr + '][type=checkbox],input[' + attr + '][type=radio]');
+        $inputs.prop('checked', false);
+        var $items = $form.find('[' + attr + ']');
+        $.each($items, function (i, v) {
+            var $item = $(v);
+            if (!$item.is(selector)) {
+                huForm.updateFormData($item, huForm.getFormItemData($item, data, config), config);
+            }
+        });
+    };
+    huForm.getFormItemData = function ($form, data, settings) {
+        if (settings === void 0) { settings = {}; }
+        var config = huForm.setConfig;
+        $.extend(true, config, settings);
+        var attr = config.attr;
+        var d = '';
+        var name = $form.attr(attr);
+        if (name) {
+            d = data[name];
+        }
+        return d;
+    };
+    huForm.updateFormData = function ($form, data, settings) {
+        if (settings === void 0) { settings = {}; }
+        var config = huForm.setConfig;
+        $.extend(true, config, settings);
+        var attr = config.attr;
+        if ($form.is('input[type="checkbox"]')) {
+            if (Array.isArray(data)) {
+                $form.prop('checked', false);
+                for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
+                    var v = data_1[_i];
+                    if (v == $form.val()) {
+                        huForm.updateItemValue($form, true, config);
+                    }
+                }
+            }
+            else {
+                huForm.updateItemValue($form, data === true || data == $form.val(), config);
+            }
+        }
+        else if ($form.is('input[type="radio"]')) {
+            huForm.updateItemValue($form, data == $form.val(), config);
+        }
+        else {
+            if (Array.isArray(data)) {
+                var $parent = $form.parent();
+                var name_1 = $form.attr(attr);
+                var $model = $parent.children('[' + huForm.attrModel + ']');
+                if ($model.length) {
+                    $parent.children('[' + attr + '="' + name_1 + '"]:not([' + huForm.attrModel + '])').remove();
+                }
+                else {
+                    $parent.children('[' + attr + '="' + name_1 + '"]:gt(0)').remove();
+                }
+                for (var idx in data) {
+                    if (data.hasOwnProperty(idx)) {
+                        var $obj = $form;
+                        if (idx != '0' || $model.length) {
+                            $obj = $obj.clone();
+                            if ($model.length) {
+                                $obj.removeAttr(huForm.attrModel);
+                            }
+                            $obj.appendTo($parent);
+                        }
+                        huForm.updateItemValue($obj, data[idx], config);
+                    }
+                }
+            }
+            else {
+                huForm.updateItemValue($form, data, config);
+            }
+        }
+    };
+    huForm.updateItemValue = function ($form, data, settings) {
+        if (settings === void 0) { settings = {}; }
+        var config = huForm.setConfig;
+        $.extend(true, config, settings);
+        data = config.clearNull ? huUtils.clearNullData(data) : data;
+        var beforeupdate = $form.attr(huForm.attrBeforeUpdate);
+        if (beforeupdate) {
+            data = eval(beforeupdate)(data);
+        }
+        if ($form.is('IMG')) {
+            $form.attr('src', data);
+        }
+        else if ($form.is('input[type="checkbox"],input[type="radio"]')) {
+            $form.prop('checked', data);
+        }
+        else if ($form.is('input,select,textarea')) {
+            $form.val(data);
+        }
+        else {
+            if ($form.is('[' + huForm.attrSet + ']')) {
+                eval($form.attr(huForm.attrSet))($form, data);
+            }
+            else if ($form.is('[' + huForm.attrContainer + ']')) {
+                $form.find('[' + huForm.attrItem + ']').html(data);
+            }
+            else {
+                $form.html(data);
+            }
+        }
+    };
+    huForm.getFormData = function ($form, settings) {
+        if (settings === void 0) { settings = {}; }
+        var config = huForm.getConfig;
+        $.extend(true, config, settings);
+        var attr = config.attr;
+        var selector = 'fieldset[' + attr + '],.' + huForm.namespace + 'fieldset[' + attr + ']';
+        var fieldsets = $form.find(selector);
+        var mdata = {};
+        $.each(fieldsets, function (i, v) {
+            var $item = $(v);
+            var name = $item.attr(attr);
+            if (name) {
+                var $container = $item.parent().closest(selector);
+                if (!$container.length || $container.attr(attr) == $form.attr(attr)) {
+                    if (huForm.isArrayItem($item)) {
+                        if (!mdata[name]) {
+                            mdata[name] = [];
+                        }
+                        mdata[name].push(huForm.getFormData($item, config));
+                    }
+                    else {
+                        mdata[name] = huForm.getFormData($item, config);
+                    }
+                }
+            }
+        });
+        $.extend(mdata, huForm.getFormDataObj($form, config));
+        return mdata;
+    };
+    huForm.getFormDataObj = function ($form, settings) {
+        if (settings === void 0) { settings = {}; }
+        var config = huForm.getConfig;
+        $.extend(true, config, settings);
+        var attr = config.attr;
+        var selector = 'fieldset[' + attr + '],.' + huForm.namespace + 'fieldset[' + attr + '],[' + huForm.attrModel + ']';
+        var mdata = {};
+        var inputs = $form.find('[' + attr + ']');
+        $.each(inputs, function (i, v) {
+            var $item = $(v);
+            if (!$item.is(selector)) {
+                var $container = $item.closest(selector);
+                if (!$container.length || $container.attr(attr) == $form.attr(attr)) {
+                    var n = $item.attr(attr);
+                    if ($item.is('input[type="checkbox"]')) {
+                        if ($item.is('[' + huForm.attrSwitch + ']')) {
+                            mdata[n] = huForm.getItemValue($item, config);
+                        }
+                        else {
+                            if (!mdata[n]) {
+                                mdata[n] = [];
+                            }
+                            if (v.checked) {
+                                mdata[n].push(huForm.getItemValue($item, config));
+                            }
+                        }
+                    }
+                    else if ($item.is('input[type="radio"]') && !v.checked) {
+                        $.noop();
+                    }
+                    else {
+                        if (huForm.isArrayItem($item)) {
+                            if (!mdata[n]) {
+                                mdata[n] = [];
+                            }
+                            mdata[n].push(huForm.getItemValue($item, config));
+                        }
+                        else {
+                            mdata[n] = huForm.getItemValue($item, config);
+                        }
+                    }
+                }
+            }
+        });
+        return mdata;
+    };
+    huForm.getItemValue = function ($form, settings) {
+        if (settings === void 0) { settings = {}; }
+        var config = huForm.getConfig;
+        $.extend(true, config, settings);
+        var data = '';
+        if ($form.is('IMG')) {
+            data = $form.attr('src');
+        }
+        else if ($form.is('input[type="checkbox"],input[type="radio"]')) {
+            var input = $form[0];
+            if ($form.is('[' + huForm.attrSwitch + ']')) {
+                data = input.checked;
+            }
+            else if (input.checked) {
+                data = $form.val();
+            }
+        }
+        else if ($form.is('input,select,textarea')) {
+            data = $form.val();
+        }
+        else {
+            if ($form.is('[' + huForm.attrGet + ']')) {
+                data = eval($form.attr(huForm.attrGet))($form);
+            }
+            else if ($form.is('[' + huForm.attrContainer + ']')) {
+                data = $form.find('[' + huForm.attrItem + ']').html();
+            }
+            else {
+                data = $form.html();
+            }
+        }
+        var attrAfterGet = $form.attr(huForm.attrAfterGet);
+        if (attrAfterGet) {
+            data = eval(attrAfterGet)(data);
+        }
+        return data;
+    };
+    huForm.namespace = huConfig.namespace;
+    huForm.attrArray = huForm.namespace + 'data-type';
+    huForm.attrAfterGet = huForm.namespace + 'data-afterget';
+    huForm.attrBeforeUpdate = huForm.namespace + 'data-beforeupdate';
+    huForm.attrContainer = huForm.namespace + 'data-container';
+    huForm.attrGet = huForm.namespace + 'data-get';
+    huForm.attrItem = huForm.namespace + 'data-item';
+    huForm.attrModel = huForm.namespace + 'data-model';
+    huForm.attrSet = huForm.namespace + 'data-set';
+    huForm.attrSwitch = huForm.namespace + 'data-switch';
+    huForm.setConfig = {
+        attr: 'name',
+        clearNull: true
+    };
+    huForm.getConfig = {
+        attr: 'name'
+    };
+    return huForm;
 }());
 
 $(function () {
@@ -263,29 +555,16 @@ var huPagination = (function () {
 
 var huSelect = (function () {
     function huSelect() {
-        this.attrName = '';
-        this.cls = '';
-        this.clsName = '';
-        this.itemsCls = '';
-        this.namespace = '';
-        this.valueName = '';
-        this.namespace = huConfig.namespace;
-        this.clsName = this.namespace + 'select';
-        this.cls = '.' + this.clsName;
-        this.attrName = this.namespace + 'data-id';
-        this.valueName = this.namespace + 'data-value';
-        this.itemsCls = '.' + this.namespace + 'select-dropdown';
-        this.init();
+        huSelect.init();
     }
-    huSelect.prototype.init = function () {
-        var _this = this;
-        $('body').on('click', this.cls + ':not(.disabled)>span', function (event) {
+    huSelect.init = function () {
+        $('body').on('click', huSelect.cls + ':not(.disabled)>span', function (event) {
             var $item = $(event.currentTarget);
-            var id = $item.attr(_this.attrName);
+            var id = $item.attr(huSelect.attrName);
             if (!id) {
-                id = _this.namespace + huUtils.randomId();
-                $item.attr(_this.attrName, id);
-                var $container = $item.closest(_this.cls);
+                id = huSelect.namespace + huUtils.randomId();
+                $item.attr(huSelect.attrName, id);
+                var $container = $item.closest(huSelect.cls);
                 var cls = 'inactive ';
                 if ($container.hasClass('select-xs')) {
                     cls += 'select-xs';
@@ -299,29 +578,56 @@ var huSelect = (function () {
                 else if ($container.hasClass('select-lg')) {
                     cls += 'select-lg';
                 }
-                $item.siblings(_this.itemsCls).attr(_this.attrName, id).attr('data-role', 'select').addClass(cls).appendTo('body');
+                $item.siblings(huSelect.itemsCls).attr(huSelect.attrName, id).attr('data-role', 'select').addClass(cls).appendTo('body');
             }
             var offset = $item.offset();
             var left = offset.left;
             var top = offset.top + $item.outerHeight() + 4;
-            $(_this.itemsCls + '[' + _this.attrName + '="' + id + '"]').css({
+            $(huSelect.itemsCls + '[' + huSelect.attrName + '="' + id + '"]').css({
                 top: top,
                 left: left,
                 width: $item.outerWidth()
             }).toggleClass('active inactive');
-        }).on('click', this.itemsCls + '>li:not(.disabled)', function (event) {
+        }).on('click', huSelect.itemsCls + '>li:not(.disabled)', function (event) {
             var $item = $(event.currentTarget);
             $item.addClass('active').siblings('.active').removeClass('active');
-            var id = $item.parent().attr(_this.attrName);
-            var value = $item.attr(_this.valueName);
+            var id = $item.parent().attr(huSelect.attrName);
+            var value = $item.attr(huSelect.valueName);
             var text = $item.text();
-            $(_this.cls + ' span[' + _this.attrName + '="' + id + '"]').text(text).attr(_this.valueName, value);
+            $(huSelect.cls + ' span[' + huSelect.attrName + '="' + id + '"]').text(text).attr(huSelect.valueName, value);
         }).on('click', function (event) {
-            if (!$(event.target).closest(_this.cls).length) {
-                $('.active[data-role="select"]' + _this.itemsCls).removeClass('active').addClass('inactive');
+            if (!$(event.target).closest(huSelect.cls).length) {
+                $('.active[data-role="select"]' + huSelect.itemsCls).removeClass('active').addClass('inactive');
             }
         });
     };
+    huSelect.get = function ($item) {
+        var $shower = $item.children('span');
+        return $shower.attr(huSelect.valueName);
+    };
+    huSelect.set = function ($item, value) {
+        var $shower = $item.children('span');
+        var id = $shower.attr(huSelect.attrName);
+        var $options = $item.children(huSelect.itemsCls);
+        if (id) {
+            $options = $(huSelect.itemsCls + '[' + huSelect.attrName + '="' + id + '"]');
+        }
+        var $option = $options.children('[' + huSelect.valueName + '="' + value + '"]');
+        if ($option.length) {
+            var text = $option.text();
+            $option.addClass('active').siblings('.active').removeClass('active');
+            $shower.text(text).attr(huSelect.valueName, value);
+        }
+        else {
+            $shower.text('').attr(huSelect.valueName, '');
+        }
+    };
+    huSelect.namespace = huConfig.namespace;
+    huSelect.clsName = huSelect.namespace + 'select';
+    huSelect.cls = '.' + huSelect.clsName;
+    huSelect.attrName = huSelect.namespace + 'data-id';
+    huSelect.itemsCls = '.' + huSelect.namespace + 'select-dropdown';
+    huSelect.valueName = huSelect.namespace + 'data-value';
     return huSelect;
 }());
 
@@ -554,6 +860,25 @@ var huUtils = (function () {
     };
     huUtils.error = function (msg) {
         console.error(msg);
+    };
+    huUtils.clearNullData = function (data) {
+        if (Array.isArray(data) || $.isPlainObject(data)) {
+            for (var k in data) {
+                if (data.hasOwnProperty(k)) {
+                    data[k] = huUtils.clearNullData(data[k]);
+                }
+            }
+        }
+        else {
+            data = huUtils.changeNullData(data);
+        }
+        return data;
+    };
+    huUtils.changeNullData = function (data) {
+        if (data !== 0 && data !== false) {
+            return data || '';
+        }
+        return data;
     };
     return huUtils;
 }());

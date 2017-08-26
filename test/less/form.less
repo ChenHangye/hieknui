@@ -1,0 +1,151 @@
+@warn-color:#f54b4b;
+@center-content-bgcolor:#fff;
+@form-control-bgcolor:#e0e0e0;
+@font-color-2: #666;
+@font-color-1: #333;
+@font-color-3: #999;
+@border-color: #ccc;
+
+.fr {
+  float: right;
+}
+
+.btn-flat {
+  background: none;
+  border: 0;
+  outline: 0;
+}
+
+label{
+  font-weight: normal!important;
+}
+
+.parser-create-form {
+  margin-top: 50px;
+  .col-sm-5 {
+    &:nth-child(2) {
+      padding-right: 0;
+    }
+    &:nth-child(3) {
+      padding-left: 5px;
+    }
+  }
+  .form-group {
+    margin-bottom: 5px;
+    > label {
+      padding-right: 0;
+      padding-left: 0;
+      padding-top: 5px;
+      span {
+        color: @warn-color;
+        font-family: '宋体';
+      }
+    }
+    .form-control {
+      padding: 4px 10px;
+      height: 34px;
+      border-radius: 2px;
+      box-shadow: none;
+      background: @form-control-bgcolor;
+      color: @font-color-1;
+      border: 0;
+    }
+    textarea.form-control {
+      height: 60px;
+      resize: none;
+    }
+    .form-group-title {
+      line-height: 34px;
+      position: absolute;
+      padding: 0 5px 0 10px;
+      background: @center-content-bgcolor;
+      z-index: 1;
+      margin: 5px 16px;
+      span {
+        color: @warn-color;
+        font-family: '宋体';
+      }
+    }
+    input[type=checkbox], input[type=radio] {
+      margin: 8px 0 0 8px;
+    }
+    .btn-warning-outline {
+      margin-right: 8px;
+    }
+    fieldset {
+      border: 1px solid @border-color;
+      padding: 32px 25px 16px 25px;
+      position: relative;
+      &:only-child {
+        padding: 16px 25px 10px;
+        .btn-close {
+          display: none;
+        }
+      }
+      &[name] {
+        margin: 20px 0 10px;
+        .form-group-title {
+          margin: 5px 32px;
+        }
+        .btn-danger {
+          margin-left: 8px;
+        }
+        fieldset[name] {
+          margin: 25px 0 10px 0;
+          &[name='filterJson'] {
+            margin: 0 0 10px;
+          }
+          .form-group-title {
+            margin: -5px 48px;
+          }
+          fieldset[name] {
+            //margin: 25px 0 10px 15px;
+            //.btn-warning{
+            //  margin-right: 8px;
+            //}
+          }
+        }
+      }
+      &[name=priorityJson] .col-sm-6 {
+        padding: 0;
+      }
+      &.noline {
+        border: 0;
+        margin: 0 !important;
+        padding: 0;
+      }
+      .btn-close {
+        right: 3px;
+        top: 0;
+        position: absolute;
+        font-size: 28px;
+        color: @border-color;
+        cursor: pointer;
+      }
+      fieldset {
+        padding: 16px 25px 10px;
+      }
+    }
+  }
+  .fieldset-container {
+    border: 1px solid @border-color;
+    margin: 15px 0;
+    padding: 15px;
+    > div:nth-child(1) label {
+      line-height: 34px;
+    }
+    fieldset[name] {
+      margin: 10px 0 !important;
+    }
+  }
+  .connectedSortable {
+    min-height: 200px;
+    border: 1px solid @border-color;
+    padding: 10px;
+    li {
+      cursor: move;
+      padding: 4px 8px;
+      border-radius: 2px;
+    }
+  }
+}

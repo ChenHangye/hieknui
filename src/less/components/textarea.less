@@ -1,0 +1,36 @@
+@import "../define";
+@import "../mixins/textarea";
+
+@textarea-cls: ~"@{css-prefix}textarea";
+
+.@{textarea-cls} {
+  border: 1px solid @color-font-02;
+  outline: 0 !important;
+  color: @color-font-04;
+  background: @color-inverse;
+  width: @textarea-width;
+  .transition;
+
+  &:active, &.active, &:hover {
+    border-color: @color-primary;
+  }
+  .border-radius;
+  .placeholder;
+  .textarea-md;
+
+  &.textarea-xs {
+    .textarea-xs;
+  }
+  &.textarea-sm {
+    .textarea-sm;
+  }
+  &.textarea-md {
+    .textarea-md;
+  }
+  &.textarea-lg {
+    .textarea-lg;
+  }
+  &.textarea-disabled, &[disabled], &.disabled {
+
+  }
+}
