@@ -69,11 +69,11 @@ gulp.task('compile-less', ['concat-less'], function () {
         .pipe(gulp.dest(dst));
 });
 
-gulp.task('compile-less-test', ['minify-css'], function () {
-    return gulp.src('test/less/*.less')
+gulp.task('compile-less-docs', ['minify-css'], function () {
+    return gulp.src('docs/less/*.less')
         .pipe(plumber())
         .pipe(gulpLess())
-        .pipe(gulp.dest('test/less/'));
+        .pipe(gulp.dest('docs/less/'));
 });
 
 gulp.task('minify-css', ['compile-less'], function () {
@@ -108,7 +108,7 @@ gulp.task('build', ['update-config-file', 'concat-uglify-js', 'minify-css', 'gen
 });
 
 gulp.task('watch', function () {
-    gulp.watch([src + '**/*.less'], ['minify-css', 'gent-theme', 'compile-less-test']);
+    gulp.watch([src + '**/*.less'], ['minify-css', 'gent-theme', 'compile-less-docs']);
     gulp.watch([src + '**/*.ts'], ['concat-uglify-js']);
 });
 

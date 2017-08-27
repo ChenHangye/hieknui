@@ -7,7 +7,7 @@ declare const Clipboard: any;
 declare const style_html: any;
 declare const js_beautify: any;
 
-class test {
+class demo {
     formUtils = {
         defaultData: {
             radio: '1',
@@ -40,7 +40,7 @@ class test {
         this.gentPage3(15);
         this.copy();
         this.setFormUtilsDocs();
-        test.highlight($('#form'), $('#form')[0].outerHTML, js_beautify(test.stringify(this.formUtils)));
+        demo.highlight($('#form'), $('#form')[0].outerHTML, js_beautify(demo.stringify(this.formUtils)));
     }
 
     private gentPage1(current) {
@@ -197,5 +197,5 @@ class test {
 }
 
 $(() => {
-    new test();
+    new demo();
 });

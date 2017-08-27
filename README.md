@@ -321,20 +321,20 @@ new huPagination({
 
 [Table Demo][demo-url-table]
 
-[demo-url]: https://jiangrun002.github.io/hieknui/test/test.html
-[demo-url-btn]: https://jiangrun002.github.io/hieknui/test/test.html#tab-1
-[demo-url-radio]: https://jiangrun002.github.io/hieknui/test/test.html#tab-2
-[demo-url-checkbox]: https://jiangrun002.github.io/hieknui/test/test.html#tab-3
-[demo-url-input]: https://jiangrun002.github.io/hieknui/test/test.html#tab-4
-[demo-url-spin]: https://jiangrun002.github.io/hieknui/test/test.html#tab-5
-[demo-url-card]: https://jiangrun002.github.io/hieknui/test/test.html#tab-6
-[demo-url-layout]: https://jiangrun002.github.io/hieknui/test/test.html#tab-7
-[demo-url-pagination]: https://jiangrun002.github.io/hieknui/test/test.html#tab-8
-[demo-url-tag]: https://jiangrun002.github.io/hieknui/test/test.html#tab-9
-[demo-url-switch]: https://jiangrun002.github.io/hieknui/test/test.html#tab-10
-[demo-url-dropdown]: https://jiangrun002.github.io/hieknui/test/test.html#tab-11
-[demo-url-backtop]: https://jiangrun002.github.io/hieknui/test/test.html#tab-12
-[demo-url-select]: https://jiangrun002.github.io/hieknui/test/test.html#tab-13
-[demo-url-table]: https://jiangrun002.github.io/hieknui/test/test.html#tab-14
-[demo-url-icon]: https://jiangrun002.github.io/hieknui/test/test.html#tab-15
-[demo-url-tab]: https://jiangrun002.github.io/hieknui/test/test.html#tab-16
+[demo-url]: https://jiangrun002.github.io/hieknui/docs/demo.html
+[demo-url-btn]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-1
+[demo-url-radio]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-2
+[demo-url-checkbox]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-3
+[demo-url-input]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-4
+[demo-url-spin]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-5
+[demo-url-card]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-6
+[demo-url-layout]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-7
+[demo-url-pagination]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-8
+[demo-url-tag]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-9
+[demo-url-switch]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-10
+[demo-url-dropdown]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-11
+[demo-url-backtop]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-12
+[demo-url-select]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-13
+[demo-url-table]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-14
+[demo-url-icon]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-15
+[demo-url-tab]: https://jiangrun002.github.io/hieknui/docs/demo.html#tab-16

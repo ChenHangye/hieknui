@@ -1,5 +1,5 @@
-var test = (function () {
-    function test() {
+var demo = (function () {
+    function demo() {
         this.formUtils = {
             defaultData: {
                 radio: '1',
@@ -22,16 +22,16 @@ var test = (function () {
         };
         this.init();
     }
-    test.prototype.init = function () {
+    demo.prototype.init = function () {
         location.hash && $('a[href="' + location.hash + '"]').parent().trigger('click');
         this.gentPage1(1);
         this.gentPage2(1);
         this.gentPage3(15);
         this.copy();
         this.setFormUtilsDocs();
-        test.highlight($('#form'), $('#form')[0].outerHTML, js_beautify(test.stringify(this.formUtils)));
+        demo.highlight($('#form'), $('#form')[0].outerHTML, js_beautify(demo.stringify(this.formUtils)));
     };
-    test.prototype.gentPage1 = function (current) {
+    demo.prototype.gentPage1 = function (current) {
         var _this = this;
         var config = {
             data: {
@@ -54,7 +54,7 @@ var test = (function () {
         };
         new huPagination(config);
     };
-    test.prototype.gentPage2 = function (current) {
+    demo.prototype.gentPage2 = function (current) {
         var _this = this;
         var config = {
             data: {
@@ -72,7 +72,7 @@ var test = (function () {
         };
         new huPagination(config);
     };
-    test.prototype.gentPage3 = function (current) {
+    demo.prototype.gentPage3 = function (current) {
         var _this = this;
         var config = {
             data: {
@@ -92,7 +92,7 @@ var test = (function () {
         };
         new huPagination(config);
     };
-    test.prototype.copy = function () {
+    demo.prototype.copy = function () {
         var clipboard = new Clipboard('.icon');
         $('li').find('i').each(function () {
             $(this).attr('data-clipboard-text', this.outerHTML);
@@ -105,7 +105,7 @@ var test = (function () {
             });
         });
     };
-    test.prototype.setFormUtilsDocs = function () {
+    demo.prototype.setFormUtilsDocs = function () {
         var js = this.formUtils;
         $('#setvalue').on('click', function () {
             js.set($('#form'), js.defaultData);
@@ -120,7 +120,7 @@ var test = (function () {
             hljs.highlightBlock($('#form-output')[0]);
         });
     };
-    test.highlight = function ($item, html, js, css) {
+    demo.highlight = function ($item, html, js, css) {
         if (html === void 0) { html = ''; }
         if (js === void 0) { js = ''; }
         if (css === void 0) { css = ''; }
@@ -135,7 +135,7 @@ var test = (function () {
         hljs.highlightBlock($new.find('code.html')[0]);
         hljs.highlightBlock($new.find('code.javascript')[0]);
     };
-    test.stringify = function (json) {
+    demo.stringify = function (json) {
         if (!json) {
             return json;
         }
@@ -154,8 +154,8 @@ var test = (function () {
             return '';
         }
     };
-    return test;
+    return demo;
 }());
 $(function () {
-    new test();
+    new demo();
 });
