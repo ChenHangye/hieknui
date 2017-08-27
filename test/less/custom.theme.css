@@ -4725,9 +4725,8 @@ label.hu-radio.radio-lg:hover input + * {
   -o-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
   transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
   border-radius: 2px 2px 2px 2px;
-  line-height: 40px;
   font-size: 14px;
-  padding: 0 8px;
+  padding: 8px;
 }
 .hu-textarea:active,
 .hu-textarea.active,
@@ -4745,24 +4744,20 @@ label.hu-radio.radio-lg:hover input + * {
   color: rgba(0, 0, 0, 0.2);
 }
 .hu-textarea.textarea-xs {
-  line-height: 24px;
   font-size: 12px;
-  padding: 0 8px;
+  padding: 8px;
 }
 .hu-textarea.textarea-sm {
-  line-height: 32px;
   font-size: 14px;
-  padding: 0 8px;
+  padding: 8px;
 }
 .hu-textarea.textarea-md {
-  line-height: 40px;
   font-size: 14px;
-  padding: 0 8px;
+  padding: 8px;
 }
 .hu-textarea.textarea-lg {
-  line-height: 48px;
   font-size: 18px;
-  padding: 0 8px;
+  padding: 8px;
 }
 .hu-select-dropdown {
   background: #fff;
@@ -4893,10 +4888,10 @@ body::-webkit-resizer {
 }
 .tab-pane {
   overflow: hidden;
-  padding: 24px;
+  padding: 16px;
 }
 .tab-pane div.line {
-  padding: 24px 0;
+  padding: 8px 0;
   zoom: 1;
 }
 .tab-pane div.line:before,
@@ -4931,7 +4926,7 @@ body::-webkit-resizer {
 #tab-7 .hu-row *:nth-child(odd) > div {
   background: rgba(0, 179, 138, 0.5);
 }
-#tab-6 .hu-card .hu-card-head {
+.hu-card .hu-card-head {
   line-height: 40px;
   padding: 0 8px;
 }
@@ -4978,3 +4973,18 @@ body::-webkit-resizer {
   display: none;
   background: #00b38a;
 }
+.code-demo {
+  margin-bottom: 32px;
+}
+.code-demo .hu-card-head {
+  border: 0;
+  padding: 0;
+}
+pre {
+  margin: 0;
+}
+#form-output {
+  width: 100%;
+  border: 0;
+}
+/*# sourceMappingURL=custom.theme.css.map */

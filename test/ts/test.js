@@ -1,5 +1,25 @@
 var test = (function () {
     function test() {
+        this.formUtils = {
+            defaultData: {
+                radio: '1',
+                checkbox1: ['1', '2'],
+                checkbox2: true,
+                input1: ['a', 'b'],
+                textarea1: ['a1', 'b1'],
+                input2: 'c',
+                textarea2: 'c1',
+                tag: ['tag1', 'tag2'],
+                swicth: true,
+                select: '1'
+            },
+            get: function ($form) {
+                return huForm.getFormData($form);
+            },
+            set: function ($form, data) {
+                huForm.setFormData($form, data);
+            }
+        };
         this.init();
     }
     test.prototype.init = function () {
@@ -8,8 +28,8 @@ var test = (function () {
         this.gentPage2(1);
         this.gentPage3(15);
         this.copy();
-        this.setFormTest();
-        this.highlight($('#form'), $('#form')[0].outerHTML, this.setFormTest.toString());
+        this.setFormUtilsDocs();
+        test.highlight($('#form'), $('#form')[0].outerHTML, js_beautify(test.stringify(this.formUtils)));
     };
     test.prototype.gentPage1 = function (current) {
         var _this = this;
@@ -85,44 +105,54 @@ var test = (function () {
             });
         });
     };
-    test.prototype.setFormTest = function () {
-        var defaultData = {
-            radio: '1',
-            checkbox1: ['1', '2'],
-            checkbox2: true,
-            input1: ['a', 'b'],
-            textarea1: ['a1', 'b1'],
-            input2: 'c',
-            textarea2: 'c1',
-            tag: ['tag1', 'tag2'],
-            swicth: true,
-            select: '1'
-        };
+    test.prototype.setFormUtilsDocs = function () {
+        var js = this.formUtils;
         $('#setvalue').on('click', function () {
-            huForm.setFormData($('#form'), defaultData);
+            js.set($('#form'), js.defaultData);
         });
         $('#getvalue').on('click', function () {
-            var formData = huForm.getFormData($('#form'));
+            var formData = js.get($('#form'));
             console.log(formData);
             console.log(JSON.stringify(formData));
-            console.log(JSON.stringify(defaultData));
-            console.log(_.isEqual(formData, defaultData));
-            alert(JSON.stringify(formData));
+            console.log(JSON.stringify(js.defaultData));
+            console.log(_.isEqual(formData, js.defaultData));
+            $('#form-output').text(js_beautify(JSON.stringify(formData)));
+            hljs.highlightBlock($('#form-output')[0]);
         });
     };
-    test.prototype.highlight = function ($item, html, js, css) {
+    test.highlight = function ($item, html, js, css) {
         if (html === void 0) { html = ''; }
         if (js === void 0) { js = ''; }
         if (css === void 0) { css = ''; }
         var tabId1 = huUtils.randomId('code-tab');
         var tabId2 = huUtils.randomId('code-tab');
         var tabId3 = huUtils.randomId('code-tab');
-        var tabHTML = "<div class=\"code-demo\">\n                <ul class=\"hu-tabs tabs-primary\">\n                    <li class=\"active\"><a href=\"#" + tabId1 + "\">Demo</a></li>\n                    <li class=\"\"><a href=\"#" + tabId2 + "\">HTML</a></li>\n                    <li class=\"\"><a href=\"#" + tabId3 + "\">JAVASCRIPT</a></li>\n                </ul>\n                <div class=\"hu-tab-content\">\n                    <div class=\"tab-pane active\" id=\"" + tabId1 + "\">\n                        " + html + "\n                    </div>\n                    <div class=\"tab-pane\" id=\"" + tabId2 + "\">\n                        <pre><code class=\"html\"></code></pre>\n                    </div>\n                    <div class=\"tab-pane\" id=\"" + tabId3 + "\">\n                        <pre><code class=\"javascript\">" + js + "</code></pre>\n                    </div>\n                </div>\n            </div>";
+        var tabHTML = "<div class=\"hu-card card-shadow code-demo\">\n                            <div class=\"hu-card-head\">\n                                <ul class=\"hu-tabs tabs-primary\">\n                                    <li class=\"active\"><a href=\"#" + tabId1 + "\">Demo</a></li>\n                                    <li class=\"\"><a href=\"#" + tabId2 + "\">HTML</a></li>\n                                    <li class=\"\"><a href=\"#" + tabId3 + "\">JAVASCRIPT</a></li>\n                                </ul>\n                            </div>\n                            <div class=\"hu-card-body\">\n                                <div class=\"hu-tab-content\">\n                                    <div class=\"tab-pane active\" id=\"" + tabId1 + "\">\n                                        " + html + "\n                                    </div>\n                                    <div class=\"tab-pane\" id=\"" + tabId2 + "\">\n                                        <pre><code class=\"html\"></code></pre>\n                                    </div>\n                                    <div class=\"tab-pane\" id=\"" + tabId3 + "\">\n                                        <pre><code class=\"javascript\">" + js + "</code></pre>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>";
         var $new = $(tabHTML);
+        html = style_html(html);
         $new.find('code.html').text(html);
         $item.replaceWith($new);
         hljs.highlightBlock($new.find('code.html')[0]);
         hljs.highlightBlock($new.find('code.javascript')[0]);
+    };
+    test.stringify = function (json) {
+        if (!json) {
+            return json;
+        }
+        var tmp = JSON.stringify(json, function (key, val) {
+            if (typeof val === 'function') {
+                var str = 'FUNC__START' + val + 'FUNC__END';
+                str = str.replace(/\r|\n|\t/g, '');
+                return str;
+            }
+            return val;
+        });
+        if (tmp) {
+            return tmp.replace(/"FUNC__START/g, '').replace(/FUNC__END"/g, '');
+        }
+        else {
+            return '';
+        }
     };
     return test;
 }());

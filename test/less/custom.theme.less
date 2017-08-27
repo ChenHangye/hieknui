@@ -9,9 +9,9 @@ html, body {
 
 .tab-pane {
   overflow: hidden;
-  padding: 24px;
+  padding: 16px;
   div.line {
-    padding: 24px 0;
+    padding: 8px 0;
     .clearfix;
   }
 }
@@ -29,12 +29,15 @@ html, body {
   }
 }
 
+.hu-card {
+  .hu-card-head {
+    line-height: 40px;
+    padding: 0 8px;
+  }
+}
+
 #tab-6 {
   .hu-card {
-    .hu-card-head {
-      line-height: 40px;
-      padding: 0 8px;
-    }
     .hu-card-body {
       height: 200px;
       text-align: center;
@@ -87,4 +90,21 @@ html, body {
   margin: -15px 0 0 -100px;
   display: none;
   background: @color-primary;
+}
+
+.code-demo{
+  .hu-card-head{
+    border: 0;
+    padding: 0;
+  }
+  margin-bottom: 32px;
+}
+
+pre{
+  margin:0;
+}
+
+#form-output{
+  width: 100%;
+  border: 0;
 }

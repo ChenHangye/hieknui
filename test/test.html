@@ -14,6 +14,8 @@
     <script src="https://cdn.staticfile.org/highlight.js/9.10.0/highlight.min.js"></script>
     <script src="https://cdn.staticfile.org/highlight.js/9.10.0/languages/xml.min.js"></script>
     <script src="https://cdn.staticfile.org/highlight.js/9.10.0/languages/javascript.min.js"></script>
+    <script src="http://css.tools.chinaz.com/tools/js/jsformat.js"></script>
+    <script src="http://css.tools.chinaz.com/tools/js/htmlformat.js"></script>
     <script src="../dist/hieknui.js"></script>
     <script src="ts/test.js"></script>
 </head>
@@ -6437,8 +6439,9 @@
                 <div class="line">
                     标签测试：
                     <div class="hu-tag tag-primary tag-action" hu-data-model hu-data-type="array" hu-data-container
-                         name="tag"><span
-                            hu-data-item></span><i class="close"></i></div>
+                         name="tag">
+                        <span hu-data-item></span><i class="close"></i>
+                    </div>
                 </div>
                 <div class="line">
                     开关测试:
@@ -6465,9 +6468,17 @@
                     </div>
                 </div>
             </div>
-            <div class="line">
-                <button class="hu-btn btn-primary" id="setvalue">设置值</button>
-                <button class="hu-btn btn-primary-outline" id="getvalue">取值</button>
+            <div class="hu-card card-shadow">
+                <div class="hu-card-head">
+                    <span>表单结果</span>
+                    <button class="hu-btn btn-primary btn-xs" id="setvalue">设置默认值</button>
+                    <button class="hu-btn btn-primary-outline btn-xs" id="getvalue">获取表单值</button>
+                </div>
+                <div class="hu-card-body">
+                    <pre>
+                        <code class="javascript" id="form-output"></code>
+                    </pre>
+                </div>
             </div>
         </div>
     </div>
